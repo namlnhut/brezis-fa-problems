@@ -1,0 +1,3782 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% Custom commands
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\ip}[2]{\langle #1, #2 \rangle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+
+\begin{center}
+{\Large \textbf{Problems}}
+\end{center}
+
+\noindent The numbers in parentheses refer to the chapters in the book whose knowledge is
+needed to solve the problem.
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 1} (1, 4 only for question 9)\\[4pt]
+\textit{Extreme points; the Krein--Milman theorem}
+
+\medskip
+
+Let $E$ be an n.v.s.\ and let $K \subset E$ be a convex subset. A point $a \in K$ is said to be
+an \emph{extreme point} if
+\[
+tx + (1-t)y \neq a \quad \forall\, t \in (0,1),\; \forall\, x, y \in K \text{ with } x \neq y.
+\]
+
+\begin{enumerate}
+\item Check that $a \in K$ is an extreme point iff the set $K \setminus \{a\}$ is convex.
+
+\item Let $a$ be an extreme point of $K$. Let $(x_i)_{1 \le i \le n}$ be a finite sequence in $K$
+and let $(\alpha_i)_{1 \le i \le n}$ be a finite sequence of real numbers such that $\alpha_i > 0$
+$\forall\, i$, $\sum \alpha_i = 1$, and $\sum \alpha_i x_i = a$. Prove that $x_i = a$ $\forall\, i$.
+\end{enumerate}
+
+\noindent In what follows we assume that $K \subset E$ is a nonempty compact convex subset
+of $E$. A subset $M \subset K$ is said to be an \emph{extreme set} if $M$ is nonempty, closed,
+and whenever $x, y \in K$ are such that $tx + (1-t)y \in M$ for some $t \in (0,1)$, then
+$x \in M$ and $y \in M$.
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Let $a \in K$. Check that $a$ is an extreme point iff $\{a\}$ is an extreme set.
+\end{enumerate}
+
+\noindent Our first goal is to show that every extreme set contains at least one extreme point.
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item Let $A \subset K$ be an extreme set and let $f \in E^*$. Set
+\[
+B = \left\{ x \in A \;:\; \ip{f}{x} = \max_{y \in A} \ip{f}{y} \right\}.
+\]
+Prove that $B$ is an extreme subset of $K$.
+
+\item Let $M \subset K$ be an extreme set of $K$. Consider the collection $\mathcal{F}$ of all the extreme
+sets of $K$ that are contained in $M$; $\mathcal{F}$ is equipped with the following ordering:
+$A \le B$ if $B \subset A$.
+Prove that $\mathcal{F}$ has a maximal element $M_0$.
+
+\item Prove that $M_0$ is reduced to a single point.
+
+\noindent[\textit{Hint:} Use Hahn--Banach and question 4.]
+
+\item Conclude.
+
+\item Prove that $K$ coincides with the closed convex hull of all its extreme points.
+
+\noindent[\textit{Hint:} Argue by contradiction and use Hahn--Banach.]
+
+\item Determine the set $\mathcal{E}$ of all the extreme points of $B_E$ ($= $ the closed unit ball of $E$)
+in the following cases:
+\begin{enumerate}
+    \item $E = \ell^\infty$,
+    \item $E = c$,
+    \item $E = c_0$,
+    \item $E = \ell^1$,
+    \item $E = \ell^p$ with $1 < p < \infty$,
+    \item $E = L^1(\mathbb{R})$.
+\end{enumerate}
+[For the notation see Section 11.3].
+\end{enumerate}
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 2} (1, 2 only for question B4)\\[4pt]
+\textit{Subdifferentials of convex functions}
+
+\medskip
+
+Let $E$ be an n.v.s.\ and let $\varphi : E \to (-\infty, +\infty]$ be a convex function such that
+$\varphi \not\equiv +\infty$. For every $x \in E$ the \emph{subdifferential} of $\varphi$ is defined by
+\[
+\partial\varphi(x) =
+\begin{cases}
+\{f \in E^*;\; \varphi(y) - \varphi(x) \ge \ip{f}{y-x}\;\; \forall\, y \in E\} & \text{if } x \in D(\varphi),\\
+\emptyset & \text{if } x \notin D(\varphi),
+\end{cases}
+\]
+and we set
+\[
+D(\partial\varphi) = \{x \in E;\; \partial\varphi(x) \neq \emptyset\},
+\]
+so that $D(\partial\varphi) \subset D(\varphi)$. Construct an example for which this inclusion is strict.
+
+\begin{itemize}
+\item[A1.] Show that $\partial\varphi(x)$ is a closed convex subset of $E^*$.
+
+\item[2.] Let $x_1, x_2 \in D(\partial\varphi)$, $f_1 \in \partial\varphi(x_1)$, and $f_2 \in \partial\varphi(x_2)$. Prove that
+\[
+\ip{f_1 - f_2}{x_1 - x_2} \ge 0.
+\]
+
+\item[3.] Prove that
+\[
+f \in \partial\varphi(x) \iff \varphi(x) + \varphi^*(f) = \ip{f}{x}.
+\]
+
+\item[4.] Determine $\partial\varphi$ in the following cases:
+\begin{enumerate}
+    \item[(a)] $\varphi(x) = \tfrac{1}{2}\norm{x}^2$,
+    \item[(b)] $\varphi(x) = \norm{x}$,
+    \item[(c)] $\varphi(x) = I_K(x)$ (the indicator function of $K$), where $K \subset E$ is a nonempty
+    convex set (resp.\ a linear subspace),
+    \item[(d)] $\varphi(x)$ is a differentiable convex function on $E$.
+\end{enumerate}
+[\textit{Hint:} In the cases (a), (b), $\partial\varphi$ is related to the duality map $F$ defined in Remark 2
+of Chapter 1; see also Exercise 1.1.]
+
+\item[5.] Let $\psi : E \to (-\infty,+\infty]$ be another convex function such that $\psi \not\equiv +\infty$.
+Assume that $D(\varphi) \cap D(\psi) \neq \emptyset$. Prove that
+\[
+\partial\varphi(x) + \partial\psi(x) \subset \partial(\varphi + \psi)(x) \quad \forall\, x \in E
+\]
+(with the convention that $A + B = \emptyset$ if either $A = \emptyset$ or $B = \emptyset$). Construct an
+example for which this inclusion is strict.
+\end{itemize}
+
+\medskip
+
+\noindent Throughout part B we assume that $x_0 \in E$ satisfies the assumption
+\[
+(1)\quad \exists\, M \in \R \text{ and } \exists\, R > 0 \text{ such that } \varphi(x) \le M\;\;
+\forall\, x \in E \text{ with } \norm{x - x_0} \le R.
+\]
+
+\begin{itemize}
+\item[B1.] Prove that $\partial\varphi(x_0) \neq \emptyset$.
+
+\noindent[\textit{Hint:} Use Hahn--Banach in $E \times \R$.]
+
+\item[2.] Prove that $\norm{f} \le \frac{1}{R}(M - \varphi(x_0))$ $\forall\, f \in \partial\varphi(x_0)$.
+
+\item[3.] Deduce that $\forall\, r < R$, $\exists\, L \ge 0$ such that
+\[
+\abs{\varphi(x_1) - \varphi(x_2)} \le L\norm{x_1 - x_2}
+\quad \forall\, x_1, x_2 \in E \text{ with } \norm{x_i - x_0} \le r,\; i = 1,2.
+\]
+[See also Exercise 2.1 for an alternative proof.]
+
+\item[4.] Assume here that $E$ is a Banach space and that $\varphi$ is l.s.c.\ Prove that
+\[
+\operatorname{Int} D(\partial\varphi) = \operatorname{Int} D(\varphi).
+\]
+
+\item[5.] Prove that for every $y \in E$ one has
+\[
+\lim_{t \downarrow 0} \frac{\varphi(x_0 + ty) - \varphi(x_0)}{t}
+= \max_{f \in \partial\varphi(x_0)} \ip{f}{y}.
+\]
+[\textit{Hint:} Look at Exercise 1.25, question 5.]
+
+\item[6.] Let $\psi : E \to (-\infty,+\infty]$ be a convex function such that $x_0 \in D(\psi)$. Prove that
+\[
+\partial\varphi(x) + \partial\psi(x) = \partial(\varphi + \psi)(x) \quad \forall\, x \in E.
+\]
+[\textit{Hint:} Given $f_0 \in \partial(\varphi+\psi)(x)$, apply Theorem 1.12 to the functions
+$\tilde{\varphi}(y) = \varphi(y) - \varphi(x) - \ip{f_0}{y-x}$ and $\tilde{\psi}(y) = \psi(y) - \psi(x)$.]
+\end{itemize}
+
+\begin{itemize}
+\item[C1.] Let $\varphi : E \to \R$ be a convex function such that $\varphi(x) \le k\norm{x} + C$
+$\forall\, x \in E$, for some constants $k \ge 0$ and $C$. Prove that
+\[
+\abs{\varphi(x_1) - \varphi(x_2)} \le k\norm{x_1 - x_2} \quad \forall\, x_1, x_2 \in E.
+\]
+What can one say about $D(\varphi)$?
+
+\item[2.] Let $A \subset \R^n$ be open and convex. Let $\varphi : A \to \R$ be a convex function. Prove
+that $\varphi$ is continuous on $A$.
+\end{itemize}
+
+\medskip
+
+\noindent Let $\varphi : E \to \R$ be a continuous convex function and let
+\[
+C = \{x \in E;\; \varphi(x) \le 0\}.
+\]
+Assume that there exists some $x_0 \in E$ such that $\varphi(x_0) < 0$. Given $x \in C$ prove
+that $f \in \partial I_C(x)$ iff there exists some $\lambda \in \R$ such that $f \in \lambda\,\partial\varphi(x)$ with
+$\lambda = 0$ if $\varphi(x) < 0$, and $\lambda \ge 0$ if $\varphi(x) = 0$.
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 3} (1)\\[4pt]
+\textit{The theorems of Ekeland, Br\o{}nsted--Rockafellar, and Bishop--Phelps; the $\varepsilon$-subdifferential}
+
+\medskip
+
+\noindent\textbf{Part A.}\\
+Let $M$ be a nonempty complete metric space equipped with the distance $d(x,y)$.
+Let $\psi : M \to (-\infty,+\infty]$ be an l.s.c.\ function that is bounded below and such that
+$\psi \not\equiv +\infty$. Our goal is to prove that there exists some $a \in M$ such that
+\[
+\psi(x) - \psi(a) + d(x,a) \ge 0 \quad \forall\, x \in M.
+\]
+Given $x \in M$ set
+\[
+S(x) = \{y \in M;\; \psi(y) - \psi(x) + d(x,y) \le 0\}.
+\]
+
+\begin{enumerate}
+\item Check that $x \in S(x)$, and that $y \in S(x) \Rightarrow S(y) \subset S(x)$.
+
+\item Fix any sequence of real numbers $(\varepsilon_n)$ with $\varepsilon_n > 0$ $\forall\, n$ and $\varepsilon_n \to 0$.
+Given $x_0 \in M$, one constructs by induction a sequence $(x_n)$ as follows: once $x_n$ is
+known, pick any element $x_{n+1}$ satisfying
+\[
+\begin{cases}
+x_{n+1} \in S(x_n),\\[4pt]
+\psi(x_{n+1}) \le \displaystyle\inf_{x \in S(x_n)} \psi(x) + \varepsilon_{n+1}.
+\end{cases}
+\]
+Check that $S(x_{n+1}) \subset S(x_n)$ $\forall\, n$ and that
+\[
+\psi(x_{n+p}) - \psi(x_n) + d(x_n, x_{n+p}) \le 0 \quad \forall\, n,\; \forall\, p.
+\]
+Deduce that $(x_n)$ is a Cauchy sequence, and so it converges to a limit, denoted by $a$.
+
+\item Prove that $a$ satisfies the required property.
+
+\noindent[\textit{Hint:} Given $x \in M$, consider two cases: either $x \in S(x_n)$ $\forall\, n$, or $\exists\, N$ such that
+$x \notin S(x_N)$.]
+
+\item Give a geometric interpretation.
+\end{enumerate}
+
+\noindent\textbf{Part B.}\\
+Let $E$ be a Banach space and let $\varphi : E \to (-\infty,+\infty]$ be a convex l.s.c.\ function
+such that $\varphi \not\equiv +\infty$. Given $\varepsilon > 0$ and $x \in D(\varphi)$, set
+\[
+\partial_\varepsilon\varphi(x) = \{f \in E^*;\; \varphi(x) + \varphi^*(f) - \ip{f}{x} \le \varepsilon\}.
+\]
+Check that $\partial_\varepsilon\varphi(x) \neq \emptyset$.
+
+\medskip
+
+\noindent Our purpose is to show that given any $x_0 \in D(\varphi)$ and any
+$f_0 \in \partial_\varepsilon\varphi(x_0)$ the following property holds:
+\[
+\forall\, \lambda > 0,\; \exists\, x_1 \in D(\varphi) \text{ and } \exists\, f_1 \in E^* \text{ with }
+f_1 \in \partial\varphi(x_1)
+\text{ such that } \norm{x_1 - x_0} \le \varepsilon/\lambda \text{ and } \norm{f_1 - f_0} \le \lambda.
+\]
+(The subdifferential $\partial\varphi$ is defined in Problem 2; it is recommended to solve Problem 2
+before this one.)
+
+\begin{enumerate}
+\item Consider the function $\psi$ defined by
+\[
+\psi(x) = \varphi(x) + \varphi^*(f_0) - \ip{f_0}{x}.
+\]
+Prove that there exists some $x_1 \in E$ such that $\norm{x_1 - x_0} \le \varepsilon/\lambda$ and
+\[
+\psi(x) - \psi(x_1) + \lambda\norm{x - x_1} \ge 0 \quad \forall\, x \in E.
+\]
+[\textit{Hint:} Use the result of part A on the set
+$M = \{x \in E;\; \psi(x) \le \psi(x_0) - \lambda\norm{x - x_0}\}$.]
+
+\item Conclude.
+
+\noindent[\textit{Hint:} Use the result of Problem 2, question B6.]
+
+\item Deduce that
+\[
+\overline{D(\partial\varphi)} = \overline{D(\varphi)} \quad \text{and} \quad \overline{R(\partial\varphi)} = \overline{D(\varphi^*)},
+\]
+where $R(\partial\varphi) = \{f \in E^*;\; \exists\, x \in D(\partial\varphi) \text{ such that } f \in \partial\varphi(x)\}$.
+\end{enumerate}
+
+\noindent\textbf{Part C.}\\
+Let $E$ be a Banach space and let $C \subset E$ be a nonempty closed convex set.
+
+\begin{enumerate}
+\item Assuming that $C$ is also bounded, prove that the set
+\[
+\left\{f \in E^*;\; \sup_{x \in C} \ip{f}{x} \text{ is achieved}\right\}
+\]
+is dense in $E^*$.
+
+\noindent[\textit{Hint:} Apply the results of part B to the function $\varphi = I_C$.]
+
+\item One says that a closed hyperplane $H$ of $E^*$ is a \emph{supporting hyperplane} to $C$ at a
+point $x \in C$ if $H$ separates $C$ and $\{x\}$. Prove that the set of points in $C$ that admit
+a supporting hyperplane is dense in the boundary of $C$ ($= C \setminus \operatorname{Int} C$).
+\end{enumerate}
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 4} (1)\\[4pt]
+\textit{Asplund's theorem and strictly convex norms}
+
+\medskip
+
+Let $E$ be an n.v.s.\ and let $\varphi_0, \psi_0 : E \to [0,\infty)$ be two convex functions such
+that $\varphi_0(0) = \psi_0(0) = 0$ and $0 \le \psi_0(x) \le \varphi_0(x)$ $\forall\, x \in E$. Starting with
+$\varphi_0$ and $\psi_0$ one defines by induction two sequences of functions $(\varphi_n)$ and $(\psi_n)$ as follows:
+\[
+\varphi_{n+1}(x) = \tfrac{1}{2}\bigl(\varphi_n(x) + \psi_n(x)\bigr)
+\]
+and
+\[
+\psi_{n+1}(x) = \tfrac{1}{2}\inf_{y \in E}\{\varphi_n(x+y) + \psi_n(x-y)\} = \tfrac{1}{2}(\varphi_n \nabla\psi_n)(2x).
+\]
+[Before starting this problem solve Exercise 1.23, which deals with the inf-convolution $\nabla$.]
+
+\medskip
+
+\noindent\textbf{Part A.}
+
+\begin{enumerate}
+\item Check that $0 \le \psi_n(x) \le \varphi_n(x)$ $\forall\, x \in E$, $\forall\, n$ and that $\varphi_n(0) = \psi_n(0) = 0$.
+
+\item Check that $\varphi_n$ and $\psi_n$ are convex.
+
+\item Prove that the sequence $(\varphi_n)$ is nonincreasing and that the sequence $(\psi_n)$ is
+nondecreasing. Deduce that $(\varphi_n)$ and $(\psi_n)$ have a common limit, denoted by $\theta$,
+with $\psi_0 \le \theta \le \varphi_0$, and that $\theta$ is convex.
+
+\item Prove that $\varphi_n^* \uparrow \theta^*$.
+
+\item Prove that $\psi_{n+1}^* = \tfrac{1}{2}(\varphi_n^* + \psi_n^*)$, and deduce that $\psi_n^* \downarrow \theta^*$
+when $D(\psi_0^*) = E^*$.
+
+\item Assume that there exists some $x_0 \in D(\varphi_0)$ such that $\varphi_0$ is continuous at $x_0$.
+Prove that $\varphi_n$ and $\psi_n$ are also continuous at $x_0$.
+
+\noindent[\textit{Hint:} Apply question 2 of Exercise 2.1.]
+
+\noindent Deduce that
+\[
+\varphi_{n+1}^*(f) = \tfrac{1}{2}\inf_{g \in E^*}\{\varphi_n^*(f+g) + \psi_n^*(f-g)\}.
+\]
+\end{enumerate}
+
+\noindent\textbf{Part B.}\\
+Let $\varphi : E \to [0,+\infty)$ be a convex function that is homogeneous of order two,
+i.e., $\varphi(\lambda x) = \lambda^2 \varphi(x)$ $\forall\, \lambda \in \R$, $\forall\, x \in E$. Prove that
+\[
+\varphi(x+y) \le \frac{1}{t}\varphi(x) + \frac{1}{1-t}\varphi(y) \quad \forall\, x, y \in E,\; \forall\, t \in (0,1).
+\]
+Deduce that the function $x \mapsto \sqrt{\varphi(x)}$ is a seminorm and conversely. Establish
+also that
+\begin{equation}\tag{1}
+4\varphi(x) \le \frac{1}{t}\varphi(x+y) + \frac{1}{1-t}\varphi(x-y) \quad \forall\, x,y \in E,\; \forall\, t \in (0,1).
+\end{equation}
+
+\noindent In what follows we assume, in addition, that $\varphi_0$ and $\psi_0$ are homogeneous of order
+two and that there is a constant $C > 0$ such that
+\[
+\varphi_0(x) \le (1+C)\psi_0(x) \quad \forall\, x \in E.
+\]
+
+\begin{enumerate}
+\item Check that $\varphi_n$, $\psi_n$, and $\theta$ are homogeneous of order two.
+
+\item Prove that for every $n$, one has
+\[
+\varphi_n(x) \le \left(1 + \frac{C}{4^n}\right)\psi_n(x) \quad \forall\, x \in E.
+\]
+[\textit{Hint:} Argue by induction and use (1).]
+
+\item Assuming that either $\varphi_0$ or $\psi_0$ is strictly convex, prove that $\theta$ is strictly convex
+(for the definition of a strictly convex function, see Exercise 1.26).
+
+\noindent[\textit{Hint:} Use the inequality established in question B2. It is convenient to split $\varphi_n$
+as $\varphi_n = \theta_n + \frac{1}{2^n}\varphi_0$, where $\theta_n$ is some convex function that one should not try to
+write down explicitly. Note that
+\[
+\theta_n + \left(\frac{1}{2^n} - \frac{C}{4^n}\right)\varphi_0 \le \theta \le \theta_n + \frac{1}{2^n}\varphi_0.]
+\]
+\end{enumerate}
+
+\noindent\textbf{Part C.}\\
+Assume that there exist on $E$ two equivalent norms denoted by $\norm{\,\cdot\,}_1$ and $\norm{\,\cdot\,}_2$.
+Let $\norm{\,\cdot\,}_1^*$ and $\norm{\,\cdot\,}_2^*$ denote the corresponding dual norms on $E^*$. Assume that
+the norms $\norm{\,\cdot\,}_1^*$ and $\norm{\,\cdot\,}_2^*$ are strictly convex. Using the above results, prove that
+there exists a third norm $\norm{\,\cdot\,}$, equivalent to $\norm{\,\cdot\,}_1$ (and to $\norm{\,\cdot\,}_2$), that is strictly convex
+as well as its dual norm $\norm{\,\cdot\,}^*$.
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 5} (1, 2)\\[4pt]
+\textit{Positive linear functionals}
+
+\medskip
+
+Let $E$ be an n.v.s.\ and let $P$ be a convex cone with vertex at $0$, i.e.,
+$\lambda x + \mu y \in P$, $\forall\, x, y \in P$, $\forall\, \lambda, \mu > 0$. Set $F = P - P$, so that $F$ is a
+linear subspace. Consider the following two properties:
+\begin{itemize}
+\item[(i)] Every linear functional $f$ on $E$ such that $f(x) \ge 0$ $\forall\, x \in P$, is continuous on $E$.
+\item[(ii)] $F$ is a closed subspace of finite codimension.
+\end{itemize}
+The goal of this problem is to show that (i) $\Rightarrow$ (ii) and that conversely, (ii) $\Rightarrow$ (i)
+when $E$ is a Banach space and $P$ is closed.
+
+\medskip
+
+\noindent\textbf{Part A.} Throughout part A we assume (i).
+
+\begin{enumerate}
+\item Prove that $F$ is closed.
+
+\noindent[\textit{Hint:} Given any $x_0 \notin F$, construct a linear functional $f$ on $E$ such that
+$f(x_0) = 1$ and $f = 0$ on $F$.]
+
+\item Let $M$ be any linear subspace of $E$ such that $M \cap F = \{0\}$. Prove that
+$\dim M < +\infty$.
+
+\noindent[\textit{Hint:} Use Exercise 1.5.]
+
+\item Deduce that (i) $\Rightarrow$ (ii).
+\end{enumerate}
+
+\noindent\textbf{Part B.} Throughout part B we assume that $E$ is a Banach space and that $P$ is closed.
+
+\begin{enumerate}
+\item Assume here in addition that
+\[
+\text{(iii)} \quad P - P = E.
+\]
+Prove that there exists a constant $C > 0$ such that every $x \in E$ has a decomposition
+$x = y - z$ with $y, z \in P$, $\norm{y} \le C\norm{x}$ and $\norm{z} \le C\norm{x}$.
+
+\noindent[\textit{Hint:} Consider the set
+\[
+K = \{x = y - z \text{ with } y, z \in P,\; \norm{y} \le 1 \text{ and } \norm{z} \le 1\}
+\]
+and follow the idea of the proof of the open mapping theorem (Theorem 2.6).]
+
+\item Deduce that (iii) $\Rightarrow$ (i).
+
+\noindent[\textit{Hint:} Argue by contradiction and consider a sequence $(x_n)$ in $E$ such that
+$\norm{x_n} \le 1/2^n$ and $f(x_n) \ge 1$. Then, use the result of question B1.]
+
+\item Prove that (ii) $\Rightarrow$ (i).
+\end{enumerate}
+
+\noindent\textbf{Part C.} In the following examples determine $F = P - P$ and examine whether (i) or (ii) holds:
+\begin{enumerate}
+\item[(a)] $E = C([0,1])$ with its usual norm and
+\[
+P = \{u \in E;\; u(t) \ge 0\;\;\forall\, t \in [0,1]\},
+\]
+\item[(b)] $E = C([0,1])$ with its usual norm and
+\[
+P = \{u \in E;\; u(t) \ge 0\;\;\forall\, t \in [0,1],\text{ and } u(0) = u(1) = 0\},
+\]
+\item[(c)] $E = \{u \in C^1([0,1]);\; u(0) = u(1) = 0\}$ with its usual norm and
+\[
+P = \{u \in E;\; u(t) \ge 0\;\;\forall\, t \in [0,1]\}.
+\]
+\end{enumerate}
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 6} (1, 2)
+
+\medskip
+
+Let $E$ be a Banach space and let $A : D(A) \subset E \to E$ be a closed unbounded
+operator satisfying
+\[
+\ip{Ax}{x} \ge 0 \quad \forall\, x \in D(A).
+\]
+
+\noindent\textbf{Part A.} Our purpose is to show that the following properties are equivalent:
+\begin{itemize}
+\item[(i)] $\forall\, x \in D(A)$, $\exists\, C(x) \in \R$ such that $\ip{Ay}{y-x} \ge C(x)$ $\forall\, y \in D(A)$,
+\item[(ii)] $\exists\, k \ge 0$ such that
+\[
+\abs{\ip{Ay}{x}}^2 \le k\,\bigl(\norm{x} + \norm{Ax}\bigr)^2 \ip{Ay}{y} \quad \forall\, x, y \in D(A).
+\]
+\end{itemize}
+
+\begin{enumerate}
+\item Prove that (ii) $\Rightarrow$ (i).
+
+Conversely, assume (i).
+
+\item Prove that there exist two constants $R > 0$ and $M \ge 0$ such that
+\[
+\ip{Ay}{x-y} \le M \quad \forall\, y \in D(A) \text{ and }
+\forall\, x \in D(A) \text{ with } \norm{x} + \norm{Ax} \le R.
+\]
+[\textit{Hint:} Consider the function $\varphi(x) = \sup_{y \in D(A)}\ip{Ay}{x-y}$ and apply Exercise 2.1.]
+
+\item Deduce that
+\[
+\abs{\ip{Ay}{x}}^2 \le 4M\ip{Ay}{y} \quad \forall\, y \in D(A)
+\text{ and } \forall\, x \in D(A) \text{ with } \norm{x} + \norm{Ax} \le R.
+\]
+
+\item Conclude.
+\end{enumerate}
+
+\noindent\textbf{Part B.} In what follows assume that $D(A) = E$. Let $\alpha > 0$.
+
+\begin{enumerate}
+\item Prove that the following properties are equivalent:
+\begin{itemize}
+    \item[(iii)] $\norm{Ay} \le \dfrac{\alpha}{2}\ip{Ay}{y}$ $\forall\, y \in E$,
+    \item[(iv)] $\ip{Ay}{y-x} \ge -\dfrac{1}{4\alpha^2}\norm{x}^2$ $\forall\, x, y \in E$.
+\end{itemize}
+[\textit{Hint:} Use the same method as in part A.]
+
+\item Let $A^* \in \mathcal{L}(E^*, E^*)$ be the adjoint of $A$. Prove that (iv) is equivalent to
+\begin{itemize}
+    \item[(iv$'$)] $\ip{A^* y}{y-x} \ge -\dfrac{1}{4\alpha^2}\norm{x}^2$ $\forall\, x, y \in E$.
+\end{itemize}
+
+\item Deduce that (iii) is equivalent to
+\begin{itemize}
+    \item[(iii$'$)] $\norm{A^* y} \le \dfrac{\alpha}{2}\ip{Ay}{y}$ $\forall\, y \in E$.
+\end{itemize}
+\end{enumerate}
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 7} (1, 2)\\[4pt]
+\textit{The adjoint of the sum of two unbounded linear operators}
+
+\medskip
+
+Let $E$ be a Banach space. Given two closed linear subspaces $M$ and $N$ in $E$, set
+\[
+\rho(M,N) = \sup_{\substack{x \in M \\ \norm{x} \le 1}} \operatorname{dist}(x, N).
+\]
+
+\noindent\textbf{Part A.}
+
+\begin{enumerate}
+\item Check that $\rho(M,N) \le 1$; if, in addition, $N \subset M$ with $N \neq M$, prove that
+$\rho(M,N) = 1$.
+
+\noindent[\textit{Hint:} Use Lemma 6.1.]
+
+\item Let $L$, $M$, and $N$ be three closed linear subspaces.
+Set $a = \rho(M,N)$ and $b = \rho(N,L)$. Prove that $\rho(M,L) \le a + b + ab$.
+Deduce that if $L \subset M$, $a \le 1/3$, and $b \le 1/3$, then $L = M$.
+
+\item Prove that $\rho(M,N) = \rho(N^\perp, M^\perp)$.
+
+\noindent[\textit{Hint:} Check with the help of Theorem 1.12 that $\forall\, x \in E$ and $\forall\, f \in E^*$
+\[
+\operatorname{dist}(x,N) = \sup_{\substack{g \in N^\perp \\ \norm{g} \le 1}} \ip{g}{x}
+\quad \text{and} \quad
+\operatorname{dist}(f, M^\perp) = \sup_{\substack{y \in M \\ \norm{y} \le 1}} \ip{f}{y}.]
+\]
+\end{enumerate}
+
+\noindent\textbf{Part B.}\\
+Let $E$ and $F$ be two Banach spaces; $E \times F$ is equipped with the norm
+$\norm{[u,v]}_{E \times F} = \norm{u}_E + \norm{v}_F$. Given two unbounded operators
+$A : D(A) \subset E \to F$ and $B : D(B) \subset E \to F$ that are densely defined and closed, set
+\[
+\rho(A,B) = \rho(G(A),G(B)).
+\]
+
+\begin{enumerate}
+\item Prove that $\rho(A,B) = \rho(B^*,A^*)$.
+
+\item Prove that if $D(A) \cap D(B)$ is dense in $E$, then
+\[
+A^* + B^* \subset (A+B)^*.
+\]
+[Recall that $D(A+B) = D(A) \cap D(B)$ and $D(A^*+B^*) = D(A^*) \cap D(B^*)$.]
+
+It may happen that the inclusion $A^* + B^* \subset (A+B)^*$ is strict---construct such
+an example. Our purpose is to prove that equality holds under some additional
+assumptions.
+
+\item Assume
+\[
+(H)\quad
+\begin{cases}
+D(A^*) \subset D(B^*) \text{ and there exist constants } k \in [0,1) \text{ and } C \ge 0\\
+\text{such that } \norm{B^*u} \le k\norm{A^*u} + C\norm{u}\;\; \forall\, u \in D(A^*).
+\end{cases}
+\]
+Prove that $A^* + B^*$ is closed and that $\rho(A^*, A^*+B^*) \le k + C$.
+
+\item In addition to $(H)$ assume also
+\[
+(H')\quad
+\begin{cases}
+D(A) \subset D(B) \text{ and there exist constants } k' \in [0,1) \text{ and }
+C' \ge 0\\
+\text{such that } \norm{B'v} \le k'\norm{A'v} + C'\norm{v}\;\; \forall\, v \in D(A).
+\end{cases}
+\]
+Let $\varepsilon > 0$ be such that $\varepsilon(k + C) \le 1/3$ and $\varepsilon(k' + C') \le 1/3$.
+Prove that $A^* + \varepsilon B^* = (A + \varepsilon B)^*$.
+
+\item Assuming $(H)$ and $(H')$ prove that $(A+B)^* = A^* + B^*$.
+
+\noindent[\textit{Hint:} Use successive steps. Check that the following inequality holds $\forall\, t \in [0,1]$:
+\[
+\norm{B^*u} \le \frac{k}{1-k}\norm{A^*u + tB^*u} + \frac{C}{1-k}\norm{u} \quad \forall\, u \in D(A^*).]
+\]
+\end{enumerate}
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 8} (2, 3, 4 only for question 6)\\[4pt]
+\textit{Weak convergence in $\ell^1$. Schur's theorem.}
+
+\medskip
+
+Let $E = \ell^1$, so that $E^* = \ell^\infty$ (see Section 11.3). Given $x \in E$ write
+\[
+x = (x_1, x_2, \ldots, x_i, \ldots) \quad \text{and} \quad \norm{x}_1 = \sum_{i=1}^\infty \abs{x_i},
+\]
+and given $f \in E^*$ write
+\[
+f = (f_1, f_2, \ldots, f_i, \ldots) \quad \text{and} \quad \norm{f}_\infty = \sup_i \abs{f_i}.
+\]
+Let $(x^n)$ be a sequence in $E$ such that $x^n \rightharpoonup 0$ weakly $\sigma(E,E^*)$.
+Our goal is to show that $\norm{x^n}_1 \to 0$.
+
+\begin{enumerate}
+\item Given $f, g \in B_{E^*}$ (i.e., $\norm{f}_\infty \le 1$ and $\norm{g}_\infty \le 1$) set
+\[
+d(f,g) = \sum_{i=1}^\infty \frac{1}{2^i}\abs{f_i - g_i}.
+\]
+Check that $d$ is a metric on $B_{E^*}$ and that $B_{E^*}$ is compact for the corresponding
+topology.
+
+\item Given $\varepsilon > 0$ set
+\[
+F_k = \{f \in B_{E^*};\; \abs{\ip{f}{x^n}} \le \varepsilon\;\;\forall\, n \ge k\}.
+\]
+Prove that there exist some $f^0 \in B_{E^*}$, a constant $\rho > 0$, and an integer $k_0$ such that
+\[
+[f \in B_{E^*} \text{ and } d(f,f^0) < \rho] \Rightarrow [f \in F_{k_0}].
+\]
+[\textit{Hint:} Use Baire category theorem.]
+
+\item Fix an integer $N$ such that $(1/2^{N-1}) < \rho$. Prove that
+\[
+\norm{x^n}_1 \le \varepsilon + 2\sum_{i=1}^{N}\abs{x^n_i} \quad \forall\, n \ge k_0.
+\]
+
+\item Conclude.
+
+\item Using a similar method prove that if $(x^n)$ is a sequence in $\ell^1$ such that for every
+$f \in \ell^\infty$ the sequence $(\ip{f}{x^n})$ converges to some limit, then $(x^n)$ converges
+to a limit strongly in $\ell^1$.
+
+\item Consider $E = L^1(0,1)$, so that $E^* = L^\infty(0,1)$. Construct a sequence $(u_n)$ in $E$
+such that $u_n \rightharpoonup 0$ weakly $\sigma(E,E^*)$ and such that $\norm{u_n}_1 = 1$ $\forall\, n$.
+\end{enumerate}
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 9} (1, 2, 3)\\[4pt]
+\textit{Hahn--Banach for the weak topology and applications}
+
+\medskip
+
+Let $E$ be a Banach space.
+
+\noindent\textbf{Part A.}
+
+\begin{enumerate}
+\item Let $A \subset E^*$ and $B \subset E^*$ be two nonempty convex sets such that $A \cap B = \emptyset$.
+Assume that $A$ is open in the topology $\sigma(E^*, E)$. Prove that there exist some
+$x \in E$, $x \neq 0$, and a constant $\alpha$ such that the hyperplane $\{f \in E^*;\; \ip{f}{x} = \alpha\}$
+separates $A$ and $B$.
+
+\item Assume that $A \subset E^*$ is closed in $\sigma(E^*, E)$ and $B \subset E^*$ is compact in
+$\sigma(E^*, E)$. Prove that $A + B$ is closed in $\sigma(E^*, E)$.
+
+\item Let $A \subset E^*$ and $B \subset E^*$ be two nonempty convex sets such that $A \cap B = \emptyset$.
+Assume that $A$ is closed in $\sigma(E^*, E)$ and $B$ is compact in $\sigma(E^*, E)$. Prove that
+there exist some $x \in E$, $x \neq 0$, and a constant $\alpha$ such that the hyperplane
+$\{f \in E^*;\; \ip{f}{x} = \alpha\}$ strictly separates $A$ and $B$.
+
+\item Let $A \subset E^*$ be convex. Prove that $A^{\sigma(E^*,E)}$, the closure of $A$ in $\sigma(E^*,E)$,
+is convex.
+\end{enumerate}
+
+\noindent\textbf{Part B.} Here are various applications of the above results:
+
+\begin{enumerate}
+\item Let $N \subset E^*$ be a linear subspace. Recall that
+\[
+N_\perp = \{x \in E;\; \ip{f}{x} = 0\;\;\forall\, f \in N\}
+\]
+and
+\[
+N_\perp^\perp = \{f \in E^*;\; \ip{f}{x} = 0\;\;\forall\, x \in N_\perp\}.
+\]
+Prove that $N_\perp^\perp = N^{\sigma(E^*,E)}$.
+
+What can one say if $E$ is reflexive?
+Deduce that $c_0$ is dense in $\ell^\infty$ in the topology $\sigma(\ell^\infty, \ell^1)$.
+
+\item Let $\varphi : E^* \to (-\infty,+\infty]$ be a convex l.s.c.\ function, $\varphi \not\equiv +\infty$.
+Prove that $\psi = \varphi$ is l.s.c.\ in the topology $\sigma(E^*, E)$.
+
+Conversely, given a convex function $\psi : E^* \to (-\infty,+\infty]$ that is l.s.c.\ for the
+topology $\sigma(E^*, E)$ and such that $\psi \not\equiv +\infty$, prove that there exists a convex
+l.s.c.\ function $\varphi : E^* \to (-\infty,+\infty]$, $\varphi \not\equiv +\infty$, such that $\psi = \varphi^{**}$.
+
+\item Let $F$ be another Banach space and let $A : D(A) \subset E \to F$ be an unbounded
+linear operator that is densely defined and closed. Prove that
+\begin{itemize}
+    \item[(i)] $\overline{R(A^*)}^{\,\sigma(E^*,E)} = N(A)^\perp$,
+    \item[(ii)] $\overline{D(A^*)}^{\,\sigma(F^*,F)} = F^*$.
+\end{itemize}
+What can one say if $E$ (resp.\ $F$) is reflexive?
+
+\item Prove---without the help of Lemma 3.3---that $J(B_E)$ is dense in $B_{E^{**}}$ in the
+topology $\sigma(E^{**}, E^*)$ (see Lemma 3.4).
+
+\item Let $A : B_E \to E^*$ be a monotone map, that is,
+\[
+\ip{Ax - Ay}{x-y} \ge 0 \quad \forall\, x, y \in B_E.
+\]
+Set $S_E = \{x \in E;\; \norm{x} = 1\}$. Prove that $A(B_E) \subset \overline{\operatorname{conv}\, A(S_E)}^{\,\sigma(E^*,E)}$.
+\end{enumerate}
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 10} (3)\\[4pt]
+\textit{The Eberlein--\v{S}mulian theorem}
+
+\medskip
+
+Let $E$ be a Banach space and let $A \subset E$. Set $B = \overline{A}^{\sigma(E,E^*)}$.
+The goal of this problem is to show that the following properties are equivalent:
+\begin{itemize}
+\item[(P)] $B$ is compact in the topology $\sigma(E, E^*)$.
+\item[(Q)] Every sequence $(x_n)$ in $A$ has a weakly convergent subsequence.
+\end{itemize}
+Moreover, (P) (or (Q)) implies the following property:
+\begin{itemize}
+\item[(R)] For every $y \in B$ there exists a sequence $(y_n) \subset A$ such that $y_n \rightharpoonup y$
+weakly $\sigma(E, E^*)$.
+\end{itemize}
+
+\noindent\textbf{Part A.} Proof of the claim (P) $\Rightarrow$ (Q).
+
+\begin{enumerate}
+\item Prove that (P) $\Rightarrow$ (Q) under the additional assumption that $E$ is separable.
+
+\noindent[\textit{Hint:} Consider a set $(b_k)$ in $B_{E^*}$ that is countable and dense in $B_{E^*}$ for the
+topology $\sigma(E^*, E)$ (why does such a set exist?). Check that the quantity
+$d(x,y) = \sum_{k=1}^\infty \frac{1}{2^k}\abs{\ip{b_k}{x-y}}$ is a metric and deduce that $B$ is metrizable for $\sigma(E,E^*)$.]
+
+\item Show that (P) $\Rightarrow$ (Q) in the general case.
+
+\noindent[\textit{Hint:} Use question A1.]
+\end{enumerate}
+
+\noindent\textbf{Part B.} For later purpose we shall need the following:
+
+\medskip
+
+\noindent\textbf{Lemma.} \textit{Let $F$ be an n.v.s.\ and let $M \subset F^*$ be a finite-dimensional vector space.
+Then there exists a finite subset $(a_i)_{1 \le i \le k}$ in $B_F$ such that}
+\[
+\max_{1 \le i \le k} \ip{g}{a_i} \ge \tfrac{1}{2}\norm{g} \quad \forall\, g \in M.
+\]
+[\textit{Hint:} First choose points $(g_i)_{1 \le i \le k}$ in $S_M$ such that $S_M \subset \bigcup_{i=1}^k B(g_i, 1/4)$,
+where $S_M = \{g \in M;\; \norm{g} = 1\}$.]
+
+\medskip
+
+\noindent\textbf{Part C.} Let $\xi \in E^{**}$ be such that $\xi \in \overline{A}^{\sigma(E^{**},E^*)}$.
+Using assumption (Q) we shall prove that $\xi \in B$ and that there exists a sequence
+$(y_k) \subset A$ such that $y_k \rightharpoonup \xi$ in $\sigma(E^{**}, E^*)$.
+
+\begin{enumerate}
+\item Set $n_1 = 1$ and fix any $f_1 \in B_{E^*}$. Prove that there exists some $x_1 \in A$ such
+that $\abs{\xi(f_1) - \ip{f_1}{x_1}} < 1$.
+
+\item Let $M_1 = [\xi, x_1]$ be the linear space spanned by $\xi$ and $x_1$. Prove that there exist
+$(f_i)_{1 < i \le n_2}$ in $B_{E^*}$ such that
+\[
+\max_{1 < i \le n_2} \ip{\eta}{f_i} \ge \tfrac{1}{2}\norm{\eta} \quad \forall\, \eta \in M_1.
+\]
+Prove that there exists some $x_2 \in A$ such that
+\[
+\abs{\xi(f_i) - \ip{f_i}{x_2}} < \tfrac{1}{2} \quad \forall\, i,\; 1 \le i \le n_2.
+\]
+
+\item Iterating the above construction, we obtain two sequences $(x_k) \subset A$ and
+$(f_i) \subset B_{E^*}$, and an increasing sequence of integers $(n_k)$ such that
+\begin{align*}
+&\max_{n_k < i \le n_{k+1}} \ip{\eta}{f_i} \ge \tfrac{1}{2}\norm{\eta}
+\quad \forall\, \eta \in M_k = [\xi, x_1, x_2, \ldots, x_k], \tag{a}\\
+&\abs{\xi(f_i) - \ip{f_i}{x_{k+1}}} < \tfrac{1}{k+1}
+\quad \forall\, i,\; 1 \le i \le n_{k+1}. \tag{b}
+\end{align*}
+
+\item Deduce from (a) that
+\[
+\sup_{i \ge 1} \ip{\eta}{f_i} \ge \tfrac{1}{2}\norm{\eta} \quad \forall\, \eta \in \bigcup_{k=1}^\infty M_k = M
+\]
+and then that
+\[
+\sup_{i \ge 1} \ip{\eta}{f_i} \ge \tfrac{1}{2}\norm{\eta} \quad \forall\, \eta \in \overline{M},
+\]
+where $\overline{M}$ denotes the closure of $M$ in $E^{**}$, in the strong topology.
+
+\item Using (b) and assumption (Q), prove that there exists some $x \in B \cap \overline{M}$ such that
+\[
+\xi(f_i) = \ip{f_i}{x} \quad \forall\, i \ge 1.
+\]
+Deduce that $\xi = x$ and conclude.
+\end{enumerate}
+
+\noindent\textbf{Part D.}
+
+\begin{enumerate}
+\item Prove that (Q) $\Rightarrow$ (P).
+\item Prove that (Q) $\Rightarrow$ (R).
+\end{enumerate}
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 11} (3)\\[4pt]
+\textit{A theorem of Banach--Dieudonn\'e--Krein--\v{S}mulian}
+
+\medskip
+
+Let $E$ be a Banach space and let $C \subset E^*$ be a convex set. Assume that for each
+integer $n$, the set $C \cap (nB_{E^*})$ is closed in the topology $\sigma(E^*, E)$. The goal of this
+problem is to show that $C$ is closed in the topology $\sigma(E^*, E)$.
+
+\medskip
+
+\noindent\textbf{Part A.} Suppose, in addition, that $0 \notin C$. We shall prove that there exists a
+sequence $(x_n)$ in $E$ such that
+\begin{equation}\tag{1}
+\norm{x_n} \to 0 \quad \text{and} \quad \sup_n \ip{f}{x_n} > 1 \quad \forall\, f \in C.
+\end{equation}
+Let $d = \operatorname{dist}(0, C)$ and consider a sequence $d_n \uparrow +\infty$ such that $d_1 > d$. Set
+\[
+C_k = \{f \in C;\; \norm{f} \le d_k\}.
+\]
+
+\begin{enumerate}
+\item Check that the sets $C_k$ are compact in the topology $\sigma(E^*, E)$. Prove that there
+exists some $f_0 \in C$ such that $d = \norm{f_0} > 0$.
+
+\item Prove that there exists some $x_1 \in E$ such that
+\[
+\ip{f}{x_1} > 1 \quad \forall\, f \in C_1.
+\]
+[\textit{Hint:} Use Hahn--Banach for the weak topology; see question A3 of Problem 9.]
+
+\item Set $A_1 = \{x_1\}$. Prove that there exists a finite subset $A_2 \subset E$ such that
+$A_2 \subset \frac{1}{d_1}B_E$ and $\sup_{x \in A_1 \cup A_2}\ip{f}{x} > 1$ $\forall\, f \in C_2$.
+
+\noindent[\textit{Hint:} For each finite subset $A \subset E$ such that $A \subset \frac{1}{d_1}B_E$ consider the set
+\[
+Y_A = \left\{f \in C_2;\; \sup_{x \in A_1 \cup A} \ip{f}{x} \le 1\right\},
+\]
+and prove first that $\bigcap_A Y_A = \emptyset$.]
+
+\item Construct, by induction, a finite subset $A_k \subset E$ such that
+\[
+A_k \subset \frac{1}{d_{k-1}}B_E \quad \text{and} \quad
+\sup_{x \in \bigcup_{i=1}^k A_i} \ip{f}{x} > 1 \quad \forall\, f \in C_k.
+\]
+
+\item Construct a sequence $(x_n)$ satisfying (1).
+\end{enumerate}
+
+\noindent\textbf{Part B.}
+
+\begin{enumerate}
+\item Assume once more that $0 \notin C$. Prove that there exists some $x \in E$ such that
+\[
+\ip{f}{x} \ge 1 \quad \forall\, f \in C.
+\]
+[\textit{Hint:} Let $(x_n)$ be a sequence satisfying (1). Consider the operator $T : E^* \to c_0$
+defined by $T(f) = (\ip{f}{x_n})_n$ and separate (in $c_0$) $T(C)$ and the open unit ball of $c_0$.]
+
+\item Conclude.
+\end{enumerate}
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 12} (1, 2, 3)\\[4pt]
+\textit{Before starting this problem it is necessary to solve Exercise 1.23.}
+
+\medskip
+
+Let $E$ be a reflexive Banach space and let $\varphi, \psi : E \to (-\infty,+\infty]$ be convex
+l.s.c.\ functions such that $D(\varphi) \cap D(\psi) \neq \emptyset$. Set $\theta = \varphi \nabla \psi$.
+
+\medskip
+
+\noindent\textbf{Part A.} We claim that
+\[
+D((\varphi + \psi)^*) = D(\varphi^*) + D(\psi^*).
+\]
+
+\begin{enumerate}
+\item Prove that $D(\varphi^*) + D(\psi^*) \subset D((\varphi+\psi)^*)$.
+
+\item Prove that $\theta$ maps $E^*$ into $(-\infty,+\infty]$, $\theta$ is convex,
+$D(\theta) = D(\varphi^*) + D(\psi^*)$ and $\theta^* = \varphi + \psi$.
+
+\item Deduce that $D((\varphi+\psi)^*) = D(\theta)$ and conclude.
+\end{enumerate}
+
+\noindent\textbf{Part B.} Assume, in addition, that $\varphi$ and $\psi$ satisfy
+\[
+(H)\quad \bigcup_{\lambda \ge 0} \lambda(D(\varphi) - D(\psi)) = E.
+\]
+We claim that
+\begin{align*}
+(\varphi + \psi)^* &= \varphi^* \nabla \psi^*, \tag{i}\\
+\inf_{x \in E}\{\varphi(x) + \psi(x)\} &= \max_{g \in E^*}\{-\varphi^*(-g) - \psi^*(g)\}, \tag{ii}\\
+D((\varphi + \psi)^*) &= D(\varphi^*) + D(\psi^*). \tag{iii}
+\end{align*}
+
+\begin{enumerate}
+\item Prove that for every fixed $f \in E^*$ and $\alpha \in \R$ the set
+\[
+M = \{g \in E^*;\; \varphi^*(f-g) + \psi^*(g) \le \alpha\}
+\]
+is bounded.
+
+\noindent[\textit{Hint:} Use assumption $(H)$ and Corollary 2.5.]
+
+\item Let $\alpha \in \R$ be fixed. Let $(f_n)$ and $(g_n)$ be two sequences in $E^*$ such that
+$(f_n)$ is bounded and $\varphi^*(f_n - g_n) + \psi^*(g_n) \le \alpha$. Prove that $(g_n)$ is bounded.
+
+\item Deduce that $\theta$ is l.s.c.
+
+\item Prove (i), (ii), and (iii).
+
+Compare these results with question 3 of Exercise 1.23 and with Theorem 1.12.
+\end{enumerate}
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 13} (1, 3)\\[4pt]
+\textit{Properties of the duality map. Uniform convexity. Differentiability of the norm}
+
+\medskip
+
+Let $E$ be a Banach space. Recall the definition of the duality map (see Remark 2 in Chapter 1):
+For every $x \in E$,
+\[
+F(x) = \{f \in E^*;\; \norm{f} = \norm{x} \text{ and } \ip{f}{x} = \norm{x}^2\}.
+\]
+Before starting this problem it is useful to solve Exercises 1.1 and 1.25.
+
+\medskip
+
+\noindent\textbf{Part A.} Assume that $E$ is strictly convex, so that $F(x)$ consists of a single element.
+
+\begin{enumerate}
+\item Check that
+\[
+\lim_{\lambda \to 0} \frac{1}{2\lambda}\bigl(\norm{x + \lambda y}^2 - \norm{x}^2\bigr) = \ip{Fx}{y}
+\quad \forall\, x, y \in E.
+\]
+[\textit{Hint:} Apply a result of Exercise 1.25; distinguish the cases $\lambda > 0$ and $\lambda < 0$.]
+
+\item Prove that for every $x, y \in E$, the map $t \in \R \mapsto \ip{F(x+ty)}{y}$ is continuous at $t = 0$.
+
+\noindent[\textit{Hint:} Use the inequality $\tfrac{1}{2}(\norm{v}^2 - \norm{u}^2) \ge \ip{Fu}{v-u}$ with $u = x + ty$ and $v = x + \lambda y$.]
+
+\item Deduce that $F$ is continuous from $E$ strong into $E^*$ weak.
+
+\noindent[\textit{Hint:} Use the result of Exercise 3.11.]
+
+Prove the same result by a simple direct method in the case that $E$ is reflexive or separable.
+
+\item Check that
+\[
+\ip{Fx + Fy}{x+y} + \ip{Fx - Fy}{x-y} = 2(\norm{x}^2 + \norm{y}^2) \quad \forall\, x, y \in E.
+\]
+Deduce that
+\[
+\norm{Fx + Fy} + \norm{x-y} \ge 2 \quad \forall\, x, y \in E \text{ with } \norm{x} = \norm{y} = 1.
+\]
+
+\item Assume, in addition, that $E$ is reflexive and strictly convex. Prove that $F$ is bijective
+from $E$ onto $E^*$. Check that $F^{-1}$ coincides with the duality map of $E^*$.
+\end{enumerate}
+
+\noindent\textbf{Part B.} In this part we assume that $E$ is uniformly convex.
+
+\begin{enumerate}
+\item Prove that $F$ is continuous from $E$ strong into $E^*$ strong.
+
+\item More precisely, prove that $F$ is uniformly continuous on bounded sets of $E$.
+
+\noindent[\textit{Hint:} Argue by contradiction and apply question A4.]
+
+\item Deduce that the function $\varphi(x) = \tfrac{1}{2}\norm{x}^2$ is differentiable and that its differential
+is $F$, i.e., for every $x_0 \in E$ we have
+\[
+\lim_{\substack{x \to x_0 \\ x \neq x_0}}
+\frac{\varphi(x) - \varphi(x_0) - \ip{Fx_0}{x - x_0}}{\norm{x - x_0}} = 0.
+\]
+\end{enumerate}
+
+\noindent\textbf{Part C.} Conversely, assume that for every $x \in E$, the set $F(x)$ consists of a single
+element and that $F$ is uniformly continuous on bounded sets of $E$. Prove that $E$ is uniformly
+convex.
+
+\noindent[\textit{Hint:} Prove first the inequality
+\[
+\norm{f+g} \le \tfrac{1}{2}\norm{f}^2 + \tfrac{1}{2}\norm{g}^2
+- \ip{f-g}{y} + \sup_{\substack{x \in E \\ \norm{x} \le 1}}\{\varphi(x+y) + \varphi(x-y)\}
+\quad \forall\, y \in E,\; \forall\, f, g \in E^*.]
+\]
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 14} (1, 3)\\[4pt]
+\textit{Regularization of convex functions by inf-convolution}
+
+\medskip
+
+Let $E$ be a Banach space such that $E^*$ is uniformly convex. Assume that
+$\varphi : E \to (-\infty,+\infty]$ is convex l.s.c.\ and $\varphi \not\equiv +\infty$. The goal of this problem
+is to show that there exists a sequence $(\varphi_n)$ of differentiable convex functions such that
+$\varphi_n \uparrow \varphi$ as $n \uparrow +\infty$.
+
+\medskip
+
+\noindent\textbf{Part A.} For each fixed $x \in E$ consider the function $\Psi_x : E^* \to (-\infty,+\infty]$ defined by
+\[
+\Psi_x(f) = \tfrac{1}{2}\norm{f}^2 + \varphi^*(f) - \ip{f}{x}, \quad f \in E^*.
+\]
+
+\begin{enumerate}
+\item Check that there exists a unique element $f_x \in E^*$ such that
+\[
+\Psi_x(f_x) = \inf_{f \in E^*} \Psi_x(f).
+\]
+Set $Sx = f_x$.
+
+\item Prove that the map $x \mapsto Sx$ is continuous from $E$ strong into $E^*$ strong.
+
+\noindent[\textit{Hint:} Prove first that $S$ is continuous from $E$ strong into $E^*$ weak.]
+\end{enumerate}
+
+\noindent\textbf{Part B.} Consider the function $\psi : E \to \R$ defined by
+\[
+\psi(x) = \inf_{y \in E}\left\{\tfrac{1}{2}\norm{x-y}^2 + \varphi(y)\right\}.
+\]
+We claim that $\psi$ is convex, differentiable, and that its differential coincides with $S$.
+
+\begin{enumerate}
+\item Check that $\psi$ is convex and that
+\begin{align*}
+\psi(x) &= -\min_{f \in E^*}\left\{\tfrac{1}{2}\norm{f}^2 + \varphi^*(f) - \ip{f}{x}\right\} \quad \forall\, x \in E, \tag{i}\\
+\psi^*(f) &= \tfrac{1}{2}\norm{f}^2 + \varphi^*(f) \quad \forall\, f \in E^*. \tag{ii}
+\end{align*}
+[\textit{Hint:} Apply Theorem 1.12.]
+
+\item Deduce that
+\[
+\psi(x) + \psi^*(Sx) = \ip{Sx}{x} \quad \forall\, x \in E
+\]
+and that
+\[
+\abs{\psi(y) - \psi(x) - \ip{Sx}{y-x}} \le \norm{Sy - Sx}\,\norm{y-x} \quad \forall\, x, y \in E.
+\]
+
+\item Conclude.
+\end{enumerate}
+
+\noindent\textbf{Part C.} For each integer $n \ge 1$ and every $x \in E$ set
+\[
+\varphi_n(x) = \inf_{y \in E}\left\{\tfrac{n}{2}\norm{x-y}^2 + \varphi(y)\right\}.
+\]
+Prove that $\varphi_n$ is convex, differentiable, and that for every $x \in E$, $\varphi_n(x) \uparrow \varphi(x)$
+as $n \uparrow +\infty$.
+
+\noindent[\textit{Hint:} Use the same method as in Exercise 1.24.]
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 15} (1, 5 for question B6)\\[4pt]
+\textit{Center of a set in the sense of Chebyshev. Normal structure.
+Asymptotic center of a sequence in the sense of Edelstein. Fixed points
+of contractions following Kirk, Browder, G\"{o}hde, and Edelstein.}
+
+\medskip
+
+\noindent Before starting this problem it is useful to solve Exercise 3.29.
+
+\medskip
+
+Let $E$ be a uniformly convex Banach space and let $C \subset E$ be a nonempty closed
+convex set.
+
+\medskip
+
+\noindent\textbf{Part A.} Let $A \subset C$ be a nonempty bounded set. For every $x \in E$ define
+\[
+\varphi(x) = \sup_{y \in A} \norm{x - y}.
+\]
+
+\begin{enumerate}
+\item Check that $\varphi$ is a convex function and that
+\[
+\abs{\varphi(x_1) - \varphi(x_2)} \le \norm{x_1 - x_2} \quad \forall\, x_1, x_2 \in E.
+\]
+
+\item Prove that there exists a unique element $c \in C$ such that
+\[
+\varphi(c) = \inf_{x \in C} \varphi(x).
+\]
+The point $c$ is called the \emph{center} of $A$ and is denoted by $c = \sigma(A)$.
+
+\item Prove that if $A$ is not reduced to a single point then
+\[
+\varphi(\sigma(A)) < \operatorname{diam} A = \sup_{x,y \in A} \norm{x-y}.
+\]
+\end{enumerate}
+
+\noindent\textbf{Part B.} Let $(a_n)$ be a bounded sequence in $C$; set
+\[
+A_n = \overline{\bigcup_{i=n}^\infty \{a_i\}}
+\quad \text{and} \quad
+\varphi_n(x) = \sup_{y \in A_n} \norm{x-y} \quad \text{for } x \in E.
+\]
+
+\begin{enumerate}
+\item For every $x \in E$, consider $\varphi(x) = \lim_{n \to +\infty} \varphi_n(x)$. Prove that this
+limit exists and that $\varphi$ is convex and continuous on $E$.
+
+\item Prove that there exists a unique element $\sigma \in C$ such that
+\[
+\varphi(\sigma) = \inf_{x \in C} \varphi(x).
+\]
+The point $\sigma$ is called the \emph{asymptotic center} of the sequence $(a_n)$.
+
+\item Let $\sigma_n = \sigma(A_n)$ be the center of the set $A_n$ in the sense of question A2. Prove that
+\[
+\lim_{n \to \infty} \varphi_n(\sigma_n) = \lim_{n \to \infty} \varphi(\sigma_n) = \varphi(\sigma),
+\]
+and that $\sigma_n \rightharpoonup \sigma$ weakly $\sigma(E, E^*)$.
+
+\item Deduce that $\sigma_n \to \sigma$ strongly.
+
+\noindent[\textit{Hint:} Argue by contradiction and apply the result of Exercise 3.29.]
+
+\item Assume $a_n \to a$ strongly. Determine the asymptotic center of the sequence $(a_n)$.
+
+\item Assume here that $E$ is a Hilbert space and that $a_n \rightharpoonup a$ weakly $\sigma(E, E^*)$.
+Compute $\varphi(x)$ and determine the asymptotic center of the sequence $(a_n)$.
+
+\noindent[\textit{Hint:} Expand squares of norms.]
+\end{enumerate}
+
+\noindent\textbf{Part C.} Assume that $T : C \to C$ is a contraction, that is,
+\[
+\norm{Tx - Ty} \le \norm{x - y} \quad \forall\, x, y \in C.
+\]
+Let $a \in C$ be given and let $a_n = T^n a$ be the sequence of its iterates. Assume that
+the sequence $(a_n)$ is bounded. Let $\sigma$ be the asymptotic center of the sequence $(a_n)$.
+
+\begin{enumerate}
+\item Prove that $\sigma$ is a fixed point of $T$, i.e., $T\sigma = \sigma$.
+
+\item Check that the set of fixed points of $T$ is closed and convex.
+\end{enumerate}
+
+\bigskip
+
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 16} (2, 3)\\[4pt]
+\textit{Characterization of linear maximal monotone operators}
+
+\medskip
+
+Let $E$ be a Banach space and let $A : D(A) \subset E \to E^*$ be an unbounded linear
+operator satisfying the monotonicity condition
+\[
+(M)\quad \ip{Au}{u} \ge 0 \quad \forall\, u \in D(A).
+\]
+We denote by $(P)$ the following property:
+\[
+(P)\quad
+\begin{cases}
+\text{If } x \in E \text{ and } f \in E^* \text{ are such that}\\
+\ip{Au - f}{u - x} \ge 0 \quad \forall\, u \in D(A),\\
+\text{then } x \in D(A) \text{ and } Ax = f.
+\end{cases}
+\]
+
+\medskip
+ 
+\noindent\textbf{Part A.}
+ 
+\begin{enumerate}
+\item Prove that if $(P)$ holds then $D(A)$ is dense in $E$.
+ 
+\noindent[\textit{Hint:} Show that if $f \in E^*$ and $\ip{f}{u} = 0$ $\forall\, u \in D(A)$, then $f = 0$.]
+ 
+\item Prove that if $(P)$ holds then $A$ is closed.
+ 
+\item Prove that the function $u \in D(A) \mapsto \ip{Au}{u}$ is convex.
+ 
+\item Prove that $N(A) \subset R(A)^\perp$. Deduce that if $D(A)$ is dense in $E$ then $N(A) \subset N(A^*)$.
+ 
+\item Prove that if $D(A) = E$, then $(P)$ holds.
+\end{enumerate}
+ 
+\noindent Throughout the rest of this problem we assume, in addition, that
+\begin{itemize}
+\item[(i)] $E$ is reflexive, $E$ and $E^*$ are strictly convex,
+\item[(ii)] $D(A)$ is dense in $E$ and $A$ is closed,
+\end{itemize}
+so that $A^* : D(A^*) \subset E^* \to E^{**} \cong E$ and $D(A^*)$ is dense in $E^*$ (why?).
+ 
+\medskip
+ 
+\noindent The goal of this problem is to establish the equivalence $(P) \Leftrightarrow (M^*)$, where $(M^*)$
+denotes the following property:
+\[
+(M^*)\quad \ip{A^* v}{v} \ge 0 \quad \forall\, v \in D(A^*).
+\]
+ 
+\noindent\textbf{Part B.} In this section we assume that $(P)$ holds.
+ 
+\begin{enumerate}
+\item Prove that
+\[
+\ip{A^* v}{v} \ge 0 \quad \forall\, v \in D(A^*) \cap D(A^{**}).
+\]
+ 
+\item Let $v \in D(A^*)$ with $v \notin D(A^{**})$. Prove that $\forall\, f \in E$, $\exists\, u \in D(A)$ such that
+$\ip{Au - f}{u - v} < 0$.
+Choosing $f = -A^* v$, prove that $\ip{A^* v}{v} > 0$. Deduce that $(M^*)$ holds.
+ 
+\item Prove that $N(A) = N(A^{**})$ and $R(A) = R(A^{**})$.
+\end{enumerate}
+ 
+\noindent\textbf{Part C.} In this part we assume that $(M^*)$ holds.
+ 
+\begin{enumerate}
+\item Check that the space $D(A)$ equipped with the graph norm
+$\norm{u}_{D(A)} = \norm{u}_E + \norm{Au}_{E^*}$ is reflexive.
+ 
+\item Given $x \in E$ and $f \in E^*$, consider the function $\varphi$ defined on $D(A)$ by
+\[
+\varphi(u) = \tfrac{1}{2}\norm{Au - f}^2 + \tfrac{1}{2}\norm{u - x}^2 + \ip{Au - f}{u - x}.
+\]
+Prove that $\varphi$ is convex and continuous on $D(A)$.
+Prove that $\varphi(u) \to +\infty$ as $\norm{u}_{D(A)} \to \infty$.
+ 
+\item Deduce that there exists some $u_0 \in D(A)$ such that $\varphi(u_0) \le \varphi(u)$ $\forall\, u \in D(A)$.
+What equation (involving $A$ and $A^*$) does one obtain by choosing $u = u_0 + tv$
+with $v \in D(A)$, $t > 0$, and letting $t \to 0$?
+ 
+\noindent[\textit{Hint:} Apply the result of Problem 13, part A.]
+ 
+\item Prove that $(M^*) \Rightarrow (P)$.
+ 
+\item Deduce that $A^*$ also satisfies property $(P)$.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 17} (1, 3, 4)
+ 
+\medskip
+ 
+\noindent\textbf{Part A.}\\
+Let $E$ be a reflexive Banach space and let $M$ be a closed linear subspace of $E$.
+Let $C$ be a convex subset of $E^*$. For every $u \in E$ set
+\[
+\varphi(u) = \sup_{g \in C} \ip{g}{u}.
+\]
+ 
+\begin{enumerate}
+\item Prove that for every $f \in M^\perp + C$ we have
+\[
+\varphi(u) \ge \ip{f}{u} \quad \forall\, u \in M.
+\]
+[\textit{Hint:} Start with the case $f \in M^\perp + C$.]
+ 
+\item Conversely, let $f \in E^*$ be such that
+\[
+\varphi(u) \ge \ip{f}{u} \quad \forall\, u \in M.
+\]
+Prove that $f \in M^\perp + C$.
+ 
+\noindent[\textit{Hint:} Use Hahn--Banach.]
+ 
+\item Assuming that $C$ is closed and bounded, prove that $M^\perp + C$ is closed.
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+In this section we assume that $E = L^p(\Omega)$ with $1 < p < \infty$,
+\[
+M = \left\{u \in L^p(\Omega);\; \int_\Omega ju = 0\right\},
+\]
+and
+\[
+C = \{g \in L^{p'}(\Omega);\; \abs{g(x)} \le k(x) \text{ a.e. } x \in \Omega\},
+\]
+where $j$ and $k \ge 0$ are given functions in $L^{p'}(\Omega)$.
+ 
+\begin{enumerate}
+\item Check that $M$ is a closed linear subspace and that $C$ is convex, closed, and bounded.
+ 
+\item Determine $M^\perp$.
+ 
+\item Determine $\varphi(u)$ for every $u \in L^p(\Omega)$.
+ 
+\item Deduce that if $f \in L^{p'}(\Omega)$ satisfies
+\[
+\int_\Omega k\abs{u} \ge \int_\Omega fu \quad \forall\, u \in M,
+\]
+then there exist a constant $\lambda \in \R$ and a function $g \in C$ such that $f = \lambda j + g$.
+ 
+\item Prove that the converse also holds.
+\end{enumerate}
+ 
+\noindent\textbf{Part C.}\\
+Let $M \subset L^1(\Omega)$ be a linear subspace. Let $f, g \in L^\infty(\Omega)$ be such that $f \le g$ a.e.\
+on $\Omega$. Prove that the following properties are equivalent:
+\begin{itemize}
+\item[(i)] $\exists\, \varphi \in M^\perp$ such that $f \le \varphi \le g$ a.e.\ on $\Omega$,
+\item[(ii)] $\displaystyle\int_\Omega (f u^+ - g u^-) \le 0 \quad \forall\, u \in M$,
+\end{itemize}
+where $u^+ = \max\{u, 0\}$ and $u^- = \max\{-u, 0\}$.
+ 
+\noindent[\textit{Hint:} Assuming (ii), check that $\int_\Omega(g+f)u \le \int_\Omega(g-f)\abs{u}$ $\forall\, u \in M$ and apply
+Theorem 1.12 to find some $\psi \in L^\infty(\Omega)$ with $\abs{\psi} \le g - f$, such that
+$\psi - (g+f) \in M^\perp$. Take $\varphi = \tfrac{1}{2}(g + f - \psi)$.]
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 18} (3, 4)
+ 
+\medskip
+ 
+Let $\Omega$ be a measure space with finite measure. Let $1 < p < \infty$. Let $g : \R \to \R$
+be a continuous nondecreasing function such that
+\[
+\abs{g(t)} \le C(\abs{t}^{p-1} + 1) \quad \forall\, t \in \R, \text{ for some constant } C.
+\]
+Set $G(t) = \int_0^t g(s)\,ds$.
+ 
+\begin{enumerate}
+\item Check that for every $u \in L^p(\Omega)$, we have $g(u) \in L^{p'}(\Omega)$ and $G(u) \in L^1(\Omega)$.
+\end{enumerate}
+ 
+\noindent Let $(u_n)$ be a sequence in $L^p(\Omega)$ and let $u \in L^p(\Omega)$ be such that
+\begin{itemize}
+\item[(i)] $u_n \rightharpoonup u$ weakly $\sigma(L^p, L^{p'})$,
+\item[(ii)] $\displaystyle\limsup \int_\Omega G(u_n) \le \int_\Omega G(u)$.
+\end{itemize}
+The purpose of this problem is to establish the following properties:
+\begin{align*}
+&g(u_n) \to g(u) \text{ strongly in } L^q \text{ for every } q \in [1, p'), \tag{1}\\
+&\text{Assuming, in addition, that } g \text{ is increasing (strictly),}\\
+&\text{then } u_n \to u \text{ strongly in } L^q \text{ for every } q \in [1, p). \tag{2}
+\end{align*}
+ 
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Check that $G(a) - G(b) - g(b)(a-b) \ge 0$ $\forall\, a, b \in \R$.
+What can one say if $G(a) - G(b) - g(b)(a-b) = 0$?
+ 
+\item Let $(a_n)$ be a sequence in $\R$ and let $b \in \R$ be such that
+\[
+\lim[G(a_n) - G(b) - g(b)(a_n - b)] = 0.
+\]
+Prove that $g(a_n) \to g(b)$.
+ 
+\item Prove that $\displaystyle\int_\Omega \abs{G(u_n) - G(u) - g(u)(u_n - u)} \to 0$.
+Deduce that there exists a subsequence $(u_{n_k})$ such that
+\[
+G(u_{n_k}) - G(u) - g(u)(u_{n_k} - u) \to 0 \quad \text{a.e. on } \Omega
+\]
+and therefore $g(u_{n_k}) \to g(u)$ a.e.\ on $\Omega$.
+ 
+\item Prove that (1) holds. (Check (1) for the whole sequence and not only for a subsequence.)
+ 
+\item Prove that (2) holds.
+\end{enumerate}
+ 
+\noindent In what follows, we assume, in addition, that there exist constants $\alpha > 0$ and $C$ such that
+\begin{equation}\tag{3}
+\abs{g(t)} \ge \alpha\abs{t}^{p-1} - C \quad \forall\, t \in \R.
+\end{equation}
+ 
+\begin{enumerate}
+\setcounter{enumi}{6}
+\item Prove that $g(u_n) \to g(u)$ strongly in $L^{p'}$.
+ 
+\item Can one reach the same conclusion without assumption (3)?
+ 
+\item If, in addition, $g$ is increasing (strictly) prove that $u_n \to u$ strongly in $L^p$.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 19} (3, 4)
+ 
+\medskip
+ 
+Let $E$ be the space $L^1(\R) \cap L^2(\R)$ equipped with the norm
+\[
+\norm{u}_E = \norm{u}_1 + \norm{u}_2.
+\]
+ 
+\begin{enumerate}
+\item Check that $E$ is a Banach space. Let $f(x) = f_1(x) + f_2(x)$ with $f_1 \in L^\infty(\R)$
+and $f_2 \in L^2(\R)$. Check that the mapping $u \mapsto \int_{\R} f(x)u(x)\,dx$ is a continuous
+linear functional on $E$.
+ 
+\item Let $0 < \alpha < 1/2$; check that the mapping
+\[
+u \mapsto \int_{\R} \frac{1}{\abs{x}^\alpha} u(x)\,dx
+\]
+is a continuous linear functional on $E$.
+ 
+\noindent[\textit{Hint:} Split the integral into two parts: $[\abs{x} > M]$ and $[\abs{x} \le M]$.]
+ 
+\item Set
+\[
+K = \left\{u \in E;\; u \ge 0 \text{ a.e. on } \R \text{ and } \int_{\R} u(x)\,dx \le 1\right\}.
+\]
+Check that $K$ is a closed convex subset of $E$.
+ 
+\item Let $(u_n)$ be a sequence in $K$ and let $u \in K$ be such that $u_n \rightharpoonup u$ weakly in $L^2(\R)$.
+Check that $u \in K$ and prove that
+\[
+\int_{\R} \frac{1}{\abs{x}^\alpha} u_n(x)\,dx \to \int_{\R} \frac{1}{\abs{x}^\alpha} u(x)\,dx.
+\]
+\end{enumerate}
+ 
+\noindent Consider the function $J$ defined, for every $u \in E$, by
+\[
+J(u) = \int_{\R} u^2(x)\,dx - \int_{\R} \frac{1}{\abs{x}^\alpha} u(x)\,dx.
+\]
+ 
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item Check that there is a constant $C$ such that $J(u) \ge C$ $\forall\, u \in K$.
+ 
+We claim that $m = \inf_{u \in K} J(u)$ is achieved.
+ 
+\item Let $(u_n)$ be a sequence in $K$ such that $J(u_n) \to m$. Prove that $\norm{u_n}_E$ is bounded.
+ 
+\item Let $(u_{n_k})$ be a subsequence such that $u_{n_k} \rightharpoonup u$ weakly in $L^2(\R)$. Prove that
+$J(u) = m$.
+ 
+\item Is $E$ a reflexive space?
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 20} (4)\\[4pt]
+\textit{Clarkson's inequalities. Uniform convexity of $L^p$}
+ 
+\medskip
+ 
+\noindent\textbf{Part A.}\\
+In this part we assume that $2 \le p < \infty$ and we shall establish the following inequalities:
+\begin{align}
+\abs{x+y}^p + \abs{x-y}^p &\le 2(\abs{x}^{p'} + \abs{y}^{p'})^{p/p'} \quad \forall\, x, y \in \R, \tag{1}\\
+2(\abs{x}^{p'} + \abs{y}^{p'})^{p/p'} &\le 2^{p-1}(\abs{x}^p + \abs{y}^p) \quad \forall\, x, y \in \R. \tag{2}
+\end{align}
+ 
+\begin{enumerate}
+\item Prove (2).
+ 
+\noindent[\textit{Hint:} Use the convexity of the function $g(t) = \abs{t}^{p/p'}$.]
+ 
+\item Set
+\[
+f(x) = (1 + x^{1/p'})^p + (1 - x^{1/p'})^p, \quad x \in (0,1).
+\]
+Prove that
+\[
+f''(x) \le 0 \quad \forall\, x \in (0,1).
+\]
+Deduce that
+\begin{equation}\tag{3}
+f(x) \le f(y) + (x-y)f'(y) \quad \forall\, x, y \in (0,1).
+\end{equation}
+ 
+\item Prove that
+\[
+f(x) \le 2(1 + x^{p'/p})^{p/p'} \quad \forall\, x \in (0,1).
+\]
+[\textit{Hint:} Use (3) with $y = x^{p'}$.]
+ 
+\item Deduce (1).
+\end{enumerate}
+ 
+\noindent In what follows $\Omega$ denotes a $\sigma$-finite measure space.
+ 
+\medskip
+ 
+\noindent\textbf{Part B.}\\
+In this part we assume again that $2 \le p < \infty$.
+ 
+\begin{enumerate}
+\item Prove the following inequalities:
+\begin{align}
+\norm{f+g}_p^p + \norm{f-g}_p^p &\le 2(\norm{f}_{p'}^{p'} + \norm{g}_{p'}^{p'})^{p/p'} \quad \forall\, f, g \in L^p(\Omega), \tag{4}\\
+2(\norm{f}_{p'}^{p'} + \norm{g}_{p'}^{p'})^{p/p'} &\le 2^{p-1}(\norm{f}_p^p + \norm{g}_p^p) \quad \forall\, f, g \in L^p(\Omega). \tag{5}
+\end{align}
+ 
+\item Deduce Clarkson's first inequality (see Theorem 4.10).
+\end{enumerate}
+ 
+\noindent\textbf{Part C.}\\
+In this part we assume that $1 < p \le 2$.
+ 
+\begin{enumerate}
+\item Establish the following inequality:
+\begin{equation}\tag{6}
+\norm{f+g}_p^{p'} + \norm{f-g}_p^{p'} \le 2(\norm{f}_p^p + \norm{g}_p^p)^{p'/p}
+\quad \forall\, f, g \in L^p(\Omega).
+\end{equation}
+Inequality (6) is called Clarkson's second inequality.
+ 
+\noindent[\textit{Hint:} There are two different methods:
+\begin{itemize}
+    \item[(i)] By duality from (4), observing that
+    \[
+    \sup_{\varphi,\psi \in L^{p'}} \frac{\int(u\varphi + v\psi)}{[\norm{\varphi}_{p'}^{p'} + \norm{\psi}_{p'}^{p'}]^{1/p'}}
+    = (\norm{u}_p^p + \norm{v}_p^p)^{1/p}.
+    \]
+    \item[(ii)] Directly from (1) combined with the result of Exercise 4.11.
+\end{itemize}]
+ 
+\item Deduce that $L^p(\Omega)$ is uniformly convex for $1 < p \le 2$.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 21} (4)\\[4pt]
+\textit{The distribution function. Marcinkiewicz spaces}
+ 
+\medskip
+ 
+Throughout this problem $\Omega$ denotes a measure space with finite measure $\mu$.
+Given a measurable function $f : \Omega \to \R$, we define its \emph{distribution function} $\alpha$ to be
+\[
+\alpha(t) = \abs{[\abs{f} > t]} = \operatorname{meas}\{x \in \Omega;\; \abs{f(x)} > t\} \quad \forall\, t \ge 0.
+\]
+ 
+\noindent\textbf{Part A.}
+ 
+\begin{enumerate}
+\item Check that $\alpha$ is nonincreasing. Prove that $\alpha(t+0) = \alpha(t)$ $\forall\, t \ge 0$.
+Construct a simple example in which $\alpha(t-0) \neq \alpha(t)$ for some $t > 0$.
+ 
+\item Let $(f_n)$ be a sequence of measurable functions such that $f_n \to f$ a.e.\ on $\Omega$.
+Let $(\alpha_n)$ and $\alpha$ denote the corresponding distribution functions. Prove that
+\[
+\alpha(t) \le \liminf_{n\to\infty} \alpha_n(t) \le \limsup_{n\to\infty} \alpha_n(t) \le \alpha(t-0) \quad \forall\, t > 0.
+\]
+Deduce that $\alpha_n(t) \to \alpha(t)$ a.e.
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}
+ 
+\begin{enumerate}
+\item Let $g \in L^1_{\mathrm{loc}}(\R)$ be a function such that $g \ge 0$ a.e. Set
+\[
+G(t) = \int_0^t g(s)\,ds.
+\]
+Prove that for every measurable function $f$,
+\[
+\int_\Omega G(\abs{f(x)})\,d\mu < \infty \iff \int_0^\infty \alpha(t)g(t)\,dt < \infty
+\]
+and that
+\[
+\int_\Omega G(\abs{f(x)})\,d\mu = \int_0^\infty \alpha(t)g(t)\,dt.
+\]
+[\textit{Hint:} Use Fubini and Tonelli.]
+ 
+\item More generally, prove that
+\[
+\int_{[\abs{f}>\lambda]} G(\abs{f(x)})\,d\mu = \alpha(\lambda)G(\lambda) + \int_\lambda^\infty \alpha(t)g(t)\,dt
+\quad \forall\, \lambda \ge 0.
+\]
+ 
+\item Deduce that for $1 \le p < \infty$,
+\[
+f \in L^p(\Omega) \iff \int_0^\infty \alpha(t)t^{p-1}\,dt < \infty
+\]
+and that
+\[
+\int_{[\abs{f}>\lambda]} \abs{f(x)}^p\,d\mu = \alpha(\lambda)\lambda^p + p\int_\lambda^\infty \alpha(t)t^{p-1}\,dt
+\quad \forall\, \lambda \ge 0.
+\]
+Check that if $f \in L^p(\Omega)$, then $\lim_{t\to+\infty}\alpha(t)t^p = 0$.
+\end{enumerate}
+ 
+\noindent\textbf{Part C.}\\
+Let $1 < p < \infty$. For every $f \in L^1(\Omega)$ define
+\[
+[f]_p = \sup\left\{\abs{A}^{-1/p'}\int_A \abs{f};\; A \subset \Omega \text{ measurable},\; \abs{A} > 0\right\} \le \infty,
+\]
+and consider the set
+\[
+M^p(\Omega) = \{f \in L^1(\Omega);\; [f]_p < \infty\},
+\]
+called the \emph{Marcinkiewicz space} of order $p$. The space $M^p$ is also called the \emph{weak $L^p$
+space}, but this terminology is confusing because the word ``weak'' is already used in
+connection with the weak topology.
+ 
+\begin{enumerate}
+\item Check that $M^p(\Omega)$ is a linear space and that $[\,\cdot\,]_p$ is a norm. Prove that
+$L^p(\Omega) \subset M^p(\Omega)$ and that $[f]_p \le \norm{f}_p$ for every $f \in L^p(\Omega)$.
+ 
+\item Prove that $M^p(\Omega)$, equipped with the norm $[\,\cdot\,]_p$, is a Banach space.
+Check that $M^p(\Omega) \subset M^q(\Omega)$ with continuous injection for $1 < q \le p$.
+ 
+We claim that
+\[
+[f \in M^p(\Omega)] \iff [f \text{ is measurable and } \sup_{t>0} t^p \alpha(t) < \infty].
+\]
+ 
+\item Prove that if $f \in M^p(\Omega)$ then $t^p\alpha(t) \le [f]_p^p$ $\forall\, t > 0$.
+ 
+\item Conversely, let $f$ be a measurable function such that
+\[
+\sup_{t>0} t^p \alpha(t) < \infty.
+\]
+Prove that there exists a constant $C_p$ (depending only on $p$) such that
+\[
+[f]_p^p \le C_p \sup_{t>0} t^p\alpha(t).
+\]
+[\textit{Hint:} Use question B3 and write
+\[
+\int_A \abs{f} = \int_{A \cap [\abs{f}>\lambda]} \abs{f} + \int_{A \cap [\abs{f}\le\lambda]} \abs{f};
+\]
+then vary $\lambda$.]
+ 
+\item Prove that $M^p(\Omega) \subset L^q(\Omega)$ with continuous injection for $1 \le q < p$.
+ 
+\item Let $1 < q < r < \infty$ and $\theta \in (0,1)$; set
+\[
+\frac{1}{p} = \frac{\theta}{q} + \frac{1-\theta}{r}.
+\]
+Prove that there is a constant $C$---depending only on $q$, $r$, and $\theta$---such that
+\[
+\norm{f}_p \le C[f]_q^\theta [f]_r^{1-\theta} \quad \forall\, f \in M^r(\Omega).
+\]
+ 
+\item Set $\Omega = \{x \in \R^N;\; \abs{x} < 1\}$, equipped with the Lebesgue measure, and let
+$f(x) = \abs{x}^{-N/p}$ with $1 < p < \infty$. Check that $f \in M^p(\Omega)$, while $f \notin L^p(\Omega)$.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 22} (4)\\[4pt]
+\textit{An interpolation theorem (Schur, Riesz, Thorin, Marcinkiewicz)}
+ 
+\medskip
+ 
+Let $\Omega$ be a measure space with finite measure. Let
+\[
+T : L^1(\Omega) \to L^1(\Omega)
+\]
+be a bounded linear operator whose norm is denoted by $N_1 = \norm{T}_{L(L^1,L^1)}$.
+We assume that
+\[
+T(L^\infty(\Omega)) \subset L^\infty(\Omega).
+\]
+ 
+\begin{enumerate}
+\item Prove that $T$ is a bounded operator from $L^\infty(\Omega)$ into itself. Set
+\[
+N_\infty = \norm{T}_{L(L^\infty,L^\infty)}.
+\]
+\end{enumerate}
+ 
+\noindent The goal of this problem is to show that
+\[
+T(L^p(\Omega)) \subset L^p(\Omega) \quad \text{for every } 1 < p < \infty
+\]
+and that $T : L^p(\Omega) \to L^p(\Omega)$ is a bounded operator whose norm
+$N_p = \norm{T}_{L(L^p,L^p)}$ satisfies the inequality $N_p \le 2 N_1^{1/p} N_\infty^{1/p'}$.
+ 
+\medskip
+ 
+\noindent For simplicity, we assume first that $N_\infty = 1$. Given a function $u \in L^1(\Omega)$, we
+set, for every $\lambda > 0$,
+\[
+u = v_\lambda + w_\lambda \quad \text{with} \quad v_\lambda = u\chi_{[\abs{u}>\lambda]}
+\text{ and } w_\lambda = u\chi_{[\abs{u}\le\lambda]},
+\]
+\[
+f = Tu, \quad g_\lambda = Tv_\lambda, \quad \text{and} \quad h_\lambda = Tw_\lambda,
+\quad \text{so that } f = g_\lambda + h_\lambda.
+\]
+ 
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Check that
+\[
+\norm{g_\lambda}_1 \le N_1 \int_{[\abs{u}>\lambda]} \abs{u(x)}\,d\mu
+\quad \text{and} \quad \norm{h_\lambda}_\infty \le \lambda \quad \forall\, \lambda > 0.
+\]
+ 
+\item Consider the distribution functions
+\[
+\alpha(t) = \abs{[\abs{u}>t]}, \quad \beta(t) = \abs{[\abs{f}>t]}, \quad \gamma_\lambda(t) = \abs{[\abs{g_\lambda}>t]}.
+\]
+Prove that
+\[
+\int_0^\infty \gamma_\lambda(t)\,dt \le N_1\left[\alpha(\lambda)\lambda + \int_\lambda^\infty \alpha(t)\,dt\right]
+\quad \forall\, \lambda > 0,
+\]
+and that
+\[
+\beta(t) \le \gamma_\lambda(t-\lambda) \quad \forall\, \lambda > 0,\; \forall\, t > \lambda.
+\]
+[\textit{Hint:} Apply the results of Problem 21, part B.]
+ 
+\item Assuming $u \in L^p(\Omega)$, prove that $f \in L^p(\Omega)$ and that
+\[
+\norm{f}_p \le 2N_1^{1/p}\norm{u}_p.
+\]
+ 
+\item Conclude in the general case, in which $N_\infty \neq 1$.
+\end{enumerate}
+ 
+\noindent\textit{Remark.} By a different argument one can prove in fact that $N_p \le N_1^{1/p}N_\infty^{1/p'}$;
+see, e.g., Bergh--L\"{o}fstr\"{o}m [1] and the references in the Notes on Chapter 1 of their book.
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 23} (3, 4)\\[4pt]
+\textit{Weakly compact subsets of $L^1$ and equi-integrable families.
+The theorems of Hahn--Vitali--Saks, Dunford--Pettis, and de la Vall\'ee-Poussin.}
+ 
+\medskip
+ 
+Let $\Omega$ be a $\sigma$-finite measure space. We recall (see Exercise 4.36) that a subset
+$\mathcal{F} \subset L^1(\Omega)$ is said to be \emph{equi-integrable} if it satisfies the following properties:
+\begin{itemize}
+\item[(a)] $\mathcal{F}$ is bounded in $L^1(\Omega)$,
+\item[(b)] $\forall\, \varepsilon > 0$ $\exists\, \delta > 0$ such that $\displaystyle\int_A \abs{f} < \varepsilon$ $\forall\, f \in \mathcal{F}$,
+$\forall\, A \subset \Omega$ with $A$ measurable and $\abs{A} < \delta$,
+\item[(c)] $\forall\, \varepsilon > 0$ $\exists\, \omega \subset \Omega$ measurable with $\abs{\omega} < \infty$
+such that $\displaystyle\int_{\Omega\setminus\omega} \abs{f} < \varepsilon$.
+\end{itemize}
+ 
+\noindent The first goal of this problem is to establish the equivalence of the following
+properties for a given set $\mathcal{F}$ in $L^1(\Omega)$:
+\begin{itemize}
+\item[(i)] $\mathcal{F}$ is contained in a weakly $(\sigma(L^1, L^\infty))$ compact set of $L^1(\Omega)$,
+\item[(ii)] $\mathcal{F}$ is equi-integrable.
+\end{itemize}
+ 
+\noindent\textbf{Part A.} The implication (i) $\Rightarrow$ (ii).
+ 
+\begin{enumerate}
+\item Let $(f_n)$ be a sequence in $L^1(\Omega)$ such that
+\[
+\int_A f_n \to 0 \quad \forall\, A \subset \Omega \text{ with } A \text{ measurable and } \abs{A} < \infty.
+\]
+Prove that $(f_n)$ satisfies property (b).
+ 
+\noindent[\textit{Hint:} Consider the subset $X \subset L^1(\Omega)$ defined by
+\[
+X = \{\chi_A \text{ with } A \subset \Omega,\; A \text{ measurable and } \abs{A} < \infty\}.
+\]
+Check that $X$ is closed in $L^1(\Omega)$ and apply the Baire category theorem to the sequence
+\[
+X_n = \left\{\chi_A \in X;\; \left\lvert\int_A f_k\right\rvert \le \varepsilon\;\; \forall\, k \ge n\right\},
+\]
+where $\varepsilon > 0$ is fixed.]
+ 
+\item Let $(f_n)$ be a sequence in $L^1(\Omega)$ such that
+\[
+\int_A f_n \to 0 \quad \forall\, A \subset \Omega \text{ with } A \text{ measurable and } \abs{A} \le \infty.
+\]
+Prove that $(f_n)$ satisfies property (c).
+ 
+\noindent[\textit{Hint:} Let $(\Omega_i)$ be a nondecreasing sequence of measurable sets with finite measure
+such that $\Omega = \bigcup_i \Omega_i$. Consider on $L^\infty(\Omega)$ the metric $d$ defined by
+\[
+d(f,g) = \sum_i \frac{1}{2^i \abs{\Omega_i}} \int_{\Omega_i} \abs{f-g}.
+\]
+Set $Y = \{\chi_A \text{ with } A \subset \Omega,\; A \text{ measurable}\}$. Check that $Y$ is complete for the metric
+$d$ and apply the Baire category theorem to the sequence
+\[
+Y_n = \left\{\chi_A \in Y;\; \left\lvert\int_A f_k\right\rvert \le \varepsilon\;\; \forall\, k \ge n\right\},
+\]
+where $\varepsilon > 0$ is fixed.]
+ 
+\item Deduce that if $(f_n)$ is a sequence in $L^1(\Omega)$ such that $f_n \rightharpoonup f$ weakly
+$\sigma(L^1, L^\infty)$, then $(f_n)$ is equi-integrable.
+ 
+\item Prove that (i) $\Rightarrow$ (ii).
+ 
+\noindent[\textit{Hint:} Argue by contradiction and apply the theorem of Eberlein--\v{S}mulian; see Problem 10.]
+ 
+\item Take up again question 1 (resp.\ question 2) assuming only that $\int_A f_n$ converges
+to a finite limit $\ell(A)$ for every $A \subset \Omega$ with $A$ measurable and $\abs{A} < \infty$
+(resp.\ $\abs{A} \le \infty$).
+\end{enumerate}
+ 
+\noindent\textbf{Part B.} The implication (ii) $\Rightarrow$ (i).
+ 
+\begin{enumerate}
+\item Let $E$ be a Banach space and let $\mathcal{F} \subset E$. Assume that
+\[
+\forall\, \varepsilon > 0\;\; \exists\, \mathcal{F}_\varepsilon \subset E,\; \mathcal{F}_\varepsilon \text{ weakly }
+(\sigma(E,E^*)) \text{ compact such that } \mathcal{F} \subset \mathcal{F}_\varepsilon + \varepsilon B_E.
+\]
+Prove that $\mathcal{F}$ is contained in a weakly compact subset of $E$.
+ 
+\noindent[\textit{Hint:} Consider $G = \overline{\mathcal{F}}^{\sigma(E,E^*)}$.]
+ 
+\item Deduce that (ii) $\Rightarrow$ (i).
+ 
+\noindent[\textit{Hint:} Consider the family $(\chi_\omega T_n f)_{f \in \mathcal{F}}$ with $\abs{\omega} < \infty$ and $T_n$ is
+the truncation as in the proof of Theorem 4.12.]
+\end{enumerate}
+ 
+\noindent\textbf{Part C.} Some applications.
+ 
+\begin{enumerate}
+\item Let $(f_n)$ be a sequence in $L^1(\Omega)$ such that $f_n \rightharpoonup f$ weakly $\sigma(L^1, L^\infty)$ and
+$f_n \to f$ a.e. Prove that $\norm{f_n - f}_1 \to 0$.
+ 
+\noindent[\textit{Hint:} Apply Exercise 4.14.]
+ 
+\item Let $u_1, u_2 \in L^1(\Omega)$ with $u_1 \le u_2$ a.e. Prove that the set
+$K = \{f \in L^1(\Omega);\; u_1 \le f \le u_2 \text{ a.e.}\}$ is compact in the weak topology $\sigma(L^1, L^\infty)$.
+ 
+\item Let $(f_n)$ be an equi-integrable sequence in $L^1(\Omega)$. Prove that there exists a
+subsequence $(f_{n_k})$ such that $f_{n_k} \rightharpoonup f$ weakly $\sigma(L^1, L^\infty)$.
+ 
+\item Let $(f_n)$ be a bounded$^1$ sequence in $L^1(\Omega)$ such that $\int_A f_n$ converges to a
+finite limit $\ell(A)$, for every measurable set $A \subset \Omega$. Prove that there exists some
+$f \in L^1(\Omega)$ such that $f_n \rightharpoonup f$ weakly $\sigma(L^1, L^\infty)$.
+ 
+\item Let $g : \R \to \R$ be a continuous increasing function such that $\abs{g(t)} \le C$ $\forall\, t \in \R$.
+Set $G(t) = \int_0^t g(s)\,ds$. Let $(f_n)$ be a sequence in $L^1(\Omega)$ such that
+$f_n \rightharpoonup f$ weakly $\sigma(L^1, L^\infty)$ and $\limsup\int_\Omega G(f_n) \le \int_\Omega G(f)$.
+Prove that $\norm{f_n - f}_1 \to 0$.
+ 
+\noindent[\textit{Hint:} Look at Problem 18.]
+\end{enumerate}
+ 
+\noindent\textbf{Part D.}\\
+In this part, we assume that $\abs{\Omega} < \infty$. Let $\mathcal{F} \subset L^1(\Omega)$.
+ 
+\begin{enumerate}
+\item Let $G : [0,+\infty) \to [0,+\infty)$ be a continuous function such that $\lim_{t\to+\infty} G(t)/t = +\infty$.
+Assume that there exists a constant $C$ such that
+\[
+\int_\Omega G(\abs{f}) \le C \quad \forall\, f \in \mathcal{F}.
+\]
+Prove that $\mathcal{F}$ is equi-integrable.
+ 
+\item Conversely, assume that $\mathcal{F}$ is equi-integrable. Prove that there exists a convex
+increasing function $G : [0,+\infty) \to [0,+\infty)$ such that $\lim_{t\to+\infty} G(t)/t = +\infty$
+and $\int_\Omega G(\abs{f}) \le C$ $\forall\, f \in \mathcal{F}$, for some constant $C$.
+ 
+\noindent[\textit{Hint:} Use the distribution function; see Problem 21.]
+\end{enumerate}
+ 
+\footnotetext[1]{In fact, it is not necessary to assume that $(f_n)$ is bounded, but then the proof is more complicated;
+see, e.g., R.\ Edwards [1] p.\ 276--277.}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 24} (1, 3, 4)\\[4pt]
+\textit{Radon measures}
+ 
+\medskip
+ 
+Let $K$ be a compact metric space, with distance $d$, and let $E = C(K)$ equipped
+with its usual norm
+\[
+\norm{f} = \max_{x \in K} \abs{f(x)}.
+\]
+The dual space $E^*$, denoted by $M(K)$, is called the space of \emph{Radon measures} on $K$.
+The space $M(K)$ is equipped with the dual norm, denoted by $\norm{\,\cdot\,}_M$ or simply $\norm{\,\cdot\,}$.
+The purpose of this problem is to present some properties of $M(K)$.
+ 
+\medskip
+ 
+\noindent\textbf{Part A.} We prove here that $C(K)$ is separable. Given $\delta > 0$, let $\bigcup_{j \in J} B(a_j, \delta/2)$
+be a finite covering of $K$. Set
+\[
+q_j(x) = \max\{0,\, \delta - d(x, a_j)\}, \quad j \in J,\; x \in K,
+\]
+and
+\[
+q(x) = \sum_{j \in J} q_j(x).
+\]
+ 
+\begin{enumerate}
+\item Check that the functions $(q_j)_{j \in J}$ and $q$ are continuous on $K$. Show that
+$q(x) \ge \delta/2$ $\forall\, x \in K$.
+ 
+\item Set
+\[
+\theta_j(x) = \frac{q_j(x)}{q(x)}, \quad j \in J,\; x \in K.
+\]
+Show that the functions $(\theta_j)_{j \in J}$ are continuous on $K$,
+\[
+[\theta_j(x) \neq 0] \iff [d(x, a_j) < \delta],
+\]
+and $\sum_{j \in J} \theta_j(x) = 1$ $\forall\, x \in K$.
+The collection of functions $(\theta_j)_{j \in J}$ is called a \emph{partition of unity} (subordinate to
+the open covering $\bigcup_{j \in J} B(a_j, 2\delta)$, because $\operatorname{supp}\theta_j \subset B(a_j, 2\delta)$).
+ 
+\item Given $f \in C(K)$, set
+\[
+\tilde{f}(x) = \sum_{j \in J} f(a_j)\theta_j(x).
+\]
+Prove that
+\[
+\norm{f - \tilde{f}} \le \sup_{\substack{x,y \in K \\ d(x,y) < \delta}} \abs{f(x) - f(y)}.
+\]
+ 
+\item Choosing $\delta = 1/n$, the above construction yields a finite set $J$, now denoted by
+$J_n$, a finite collection of points $(a_j)_{j \in J_n}$, and a finite collection of functions
+$(\theta_j)_{j \in J_n}$. Show that the vector space spanned by the functions $(\theta_j)$,
+$j \in J_n$, $n = 1, 2, 3, \ldots$, is dense in $C(K)$.
+ 
+\item Deduce that $C(K)$ is separable.
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+In this part we assume that $K = \overline{\Omega}$, where $\Omega$ is a bounded open set in $\R^N$.
+It is convenient to identify $L^1(\Omega)$ with a subspace of $M(\overline{\Omega})$ through the embedding
+$T : L^1(\Omega) \to M(\overline{\Omega})$ defined by
+\[
+\ip{Tu}{f} = \int_\Omega uf \quad \forall\, u \in L^1(\Omega),\; \forall\, f \in C(\overline{\Omega}).
+\]
+ 
+\begin{enumerate}
+\item Check that $\norm{Tu}_M = \norm{u}_{L^1}$ $\forall\, u \in L^1(\Omega)$.
+ 
+\noindent[\textit{Hint:} Use Exercise 4.26.]
+ 
+\item Let $(v_n)$ be a bounded sequence in $L^1(\Omega)$. Show that there exist a subsequence
+$(v_{n_k})$ and some $\mu \in M(\overline{\Omega})$ such that $v_{n_k} \rightharpoonup \mu$ in $M(\overline{\Omega})$ and
+\[
+\norm{\mu}_M \le \liminf_{k\to\infty} \norm{v_{n_k}}_{L^1}.
+\]
+[\textit{Hint:} Use Corollary 3.30.]
+ 
+\noindent The aim is now to prove that given any $\mu_0 \in M(\overline{\Omega})$ there exists a sequence $(u_n)$
+in $C^\infty_c(\Omega)$ such that
+\begin{align}
+\int_\Omega u_n f &\to \ip{\mu_0}{f} \quad \forall\, f \in C(\overline{\Omega}), \tag{1}\\
+\norm{u_n}_{L^1} &= \norm{\mu_0}_M \quad \forall\, n. \tag{2}
+\end{align}
+Without loss of generality we may assume that $\norm{\mu_0}_M = 1$ (why?).
+ 
+Set $A = \{u \in C^\infty_c(\Omega);\; \norm{u}_{L^1} \le 1\}$.
+ 
+\item Prove that $\mu_0 \in \overline{A}^{\sigma(E^*,E)}$.
+ 
+\noindent[\textit{Hint:} Apply Hahn--Banach in $E^*$ for the weak topology $\sigma(E^*,E)$; see Problem 9.
+Then use Corollary 4.23.]
+ 
+\item Deduce that there exists a sequence $(v_n)$ in $A$ such that $v_n \rightharpoonup \mu_0$ in $\sigma(E^*,E)$.
+Check that $\lim_{n\to\infty}\norm{v_n}_{L^1} = 1$.
+ 
+\item Conclude that the sequence $u_n = v_n/\norm{v_n}_{L^1}$ satisfies (1) and (2).
+\end{enumerate}
+ 
+\noindent We say that $\mu \ge 0$ if
+\[
+\ip{\mu}{f} \ge 0 \quad \forall\, f \in C(\overline{\Omega}),\; f \ge 0 \text{ on } \overline{\Omega}.
+\]
+ 
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item Check that if $\mu \ge 0$, then $\ip{\mu}{\mathbf{1}} = \norm{\mu}$, where $\mathbf{1}$ denotes the function
+$f \equiv 1$.
+ 
+\item Assume $\mu_0 \in M(\overline{\Omega})$, with $\mu_0 \ge 0$ and $\norm{\mu_0} = 1$ (such measures are
+called \emph{probability measures}). Construct a sequence $(u_n)$ in $C^\infty_c(\Omega)$ satisfying
+(1), (2), and, moreover,
+\begin{equation}\tag{3}
+u_n(x) \ge 0 \quad \forall\, n,\; \forall\, x \in \Omega.
+\end{equation}
+ 
+\item Compute $\norm{u + \delta_a}_M$, where $u \in L^1$ and $\delta_a$, with $a \in \overline{\Omega}$, is defined below.
+\end{enumerate}
+ 
+\noindent\textbf{Part C.}\\
+We now return to the general setting and denote by $\delta_a$ the \emph{Dirac mass} at a point
+$a \in K$, i.e., the measure defined by
+\[
+\ip{\delta_a}{f} = f(a) \quad \forall\, f \in C(K).
+\]
+Set
+\[
+D = \left\{\mu = \sum_{j \in J} \alpha_j \delta_{a_j};\;
+J \text{ is finite},\; \alpha_j \in \R, \text{ and the points } a_j\text{'s are all distinct}\right\}.
+\]
+ 
+\begin{enumerate}
+\item Show that if $\mu \in D$ then
+\[
+\norm{\mu} = \sum_{j \in J} \abs{\alpha_j}
+\]
+and
+\[
+[\mu \ge 0] \iff [\alpha_j \ge 0\;\; \forall\, j].
+\]
+Set $D_1 = \{\mu \in D;\; \norm{\mu} \le 1\}$.
+ 
+\item Show that any measure $\mu_0 \in M(K)$ with $\norm{\mu_0} \le 1$ belongs to
+$\overline{D_1}^{\sigma(E^*,E)}$.
+ 
+\noindent[\textit{Hint:} Use the same technique as in part B.]
+ 
+\item Deduce that given any measure $\mu_0 \in M(\overline{\Omega})$ there exists a sequence $(\nu_n)$ in $D$
+such that $\nu_n \rightharpoonup \mu_0$ and $\norm{\nu_n} = \norm{\mu_0}$ $\forall\, n$.
+ 
+\item Let $\mu_0$ be a probability measure. Prove that there exists a sequence $(\nu_n)$ of
+probability measures in $D$ such that $\nu_n \rightharpoonup \mu_0$.
+ 
+\noindent\textit{Remark.} An alternative approach to question 4 is to show that the Dirac masses
+are the extremal points of the convex set of probability measures; then apply
+Krein--Milman (see Problem 1) in the weak topology; for more details see, e.g.,
+R.\ Edwards [1].
+\end{enumerate}
+ 
+\noindent\textbf{Part D.}\\
+The goal of this part is to show that every $\mu \in M(K)$ admits a unique decomposition
+$\mu = \mu_1 - \mu_2$ with $\mu_1, \mu_2 \in M(K)$, $\mu_1, \mu_2 \ge 0$, and
+$\norm{\mu_1} + \norm{\mu_2} = \norm{\mu}$.
+(The measures $\mu_1$ and $\mu_2$ are often denoted by $\mu^+$ and $\mu^-$.)
+ 
+\medskip
+ 
+\noindent Given $f \in C(K)$ with $f \ge 0$, set
+\[
+L(f) = \sup\{\ip{\mu}{g};\; g \in C(K) \text{ and } 0 \le g \le f \text{ on } K\}.
+\]
+ 
+\begin{enumerate}
+\item Check that $0 \le L(f) \le \norm{\mu}\norm{f}$, $L(\lambda f) = \lambda L(f)$ $\forall\, \lambda \ge 0$, and
+\[
+L(f_1 + f_2) = L(f_1) + L(f_2) \quad \forall\, f_1, f_2 \in C(K) \text{ with } f_1 \ge 0 \text{ and } f_2 \ge 0.
+\]
+Given any $f \in C(K)$, set
+\[
+\mu_1(f) = L(f^+) - L(f^-), \quad \text{where } f^+ = \max\{f,0\} \text{ and } f^- = \max\{-f, 0\}.
+\]
+ 
+\item Show that the mapping $f \mapsto \mu_1(f)$ is linear on $C(K)$ and that
+$\abs{\mu_1(f)} \le \norm{\mu}\norm{f}$ $\forall\, f \in C(K)$, so that $\mu_1 \in M(K)$. Check that $\mu_1 \ge 0$.
+ 
+\item Set $\mu_2 = \mu_1 - \mu$ and check that $\mu_2 \ge 0$. Show that $\norm{\mu} = \norm{\mu_1} + \norm{\mu_2}$.
+ 
+\item Let $\nu \in M(K)$ be such that $\nu \ge 0$ and $\nu \ge \mu$ (i.e., $\nu - \mu \ge 0$). Show that
+$\nu \ge \mu_1$. Similarly if $\nu \in M(K)$ and $\nu \ge -\mu$, show that $\nu \ge \mu_2$.
+Deduce the uniqueness of the decomposition.
+\end{enumerate}
+ 
+\noindent\textbf{Part E.}\\
+Show that all the above results (except question B6) remain valid when the space
+$E = C(\overline{\Omega})$ is replaced by the subspace
+\[
+E_0 = \{f \in C(\overline{\Omega});\; f = 0 \text{ on the boundary of } \Omega\}.
+\]
+The dual of $E_0$ is often denoted by $M(\Omega)$ (as opposed to $M(\overline{\Omega})$).
+ 
+\medskip
+ 
+\noindent\textbf{Part F.} Dunford--Pettis revisited\\
+Let $(f_n)$ be a sequence in $L^1(\Omega)$. Recall that $(f_n)$ is said to be \emph{equi-integrable} if
+it satisfies the property
+\begin{equation}\tag{4}
+\forall\, \varepsilon > 0\;\; \exists\, \delta > 0 \text{ such that } \int_A \abs{f_n} < \varepsilon\;\; \forall\, n,
+\text{ and } \forall\, A \subset \Omega \text{ with } A \text{ measurable and } \abs{A} < \delta.
+\end{equation}
+The goal is to prove that every equi-integrable sequence $(f_n)$ admits a subsequence
+$(f_{n_j})$ such that $f_{n_j} \rightharpoonup f$ weakly $\sigma(L^1, L^\infty)$, for some function $f \in L^1(\Omega)$.
+ 
+\begin{enumerate}
+\item Show that $(f_n)$ is bounded in $L^1(\Omega)$.
+ 
+\item Check that
+\[
+\int_\Omega \abs{f_n - T_k f_n} \le \int_{[\abs{f_n}>k]} \abs{f_n} \quad \forall\, n,\; \forall\, k,
+\]
+where $T_k$ denotes the truncation operation.
+ 
+\item Deduce that $\forall\, \varepsilon > 0$ $\exists\, k > 0$ such that $\int_\Omega \abs{f_n - T_k f_n} \le \varepsilon$ $\forall\, n$.
+ 
+\noindent[\textit{Hint:} Use (4); see also Exercise 4.36.]
+ 
+\noindent Passing to a subsequence, still denoted by $(f_n)$, we may assume that $f_n \rightharpoonup \mu$
+weak$^*$ in $M(\overline{\Omega})$, for some measure $\mu \in M(\overline{\Omega})$.
+ 
+\item Prove that $\forall\, \varepsilon > 0$ $\exists\, g = g_\varepsilon \in L^\infty(\Omega)$ such that $\norm{\mu - g_\varepsilon}_M \le \varepsilon$.
+ 
+\noindent[\textit{Hint:} For fixed $k$, a subsequence of $(T_k f_n)$ converges to some limit $g$ weak$^*$ in
+$\sigma(L^\infty, L^1)$.]
+ 
+\item Deduce that $\mu \in L^1(\Omega)$.
+ 
+\noindent[\textit{Hint:} Use a Cauchy sequence argument in $L^1(\Omega)$.]
+ 
+\item Prove that $f_n \rightharpoonup \mu$ weakly $\sigma(L^1, L^\infty)$.
+ 
+\noindent[\textit{Hint:} Given $u \in L^\infty(\Omega)$, consider a sequence $(u_m)$ in $C^\infty_c(\Omega)$ such that
+$u_m \to u$ a.e.\ on $\Omega$ and $\norm{u_m}_\infty \le \norm{u}_\infty$ $\forall\, m$ (see Exercise 4.25);
+then use Egorov's theorem (see Theorem 4.29 and Exercise 4.14).]
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 25} (1, 5)
+ 
+\medskip
+ 
+Let $H$ be a Hilbert space and let $C \subset H$ be a convex cone with vertex at $0$, that
+is, $0 \in C$ and $\lambda u + \mu v \in C$ $\forall\, \lambda, \mu > 0$, $\forall\, u, v \in C$. We assume that $C$ is
+nonempty, open, and that $C \neq H$.
+ 
+\medskip
+ 
+\noindent Check that $0 \notin C$ and that $0 \in \overline{C}$. Consider the set
+\[
+\Gamma = \{u \in H;\; (u,v) \le 0\;\; \forall\, v \in C\}.
+\]
+ 
+\begin{enumerate}
+\item Check that $\Gamma$ is a convex cone with vertex at $0$, $\Gamma$ is closed, and $0 \in \Gamma$.
+Prove that $C = \{v \in H;\; (u,v) < 0\;\; \forall\, u \in \Gamma \setminus \{0\}\}$ and deduce that
+$\Gamma$ is not reduced to $\{0\}$.
+ 
+\noindent[\textit{Hint:} Use Hahn--Banach.]
+ 
+\item Let $\omega \in C$ be fixed and consider the set
+\[
+K = \{u \in \Gamma;\; (u,\omega) = -1\}.
+\]
+Prove that $K$ is a nonempty, bounded, closed, convex set such that $0 \notin K$ and
+\[
+\Gamma \setminus \{0\} = \bigcup_{\lambda > 0} \lambda K.
+\]
+Draw a figure.
+ 
+\noindent[\textit{Hint:} Consider a ball centered at $\omega$ of radius $\rho > 0$ contained in $C$.]
+ 
+\item Let $a = P_K 0$. Prove that $a \in (-C) \cap \Gamma$.
+ 
+\item Prove directly, by a simple argument, that $(-C) \cap \Gamma \neq \emptyset$.
+ 
+\item Let $D \subset H$ be a nonempty, open, convex set and let $x_0 \notin D$. Prove that there
+exists some $w_0 \in D$ such that
+\[
+(w_0 - x_0, w - x_0) > 0 \quad \forall\, w \in D.
+\]
+Give a geometric interpretation.
+ 
+\noindent[\textit{Hint:} Consider the set $C = \bigcup_{\mu > 0} \mu(D - x_0)$.]
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 26} (1, 5)\\[4pt]
+\textit{The Prox map in the sense of Moreau}
+ 
+\medskip
+ 
+Let $H$ be a Hilbert space and let $\varphi : H \to (-\infty,+\infty]$ be a convex l.s.c.\ function
+such that $\varphi \not\equiv +\infty$.
+ 
+\begin{enumerate}
+\item Prove that for every $f \in H$, there exists some $u \in D(\varphi)$ such that
+\[
+(P)\quad \frac{1}{2}\abs{f - u}^2 + \varphi(u) = \inf_{v \in H}\left\{\frac{1}{2}\abs{f-v}^2 + \varphi(v)\right\} \equiv I.
+\]
+[\textit{Hint:} Check first that $I > -\infty$. Then use either a Cauchy sequence argument
+or the fact that $H$ is reflexive.]
+ 
+\item Check that $u$ satisfies $(P)$ iff
+\[
+(Q)\quad u \in D(\varphi) \text{ and } (u, v-u) + \varphi(v) - \varphi(u) \ge (f, v-u) \quad \forall\, v \in D(\varphi).
+\]
+ 
+\item Prove that if $u$ and $\bar{u}$ are solutions of $(P)$ corresponding to $f$ and $\bar{f}$, then
+$\abs{u - \bar{u}} \le \abs{f - \bar{f}}$. Deduce the uniqueness of the solution of $(P)$.
+ 
+\item Investigate the special case in which $\varphi = I_K$ is the indicator function of a closed
+convex set $K$.
+ 
+\item Let $\varphi^*$ be the conjugate function of $\varphi$ and consider the problem
+\[
+(P^*)\quad \frac{1}{2}\abs{f - u^*}^2 + \varphi^*(u^*) = \inf_{v \in H}\left\{\frac{1}{2}\abs{f-v}^2 + \varphi^*(v)\right\} = I^*.
+\]
+Prove that the solutions $u$ of $(P)$ and $u^*$ of $(P^*)$ satisfy
+\[
+u + u^* = f \quad \text{and} \quad I + I^* = \frac{1}{2}\abs{f}^2.
+\]
+ 
+\item Given $f \in H$ and $\lambda > 0$ let $u_\lambda$ denote the solution of the problem
+\[
+(P_\lambda)\quad \frac{1}{2}\abs{f - u_\lambda}^2 + \lambda\varphi(u_\lambda) = \inf_{v \in H}\left\{\frac{1}{2}\abs{f-v}^2 + \lambda\varphi(v)\right\}.
+\]
+Prove that $\lim_{\lambda\to 0} u_\lambda = P_{\overline{D(\varphi)}} f =$ the projection of $f$ on $\overline{D(\varphi)}$.
+ 
+\noindent[\textit{Hint:} Either start with weak convergence or use Exercise 5.3.]
+ 
+\item Let $K = \{v \in D(\varphi);\; \varphi(v) = \inf_H \varphi\}$ and assume $K \neq \emptyset$.
+Check that $K$ is a closed convex set and prove that $\lim_{\lambda\to+\infty} u_\lambda = P_K f$.
+What happens to $(u_\lambda)$ as $\lambda \to +\infty$ when $K = \emptyset$?
+ 
+\item Prove that $\lim_{\lambda\to+\infty} \frac{1}{\lambda} u_\lambda = -P_{\overline{D(\varphi^*)}} 0$.
+ 
+\noindent[\textit{Hint:} Start with the case where $f = 0$ and apply questions 5 and 6.]
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 27} (5)\\[4pt]
+\textit{Alternate projections}
+ 
+\medskip
+ 
+Let $H$ be a Hilbert space and let $K \subset H$ be a nonempty closed convex set. Check that
+\[
+\abs{P_K u - P_K v}^2 \le (P_K u - P_K v, u-v) \le \abs{u-v}^2 \quad \forall\, u, v \in H.
+\]
+Let $K_1 \subset H$ and $K_2 \subset H$ be two nonempty closed convex sets. Set $P_1 = P_{K_1}$
+and $P_2 = P_{K_2}$. Given $u \in H$, define by induction the sequence $(u_n)$ as follows:
+\[
+u_0 = u,\; u_1 = P_1 u_0,\; u_2 = P_2 u_1,\; \ldots,\; u_{2n-1} = P_1 u_{2n-2},\; u_{2n} = P_2 u_{2n-1},\; \ldots
+\]
+ 
+\noindent\textbf{Part A.}\\
+The purpose of this part is to prove that the sequence $(u_{2n} - u_{2n-1})$ converges to
+$P_K 0$, where $K = K_2 - K_1$ (note that $K$ is convex, why?).
+ 
+\begin{enumerate}
+\item Given $v \in H$ consider the sequence $(v_n)$ defined by the same iteration as above
+starting with $v_0 = v$. Check that
+\[
+\abs{u_{2n} - v_{2n}}^2 \le (u_{2n} - v_{2n}, u_{2n-1} - v_{2n-1}) \le \abs{u_{2n-1} - v_{2n-1}}^2
+\]
+and that
+\[
+\abs{u_{2n+1} - v_{2n+1}}^2 \le (u_{2n+1} - v_{2n+1}, u_{2n} - v_{2n}) \le \abs{u_{2n} - v_{2n}}^2.
+\]
+ 
+\item Deduce that the sequence $(\abs{u_n - v_n})$ is nonincreasing and thus converges to a
+limit, denoted by $\ell$.
+Prove that $\lim_{n\to\infty} \abs{(u_{2n} - v_{2n}) - (u_{2n-1} - v_{2n-1})}^2 = 0$.
+ 
+\item Check that the sequence $(\abs{u_{2n} - u_{2n-1}})$ is nonincreasing.
+Set $d = \operatorname{dist}(K_1, K_2) = \inf\{\abs{a_1 - a_2};\; a_1 \in K_1 \text{ and } a_2 \in K_2\}$.
+We claim that $\lim_{n\to\infty} \abs{u_{2n} - u_{2n-1}} = d$.
+ 
+\item Given $\varepsilon > 0$, choose $v \in K_2$ such that $\operatorname{dist}(v, K_1) \le d + \varepsilon$.
+Prove that $\abs{v_{2n} - v_{2n-1}} \le d + \varepsilon$ $\forall\, n$.
+ 
+\item Deduce that $\lim_{n\to\infty} \abs{u_{2n} - u_{2n-1}} = d$.
+ 
+Set $z = P_K 0$.
+ 
+\item Check that $\abs{z} = d$ and that $\abs{z}^2 \le (z, w)$ $\forall\, w \in K_2 - K_1$.
+ 
+\item Prove that the sequence $(u_{2n} - u_{2n-1})$ converges to $z$.
+ 
+\noindent[\textit{Hint:} Estimate $\abs{z - (u_{2n} - u_{2n-1})}^2$ using the above results.]
+ 
+\item Give a geometric interpretation.
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+Throughout the rest of this problem we assume that $z = P_K 0 \in K_2 - K_1$. (This
+assumption holds, for example, if one of the sets $K_1$ or $K_2$ is bounded, why?)
+ 
+\medskip
+ 
+\noindent We claim that there exist $a_1 \in K_1$ and $a_2 \in K_2$ with $a_2 - a_1 = z$ such that
+$u_{2n} \rightharpoonup a_2$ and $u_{2n-1} \rightharpoonup a_1$ weakly. Note that $a_1$ and $a_2$ may depend on
+the choice of $u_0 = u$. Draw a figure.
+ 
+\begin{enumerate}
+\item Consider the Hilbert space $\mathbf{H} = H \times H$ equipped with its natural scalar product.
+Set $\mathbf{K} = \{[b_1, b_2] \in \mathbf{H};\; b_1 \in K_1,\; b_2 \in K_2 \text{ and } b_2 - b_1 = z\}$.
+Check that $\mathbf{K}$ is a nonempty closed convex set.
+ 
+\item Let $b = [b_1, b_2] \in \mathbf{K}$. Determine the sequence $(v_n)$ corresponding to $v_0 = b_1$.
+Deduce that the sequences $(\abs{u_{2n-1} - b_1})$ and $(\abs{u_{2n} - b_2})$ are nonincreasing.
+ 
+\item Set $x_n = [u_{2n-1}, u_{2n}]$ and prove that the sequence $(x_n)$ satisfies the following property:
+\[
+(P)\quad \text{For every subsequence } (x_{n_k}) \text{ that converges weakly to some}
+\text{ element } \bar{x} \in \mathbf{H}, \text{ then } \bar{x} \in \mathbf{K}.
+\]
+ 
+\item Apply Opial's lemma (see Exercise 5.25, question 3) and conclude.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 28} (5)\\[4pt]
+\textit{Projections and orthogonal projections}
+ 
+\medskip
+ 
+Let $H$ be a Hilbert space. An operator $P \in \mathcal{L}(H)$ such that $P^2 = P$ is called a
+\emph{projection}. Check that a projection satisfies the following properties:
+\begin{itemize}
+\item[(a)] $I - P$ is a projection,
+\item[(b)] $N(I-P) = R(P)$ and $N(P) = R(I-P)$,
+\item[(c)] $N(P) \cap N(I-P) = \{0\}$,
+\item[(d)] $H = N(P) + N(I-P)$.
+\end{itemize}
+ 
+\noindent\textbf{Part A.}\\
+An operator $P \in \mathcal{L}(H)$ is called an \emph{orthogonal projection} if there exists a closed
+linear subspace $M$ such that $P = P_M$ (where $P_M$ is defined in Corollary 5.4). Check
+that every orthogonal projection is a projection.
+ 
+\begin{enumerate}
+\item Given a projection $P$, prove that the following properties are equivalent:
+\begin{itemize}
+    \item[(a)] $P$ is an orthogonal projection,
+    \item[(b)] $P^* = P$,
+    \item[(c)] $\norm{P} \le 1$,
+    \item[(d)] $N(P) \perp N(I-P)$,
+\end{itemize}
+where the notation $X \perp Y$ means that $(x,y) = 0$ $\forall\, x \in X$, $\forall\, y \in Y$.
+ 
+\item Let $T \in \mathcal{L}(H)$ be an operator such that $T^* = T$ and $T^2 = I$.
+Prove that $P = \frac{1}{2}(I - T)$ is an orthogonal projection. Prove the converse.
+Assuming, in addition, that $(Tu, u) \ge 0$ $\forall\, u \in H$, prove that $T = I$.
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+Throughout this part, $M$ and $N$ denote two closed linear subspaces of $H$. Set
+$P = P_M$ and $Q = P_N$.
+ 
+\begin{enumerate}
+\item Prove that the following properties are equivalent:
+\begin{itemize}
+    \item[(a)] $PQ = QP$,
+    \item[(b)] $PQ$ is a projection,
+    \item[(c)] $QP$ is a projection.
+\end{itemize}
+In this case, check that
+\begin{itemize}
+    \item[(i)] $PQ$ is the orthogonal projection onto $M \cap N$,
+    \item[(ii)] $(P + Q - PQ)$ is the orthogonal projection onto $M + N$.
+\end{itemize}
+ 
+\item Prove that the following properties are equivalent:
+\begin{itemize}
+    \item[(a)] $M \perp N$,
+    \item[(b)] $PQ = 0$,
+    \item[(c)] $QP = 0$,
+    \item[(d)] $\abs{Pu}^2 + \abs{Qu}^2 \le \abs{u}^2$ $\forall\, u \in H$,
+    \item[(e)] $\abs{Pu} \le \abs{u - Qu}$ $\forall\, u \in H$,
+    \item[(f)] $\abs{Qu} \le \abs{u - Pu}$ $\forall\, u \in H$,
+    \item[(g)] $P + Q$ is a projection.
+\end{itemize}
+In this case, check that $(P + Q)$ is the orthogonal projection onto $M + N$ (note
+that $M + N$ is closed; why?).
+ 
+\item Prove that the following properties are equivalent:
+\begin{itemize}
+    \item[(a)] $M \subset N$,
+    \item[(b)] $PQ = P$,
+    \item[(c)] $QP = P$,
+    \item[(d)] $\abs{Pu} \le \abs{Qu}$ $\forall\, u \in H$,
+    \item[(e)] $Q - P$ is a projection.
+\end{itemize}
+In this case, check that $Q - P$ is the orthogonal projection onto $M^\perp \cap N$.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 29} (5)\\[4pt]
+\textit{Iterates of nonlinear contractions. The ergodic theorems of Opial and Baillon}
+ 
+\medskip
+ 
+Let $H$ be a Hilbert space and let $T : H \to H$ be a nonlinear contraction, that is,
+\[
+\abs{Tu - Tv} \le \abs{u - v} \quad \forall\, u, v \in H.
+\]
+We assume that the set
+\[
+K = \{u \in H;\; Tu = u\}
+\]
+of fixed points is nonempty. Check that $K$ is closed and convex. Given $f \in H$ set
+\[
+\sigma_n = \frac{1}{n}(f + Tf + T^2 f + \cdots + T^{n-1}f)
+\]
+and
+\[
+\mu_n = \left(\frac{I+T}{2}\right)^n f.
+\]
+The goal of this problem is to prove the following:
+\begin{itemize}
+\item[(A)] Each of the sequences $(\sigma_n)$ and $(\mu_n)$ converges weakly to a fixed point of $T$.
+\item[(B)] If, in addition, $T$ is odd, that is, $T(-v) = -Tv$ $\forall\, v \in H$, then $(\sigma_n)$ and $(\mu_n)$
+converge strongly.
+\end{itemize}
+ 
+\noindent It is advisable to solve Exercises 5.22 and 5.25 before starting this problem. In
+the special case that $T$ is linear, see also Exercise 5.21.
+ 
+\medskip
+ 
+\noindent\textbf{Part A.}\\
+Set $u_n = T^n f$.
+ 
+\begin{enumerate}
+\item Check that for every $v \in K$, the sequence $(\abs{u_n - v})$ is nonincreasing.
+Deduce that the sequences $(\sigma_n)$ and $(T\sigma_n)$ are bounded.
+\end{enumerate}
+
+\medskip
+ 
+\noindent\textbf{Part A} (continued)
+ 
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Prove that
+\[
+\abs{\sigma_n - T\sigma_n} \le \frac{1}{\sqrt{n}}\abs{f - T\sigma_n} \quad \forall\, n \ge 1.
+\]
+[\textit{Hint:} Note that $\abs{T\sigma_n - Tu_i}^2 \le \abs{\sigma_n - u_i}^2$ and add these inequalities for
+$0 \le i \le n-1$.]
+ 
+\item Deduce that the sequence $(\sigma_n)$ satisfies property $(P)$ of Exercise 5.25.
+Conclude that $\sigma_n \rightharpoonup \sigma$ weakly, with $\sigma \in K$.
+ 
+Set $S = \tfrac{1}{2}(I + T)$.
+ 
+\item Prove that
+\[
+\abs{(u - Su) - (v - Sv)}^2 + \abs{Su - Sv}^2 \le \abs{u-v}^2 \quad \forall\, u, v \in H.
+\]
+ 
+\item Deduce that for every $v \in K$,
+\[
+\sum_{n=0}^\infty \abs{\mu_n - \mu_{n+1}}^2 \le \abs{f - v}^2
+\]
+and consequently
+\[
+\abs{\mu_n - S\mu_n} \le \frac{1}{\sqrt{n+1}}\abs{f - v} \quad \forall\, n.
+\]
+ 
+\item Conclude that $\mu_n \rightharpoonup \mu$ weakly, with $\mu \in K$.
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+Throughout the rest of this problem we assume that $T$ is odd, that is,
+$T(-v) = -Tv$ $\forall\, v \in H$.
+ 
+\begin{enumerate}
+\item Prove that for every integer $p$,
+\[
+2\abs{(u,v) - (T^p u, T^p v)} \le \abs{u}^2 + \abs{v}^2 - \abs{T^p u}^2 - \abs{T^p v}^2
+\quad \forall\, u, v \in H.
+\]
+[\textit{Hint:} Start with the inequality $\abs{T^p u - T^p v}^2 \le \abs{u-v}^2$ $\forall\, u, v \in H$.]
+ 
+\item Deduce that for every fixed integer $i \ge 0$,
+\[
+\ell(i) = \lim_{n\to\infty}(u_n, u_{n+i}) \quad \text{exists.}
+\]
+Prove that this convergence holds uniformly in $i$, that is,
+\begin{equation}\tag{1}
+\abs{(u_n, u_{n+i}) - \ell(i)} \le \varepsilon_n \quad \forall\, i \text{ and } \forall\, n,
+\quad \text{with } \lim_{n\to\infty} \varepsilon_n = 0.
+\end{equation}
+ 
+\item Similarly, prove that for every fixed integer $i \ge 0$,
+\[
+m(i) = \lim_{n\to\infty}(\mu_n, \mu_{n+i}) \quad \text{exists.}
+\]
+Prove that $m(0) = m(1) = m(2) = \cdots$.
+ 
+\noindent[\textit{Hint:} Use the result of question A5.]
+ 
+\item Deduce that $\mu_n \to \mu$ strongly.
+ 
+We now claim that $\sigma_n \to \sigma$ strongly.
+ 
+\item Set
+\[
+X_p = \frac{1}{p}\sum_{i=0}^{p-1} \ell(i).
+\]
+Prove that
+\[
+\abs{(u_n, \sigma_{n+p}) - X_p} \le \varepsilon_n + \frac{2n}{p}\abs{f}^2 \quad \forall\, n,\; \forall\, p.
+\]
+[\textit{Hint:} Use (1).]
+ 
+\item Deduce that
+\begin{itemize}
+    \item[(i)] $X = \lim_{p\to\infty} X_p$ exists,
+    \item[(ii)] $\abs{(u_n, \sigma) - X} \le \varepsilon_n$ $\forall\, n$,
+    \item[(iii)] $\abs{\sigma}^2 = X$.
+\end{itemize}
+ 
+\item Prove that
+\[
+\abs{\sigma_n}^2 \le \frac{2}{n^2}\sum_{i=0}^{n-1}(n-i)\,\ell(i) + \frac{2}{n}\sum_{i=0}^{n-1}\varepsilon_i.
+\]
+ 
+\item Deduce that $\limsup_{n\to\infty}\abs{\sigma_n}^2 \le X$ and conclude.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 30} (3, 5)\\[4pt]
+\textit{Variants of Stampacchia's theorem. The min--max theorem of von Neumann}
+ 
+\medskip
+ 
+Let $H$ be a Hilbert space.
+ 
+\medskip
+ 
+\noindent\textbf{Part A.}\\
+Let $a(u,v) : H \times H \to \R$ be a continuous bilinear form such that
+$a(v,v) \ge 0$ $\forall\, v \in H$.
+Let $K \subset H$ be a nonempty closed convex set. Let $f \in H$. Assume that there
+exists some $v_0 \in K$ such that the set
+\[
+\{u \in K;\; a(u, v_0 - u) \ge (f, v_0 - u)\}
+\]
+is bounded.
+ 
+\begin{enumerate}
+\item Prove that there exists some $u \in K$ such that
+\[
+a(u, v-u) \ge (f, v-u) \quad \forall\, v \in K.
+\]
+[\textit{Hint:} Set $f_\varepsilon = f + \varepsilon v_0$ and consider the bilinear form
+$a_\varepsilon(u,v) = a(u,v) + \varepsilon(u,v)$, $\varepsilon > 0$. Then, pass to the limit as $\varepsilon \to 0$ using
+Exercise 5.14.]
+ 
+\item Recover Stampacchia's theorem.
+ 
+\item Give a geometric interpretation in the case that $K$ is bounded and $a(u,v) = 0$
+$\forall\, u, v \in H$.
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+Let $b(u,v) : H \times H \to \R$ be a bilinear form that is continuous and coercive.
+Let $\varphi : H \to (-\infty,+\infty]$ be a convex l.s.c.\ function such that $\varphi \not\equiv +\infty$.
+ 
+\begin{enumerate}
+\item Prove that there exists a unique $u \in D(\varphi)$ such that
+\[
+b(u, v-u) + \varphi(v) - \varphi(u) \ge 0 \quad \forall\, v \in D(\varphi).
+\]
+[\textit{Hint:} Apply the result of question A1 in the space $H \times \R$ with $K = \operatorname{epi}\varphi$,
+$f = [0,-1]$, $a(U,V) = b(u,v)$ with $U = [u,\lambda]$ and $V = [v,\mu]$. Note that $a$
+is not coercive.]
+ 
+\item Recover Stampacchia's theorem.
+\end{enumerate}
+ 
+\noindent\textbf{Part C.}\\
+Let $H_1$ and $H_2$ be two Hilbert spaces and let $A \subset H_1$, $B \subset H_2$ be two nonempty,
+bounded, closed convex sets.
+ 
+\begin{enumerate}
+\item Let $F(\lambda,\mu) : H_1 \times H_2 \to \R$ be a continuous bilinear form. Prove that there
+exist $\bar\lambda \in A$ and $\bar\mu \in B$ such that
+\begin{equation}\tag{1}
+F(\bar\lambda, \mu) \le F(\bar\lambda, \bar\mu) \le F(\lambda, \bar\mu) \quad \forall\, \lambda \in A,\; \forall\, \mu \in B.
+\end{equation}
+[\textit{Hint:} Apply question A1 with $H = H_1 \times H_2$, $K = A \times B$, and
+$a(u,v) = F(\lambda, \bar\mu) - F(\bar\lambda, \mu)$, where $u = [\lambda,\mu]$, $v = [\bar\lambda,\bar\mu]$.]
+ 
+\item Deduce that
+\begin{equation}\tag{2}
+\min_{\lambda \in A}\max_{\mu \in B} F(\lambda,\mu) = \max_{\mu \in B}\min_{\lambda \in A} F(\lambda,\mu).
+\end{equation}
+Note that all min and max are achieved (why?).
+ 
+\noindent[\textit{Hint:} Check that without any further assumptions, $\max\min \le \min\max$; use
+(1) to prove the reverse inequality.]
+ 
+\item Prove that (2) implies the existence of some $\bar\lambda \in A$ and $\bar\mu \in B$ satisfying (1).
+\end{enumerate}
+ 
+\noindent\textbf{Part D.}\\
+Let $E$ and $F$ be two reflexive Banach spaces; let $A \subset E$ and $B \subset F$ be two
+nonempty, bounded, closed convex sets. Let $K : E \times F \to \R$ be a function satisfying
+the following assumptions:
+\begin{itemize}
+\item[(a)] For every fixed $v \in B$ the function $u \mapsto K(u,v)$ is convex and l.s.c.
+\item[(b)] For every fixed $u \in A$ the function $v \mapsto K(u,v)$ is concave and u.s.c., i.e., the
+function $v \mapsto -K(u,v)$ is convex and l.s.c.
+\end{itemize}
+Our goal is to prove that
+\[
+\min_{u \in A}\max_{v \in B} K(u,v) = \max_{v \in B}\min_{u \in A} K(u,v).
+\]
+We shall argue by contradiction and assume that there exists a constant $\gamma$ such that
+\[
+\max_{v \in B}\min_{u \in A} K(u,v) < \gamma < \min_{u \in A}\max_{v \in B} K(u,v).
+\]
+ 
+\begin{enumerate}
+\item For every $u \in A$, set
+\[
+B_u = \{v \in B;\; K(u,v) \ge \gamma\}
+\]
+and for every $v \in B$, set
+\[
+A_v = \{u \in A;\; K(u,v) \le \gamma\}.
+\]
+Check that $\bigcap_{u \in A} B_u = \emptyset$ and $\bigcap_{v \in B} A_v = \emptyset$.
+ 
+\item Choose $u_1, u_2, \ldots, u_n \in A$ and $v_1, v_2, \ldots, v_m \in B$ such that
+$\bigcap_{i=1}^n B_{u_i} = \emptyset$ and $\bigcap_{j=1}^m A_{v_j} = \emptyset$ (justify). Apply the result of C1
+with $H_1 = \R^n$, $H_2 = \R^m$,
+\[
+A' = \left\{\lambda = (\lambda_1, \ldots, \lambda_n);\; \lambda_i \ge 0\;\;\forall\, i \text{ and } \sum_{i=1}^n \lambda_i = 1\right\},
+\]
+\[
+B' = \left\{\mu = (\mu_1, \ldots, \mu_m);\; \mu_j \ge 0\;\;\forall\, j \text{ and } \sum_{j=1}^m \mu_j = 1\right\},
+\]
+and $F(\lambda,\mu) = \sum_{i,j}\lambda_i\mu_j K(u_i, v_j)$. Set $\bar{u} = \sum_i \lambda_i u_i$ and
+$\bar{v} = \sum_j \mu_j v_j$. Prove that
+\[
+K(\bar{u}, \bar{v}) \le K(u_k, \bar{v}) \quad \forall\, k = 1, 2, \ldots, n,\quad
+K(\bar{u}, v_\ell) \le K(\bar{u}, \bar{v}) \quad \forall\, \ell = 1, 2, \ldots, m.
+\]
+ 
+\item Check that on the other hand,
+\[
+\min_k K(u_k, \bar{v}) < \gamma \quad \text{and} \quad \max_\ell K(\bar{u}, v_\ell) > \gamma.
+\]
+[\textit{Hint:} Argue by contradiction.]
+ 
+\item Conclude.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 31} (3, 5)\\[4pt]
+\textit{Monotone operators. The theorem of Minty--Browder}
+ 
+\medskip
+ 
+Let $E$ be a reflexive Banach space. A (nonlinear) mapping $A : D(A) \subset E \to E^*$
+is said to be \emph{monotone} if it satisfies
+\[
+\ip{Au - Av}{u - v} \ge 0 \quad \forall\, u, v \in D(A)
+\]
+(here $D(A)$ denotes any subset of $E$).
+ 
+\medskip
+ 
+\noindent\textbf{Part A.}\\
+Let $A : D(A) \subset E \to E^*$ be a monotone mapping and let $K \subset E$ be a nonempty,
+bounded, closed convex set. Our goal is to prove that there exists some $u \in K$ such that
+\[
+\ip{Av}{u - v} \ge 0 \quad \forall\, v \in D(A) \cap K.
+\]
+For this purpose, set, for each $v \in D(A) \cap K$,
+\[
+K_v = \{u \in K;\; \ip{Av}{v - u} \ge 0\}.
+\]
+We have to prove that $\bigcap_{v \in D(A) \cap K} K_v \neq \emptyset$; we shall argue by contradiction
+and assume that
+\[
+\bigcap_{v \in D(A) \cap K} K_v = \emptyset.
+\]
+ 
+\begin{enumerate}
+\item Check that $K_v$ is closed and convex.
+ 
+\item Deduce that there exist $v_1, v_2, \ldots, v_n \in D(A) \cap K$ such that
+$\bigcap_{i=1}^n K_{v_i} = \emptyset$.
+Set $B = \{\lambda = (\lambda_1, \ldots, \lambda_n);\; \lambda_i \ge 0\;\;\forall\, i \text{ and } \sum_{i=1}^n \lambda_i = 1\}$,
+and consider the bilinear form
+\[
+F : \R^n \times \R^n \to \R
+\]
+defined by
+\[
+F(\lambda, \mu) = \sum_{i,j=1}^n \lambda_i \mu_j \ip{Av_j}{v_i - v_j}.
+\]
+ 
+\item Check that $F(\lambda, \lambda) \le 0$ $\forall\, \lambda \in \R^n$.
+ 
+\item Prove that there exists some $\bar\lambda \in B$ such that $F(\bar\lambda, \mu) \le 0$ $\forall\, \mu \in B$.
+ 
+\noindent[\textit{Hint:} Apply question C1 of Problem 30.]
+ 
+\item Set $\bar{u} = \sum_{i=1}^n \bar\lambda_i v_i$ and prove that
+\[
+\ip{Av_j}{\bar{u} - v_j} \le 0 \quad \forall\, j = 1, 2, \ldots, n.
+\]
+ 
+\item Conclude.
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+Throughout the rest of this problem, we assume that $D(A) = E$,
+$A : E \to E^*$ is monotone, and $A$ is continuous.
+ 
+\begin{enumerate}
+\item Let $K \subset E$ be a nonempty, bounded, closed convex set. Prove that there exists
+some $u \in K$ such that $\ip{Au}{w - u} \ge 0$ $\forall\, w \in K$.
+ 
+\noindent[\textit{Hint:} Consider $v_t = (1-t)u + tw$ with $t \in (0,1)$ and $w \in K$.]
+ 
+\item Let $K$ be a closed convex set containing $0$ ($K$ need not be bounded). Assume
+that the set $\{u \in K;\; \ip{Au}{u} \le 0\}$ is bounded. Prove that there exists some
+$u \in K$ such that
+\[
+\ip{Au}{v - u} \ge 0 \quad \forall\, v \in K.
+\]
+[\textit{Hint:} Apply B1 to the set $K_R = \{v \in K;\; \norm{v} \le R\}$ with $R$ large enough.]
+ 
+\item Assume here that
+\[
+\lim_{\norm{v}\to\infty} \frac{\ip{Av}{v}}{\norm{v}} = +\infty.
+\]
+Prove that $A$ is surjective.
+ 
+\item Assume here that $E$ is a Hilbert space identified with $E^*$. Prove that $I + A$
+is bijective from $E$ onto itself.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 32} (5)\\[4pt]
+\textit{Extension of contractions. The theorem of Kirszbraun--Valentine
+via the method of Schoenberg}
+ 
+\medskip
+ 
+Let $H$ be a Hilbert space and let $I$ be a finite set of indices.
+ 
+\medskip
+ 
+\noindent\textbf{Part A.}\\
+Let $(y_i)_{i \in I}$ be elements of $H$ and let $(c_i)_{i \in I}$ be elements of $\R$. Set
+\[
+\varphi(u) = \max_{i \in I}\{\abs{u - y_i}^2 - c_i\}, \quad u \in H,
+\]
+and
+\[
+J(u) = \{i \in I;\; \abs{u - y_i}^2 - c_i = \varphi(u)\}.
+\]
+ 
+\begin{enumerate}
+\item Check that $\inf_{u \in H} \varphi(u)$ is achieved by some unique element $u_0 \in H$.
+ 
+\item Prove that $\max_{i \in J(u_0)}(v, u_0 - y_i) \ge 0$ $\forall\, v \in H$.
+ 
+\item Deduce that
+\begin{equation}\tag{1}
+u_0 \in \operatorname{conv}\!\left(\bigcup_{i \in J(u_0)}\{y_i\}\right).
+\end{equation}
+ 
+\item Conversely, if $u_0 \in H$ satisfies (1), prove that $\varphi(u_0) = \inf_{u \in H}\varphi(u)$.
+ 
+\item Extend this result to the case in which $\varphi(u) = \max_{i \in I}\{f_i(u)\}$ and each
+$f_i : H \to \R$ is a convex $C^1$ function.
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+Let $(x_i)_{i \in I}$ and $(y_i)_{i \in I}$ be elements of $H$ such that
+\[
+\abs{y_i - y_j} \le \abs{x_i - x_j} \quad \forall\, i, j \in I.
+\]
+We claim that given any $p \in H$, there exists some $q \in \operatorname{conv}\!\left(\bigcup_{i \in I}\{y_i\}\right)$
+such that
+\[
+\abs{q - y_i} \le \abs{p - x_i} \quad \forall\, i \in I.
+\]
+ 
+\begin{enumerate}
+\item Set $P = \{\lambda = (\lambda_i)_{i \in I};\; \lambda_i \ge 0\;\;\forall\, i \text{ and } \sum_{i \in I}\lambda_i = 1\}$.
+Prove that for every $p \in H$ and for every $\lambda \in P$,
+\[
+\sum_{j \in I} \lambda_j \left\lvert \sum_{i \in I}\lambda_i y_i - y_j\right\rvert^2
+\le \sum_{j \in I} \lambda_j \abs{p - x_j}^2.
+\]
+[\textit{Hint:} Check that $\sum_{j \in I}\lambda_j \abs{(\sum_{i \in I}\lambda_i y_i) - y_j}^2
+= \tfrac{1}{2}\sum_{i,j \in I}\lambda_i\lambda_j\abs{y_i - y_j}^2$.]
+ 
+\item Consider the function
+\[
+\varphi(u) = \max_{i \in I}\{\abs{u - y_i}^2 - \abs{p - x_i}^2\}.
+\]
+Let $u_0 \in H$ be such that $\varphi(u_0) = \inf_{u \in H}\varphi(u)$. Prove that $\varphi(u_0) \le 0$.
+ 
+\noindent[\textit{Hint:} Apply questions A3 and B1.]
+ 
+\item Conclude.
+\end{enumerate}
+ 
+\noindent\textbf{Part C.}
+ 
+\begin{enumerate}
+\item Extend the result of part B to the case that $I$ is an infinite set of indices.
+ 
+\item Let $D \subset H$ be any subset of $H$ and let $S : D \to H$ be a contraction, i.e.,
+$\abs{Su - Sv} \le \abs{u-v}$ $\forall\, u, v \in D$.
+Prove that there exists a contraction $T$ defined on all of $H$ that extends $S$ and
+such that
+\[
+T(H) \subset \operatorname{conv}\, S(D).
+\]
+[\textit{Hint:} Use Zorn's lemma and question C1.]
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 33} (4, 6)\\[4pt]
+\textit{Multiplication operator in $L^p$}
+ 
+\medskip
+ 
+Let $\Omega$ be a measure space (having finite or infinite measure). Set $E = L^p(\Omega)$
+with $1 < p < \infty$. Let $a : \Omega \to \R$ be a measurable function. Consider the
+unbounded linear operator $A : D(A) \subset E \to E$ defined by
+\[
+D(A) = \{u \in L^p(\Omega);\; au \in L^p(\Omega)\} \quad \text{and} \quad Au = au.
+\]
+ 
+\begin{enumerate}
+\item Prove that $D(A)$ is dense in $E$.
+ 
+\noindent[\textit{Hint:} Given $u \in E$, consider the sequence $u_n(x) = (1 + n^{-1}\abs{a(x)})^{-1}u(x)$.]
+ 
+\item Show that $A$ is closed.
+ 
+\item Prove that $D(A) = E$ iff $a \in L^\infty(\Omega)$.
+ 
+\noindent[\textit{Hint:} Apply the closed graph theorem.]
+ 
+\item Determine $N(A)$ and $N(A)^\perp$.
+ 
+\item Determine $D(A^*)$, $A^*$, $N(A^*)$, and $N(A^*)^\perp$.
+ 
+\item Prove that $A$ is surjective iff there exists $\alpha > 0$ such that $\abs{a(x)} \ge \alpha$
+a.e.\ on $\Omega$.
+ 
+\noindent[\textit{Hint:} Use question 3.]
+\end{enumerate}
+ 
+\noindent In what follows we assume that $a \in L^\infty(\Omega)$.
+ 
+\begin{enumerate}
+\setcounter{enumi}{6}
+\item Determine the eigenvalues and the spectrum of $A$. Check that
+$\sigma(A) \subset [\operatorname{ess\,inf} a,\, \operatorname{ess\,sup} a]$ and that $\operatorname{ess\,inf} a \in \sigma(A)$,
+$\operatorname{ess\,sup} a \in \sigma(A)$. Here inf and sup refer to the ess inf and ess sup
+(defined in Section 8.5).
+ 
+\item In case $\Omega$ is an open set in $\R^N$ (equipped with the Lebesgue measure) and
+$a \in C(\Omega) \cap L^\infty(\Omega)$, prove that $\sigma(A) = \overline{a(\Omega)}$.
+ 
+\item Prove that $\sigma(A) = \{0\}$ iff $a = 0$ a.e.\ on $\Omega$.
+ 
+\item Assume that $\Omega$ has no atoms. Prove that $A$ is compact iff $a = 0$ a.e.\ on $\Omega$.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 34} (4, 6)\\[4pt]
+\textit{Spectral analysis of the Hardy operator $Tu(x) = \dfrac{1}{x}\int_0^x u(t)\,dt$}
+ 
+\medskip
+ 
+\noindent\textbf{Part A.}\\
+Let $E = C([0,1])$ equipped with the norm $\norm{u} = \sup_{t \in [0,1]}\abs{u(t)}$.
+Given $u \in E$ define the function $Tu$ on $[0,1]$ by
+\[
+Tu(x) =
+\begin{cases}
+\dfrac{1}{x}\displaystyle\int_0^x u(t)\,dt & \text{if } x \in (0,1],\\[8pt]
+u(0) & \text{if } x = 0.
+\end{cases}
+\]
+Check that $Tu \in E$ and that $\norm{Tu} \le \norm{u}$ $\forall\, u \in E$, so that $T \in \mathcal{L}(E)$.
+ 
+\begin{enumerate}
+\item Prove that $\mathrm{EV}(T) = (0,1]$ and determine the corresponding eigenfunctions.
+ 
+\item Check that $\norm{T}_{\mathcal{L}(E)} = 1$. Is $T$ a compact operator from $E$ into itself?
+ 
+\item Show that $\sigma(T) = [0,1]$. Give an explicit formula for $(T - \lambda I)^{-1}$ when
+$\lambda \in \rho(T)$. Prove that $(T - \lambda I)$ is surjective from $E$ onto $E$ for every
+$\lambda \in \R$, $\lambda \notin \{0,1\}$. Check that $T$ and $(T - I)$ are not surjective.
+ 
+\item In this question we consider $T$ as a bounded operator from $E = C([0,1])$ into
+$F = L^q(0,1)$ with $1 \le q < \infty$. Prove that $T \in \mathcal{K}(E,F)$.
+ 
+\noindent[\textit{Hint:} Consider the operator $(T_\varepsilon u)(x) = \dfrac{1}{x+\varepsilon}\int_0^x u(t)\,dt$ with
+$\varepsilon > 0$ and estimate $\norm{T_\varepsilon - T}_{\mathcal{L}(E,F)}$ as $\varepsilon \to 0$.]
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+In this part we set $E = C^1([0,1])$ equipped with the norm
+\[
+\norm{u} = \sup_{t \in [0,1]}\abs{u(t)} + \sup_{t \in [0,1]}\abs{u'(t)}.
+\]
+Given $u \in C^1([0,1])$ we define $Tu$ as in part A.
+ 
+\begin{enumerate}
+\item Check that if $u \in C^1([0,1])$, then $Tu \in C^1([0,1])$ and $\norm{Tu} \le \norm{u}$
+$\forall\, u \in E$.
+ 
+\item Prove that $\mathrm{EV}(T) = (0, \tfrac{1}{2}] \cup \{1\}$.
+ 
+\item Prove that $\sigma(T) = [0, \tfrac{1}{2}] \cup \{1\}$.
+\end{enumerate}
+ 
+\noindent\textbf{Part C.}\\
+In this part we set $E = L^p(0,1)$ with $1 < p < \infty$. Given $u \in L^p(0,1)$ define
+$Tu$ by
+\[
+Tu(x) = \frac{1}{x}\int_0^x u(t)\,dt \quad \text{for } x \in (0,1].
+\]
+Check that $Tu \in C((0,1])$ and that $Tu \in L^q(0,1)$ for every $q < p$. Our goal is to
+prove that $Tu \in L^p(0,1)$ and that
+\begin{equation}\tag{1}
+\norm{Tu}_{L^p(0,1)} \le \frac{p}{p-1}\norm{u}_{L^p(0,1)} \quad \forall\, u \in E.
+\end{equation}
+ 
+\begin{enumerate}
+\item Prove that (1) holds when $u \in C_c((0,1))$.
+ 
+\noindent[\textit{Hint:} Set $\varphi(x) = \int_0^x u(t)\,dt$; check that $\abs{\varphi}^p \in C^1([0,1])$ and compute its
+derivative. Estimate $\norm{Tu}_{L^p}$ using the formula
+\[
+\int_0^1 \abs{Tu(x)}^p\,dx = \int_0^1 \frac{\abs{\varphi(x)}^p}{x^p}\,dx
+= \frac{1}{p-1}\int_0^1 \abs{\varphi(x)}^p\,d\!\left(-\frac{1}{x^{p-1}}\right)
+\]
+and integrating by parts.]
+ 
+\item Prove that (1) holds for every $u \in E$.
+\end{enumerate}
+ 
+\noindent In what follows we consider $T$ as a bounded operator from $E$ into itself.
+ 
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Show that $\mathrm{EV}(T) = \bigl(0, \tfrac{p}{p-1}\bigr)$.
+ 
+\item Deduce that $\norm{T}_{\mathcal{L}(E)} = \dfrac{p}{p-1}$. Is $T$ a compact operator from $E$ into itself?
+ 
+\item Prove that $\sigma(T) = \bigl[0, \tfrac{p}{p-1}\bigr]$.
+ 
+\item Determine $T^*$.
+ 
+\item In this question we consider $T$ as a bounded operator from $E = L^p(0,1)$ into
+$F = L^q(0,1)$ with $1 \le q < p < \infty$. Show that $T \in \mathcal{K}(E,F)$.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 35} (6)\\[4pt]
+\textit{Cotlar's lemma}
+ 
+\medskip
+ 
+Let $H$ be a Hilbert space identified with its dual space.
+ 
+\medskip
+ 
+\noindent\textbf{Part A.}\\
+Assume $T \in \mathcal{L}(H)$, so that $T^* \in \mathcal{L}(H)$.
+ 
+\begin{enumerate}
+\item Prove that $\norm{T^*T} = \norm{T}^2$.
+ 
+\item Assume in this question that $T$ is self-adjoint.
+Show that $\norm{T^N} = \norm{T}^N$ for every integer $N$.
+ 
+\item Deduce that (for a general $T \in \mathcal{L}(H)$),
+\[
+\norm{(T^*T)^N} = \norm{T}^{2N} \quad \text{for every integer } N.
+\]
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+Let $(T_j)$, $1 \le j \le m$, be a finite collection of operators in $\mathcal{L}(H)$. Assume that
+$\forall\, j, k \in \{1, 2, \ldots, m\}$,
+\begin{align}
+\norm{T_j^* T_k}^{1/2} &\le \omega(j-k), \tag{1}\\
+\norm{T_k T_j^*}^{1/2} &\le \omega(k-j), \tag{2}
+\end{align}
+where $\omega : \Z \to [0,\infty)$.
+ 
+Set
+\[
+\sigma = \sum_{i=-(m-1)}^{m-1} \omega(i).
+\]
+The goal of this problem is to show that
+\begin{equation}\tag{3}
+\left\|\sum_{j=1}^m T_j\right\| \le \sigma.
+\end{equation}
+ 
+Set $U = \sum_{j=1}^m T_j$ and fix an integer $N$.
+ 
+\begin{enumerate}
+\item Show that
+\begin{align*}
+\norm{T_{j_1}^* T_{k_1} T_{j_2}^* T_{k_2} \cdots T_{j_N}^* T_{k_N}}
+\le{} &\sigma\,\omega(j_1 - k_1)\omega(k_1 - j_2)\omega(j_2 - k_2) \\
+&\cdots\omega(k_{N-1} - j_N)\omega(j_N - k_N),
+\end{align*}
+for any choice of the integers $j_1, k_1, \ldots, j_N, k_N \in \{1, 2, \ldots, m\}$.
+ 
+\item Deduce that
+\[
+\sum_{j_1}\sum_{k_1}\cdots\sum_{j_N}\sum_{k_N}
+\norm{T_{j_1}^* T_{k_1} \cdots T_{j_N}^* T_{k_N}} \le m\sigma^{2N},
+\]
+where the summation is taken over all possible choices of the integers $j_i, k_i \in \{1, 2, \ldots, m\}$.
+ 
+\item Prove that $\norm{(U^*U)^N} \le m\sigma^{2N}$ and deduce that (3) holds.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 36} (6)\\[4pt]
+\textit{More on the Riesz--Fredholm theory}
+ 
+\medskip
+ 
+Let $E$ be a Banach space and let $T \in \mathcal{K}(E)$. For every integer $k \ge 1$ set
+\[
+N_k = N((I-T)^k) \quad \text{and} \quad R_k = R((I-T)^k).
+\]
+ 
+\begin{enumerate}
+\item Check that $\forall\, k \ge 1$, $R_{k+1} \subset R_k$, $R_k$ is closed, $T(R_k) \subset R_k$,
+and $(I-T)R_k \subset R_{k+1}$.
+ 
+\item Prove that there exists an integer $p \ge 1$ such that
+\[
+\begin{cases}
+R_{k+1} \neq R_k & \forall\, k < p \quad (\text{no condition if } p = 1),\\
+R_{k+1} = R_k & \forall\, k \ge p.
+\end{cases}
+\]
+ 
+\item Check that $\forall\, k \ge 1$, $N_k \subset N_{k+1}$, $\dim N_k < \infty$, $T(N_k) \subset N_k$,
+and $(I-T)N_{k+1} \subset N_k$.
+ 
+\item Show that
+\[
+\operatorname{codim} R_k = \dim N_k \quad \forall\, k \ge 1,
+\]
+and deduce that
+\[
+\begin{cases}
+N_{k+1} \neq N_k & \forall\, k < p \quad (\text{no condition if } p = 1),\\
+N_{k+1} = N_k & \forall\, k \ge p.
+\end{cases}
+\]
+ 
+\item Prove that
+\[
+R_p \cap N_p = \{0\}, \qquad R_p + N_p = E.
+\]
+ 
+\item Prove that $(I-T)$ restricted to $R_p$ is bijective from $R_p$ onto itself.
+ 
+\item Assume here in addition that $E$ is a Hilbert space and that $T$ is self-adjoint.
+Prove that $p = 1$.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 37} (6)\\[4pt]
+\textit{Courant--Fischer min--max principle. Rayleigh--Ritz method}
+ 
+\medskip
+ 
+Let $H$ be an infinite-dimensional separable Hilbert space. Let $T$ be a self-adjoint
+compact operator from $H$ into itself such that $(Tx,x) \ge 0$ $\forall\, x \in H$. Denote by
+$(\mu_k)$, $k \ge 1$, its eigenvalues, repeated with their multiplicities, and arranged in
+nonincreasing order:
+\[
+\mu_1 \ge \mu_2 \ge \cdots \ge 0.
+\]
+Let $(e_j)$ be an associated orthonormal basis composed of eigenvectors. Let $E_k$ be
+the space spanned by $\{e_1, e_2, \ldots, e_k\}$. For $x \neq 0$ we define the Rayleigh quotient
+\[
+R(x) = \frac{(Tx,x)}{\abs{x}^2}.
+\]
+ 
+\begin{enumerate}
+\item Prove that $\forall\, k \ge 1$,
+\[
+\min_{\substack{x \in E_k \\ x \neq 0}} R(x) = \mu_k.
+\]
+ 
+\item Prove that $\forall\, k \ge 2$,
+\[
+\max_{\substack{x \in E_{k-1}^\perp \\ x \neq 0}} R(x) = \mu_k,
+\]
+and
+\[
+\max_{\substack{x \in H \\ x \neq 0}} R(x) = \mu_1.
+\]
+ 
+\item Let $\Sigma$ be any $k$-dimensional subspace of $H$ with $k \ge 1$. Prove that
+\[
+\min_{\substack{x \in \Sigma \\ x \neq 0}} R(x) \le \mu_k.
+\]
+[\textit{Hint:} If $k \ge 2$, show that $\Sigma \cap E_{k-1}^\perp \neq \{0\}$ and apply question 2.]
+ 
+\item Deduce that $\forall\, k \ge 1$,
+\[
+\max_{\substack{\Sigma \subset H \\ \dim\Sigma = k}} \min_{\substack{x \in \Sigma \\ x \neq 0}} R(x) = \mu_k.
+\]
+ 
+\item Let $\Sigma$ be any $(k-1)$-dimensional subspace of $H$ with $k \ge 2$. Prove that
+\[
+\max_{\substack{x \in \Sigma^\perp \\ x \neq 0}} R(x) \ge \mu_k.
+\]
+[\textit{Hint:} Prove that $\Sigma^\perp \cap E_k \neq \{0\}$.]
+ 
+\item Deduce that $\forall\, k \ge 1$,
+\[
+\min_{\substack{\Sigma \subset H \\ \dim\Sigma = k-1}} \max_{\substack{x \in \Sigma^\perp \\ x \neq 0}} R(x) = \mu_k.
+\]
+ 
+\item Assume here that $N(T) = \{0\}$, so that $R(x) \neq 0$ $\forall\, x \neq 0$, or equivalently
+$\mu_k > 0$ $\forall\, k$. Show that $\forall\, k \ge 1$,
+\[
+\min_{\substack{\Sigma \subset H \\ \dim\Sigma = k}} \max_{\substack{x \in \Sigma \\ x \neq 0}} \frac{1}{R(x)} = \frac{1}{\mu_k},
+\]
+and
+\[
+\max_{\substack{\Sigma \subset H \\ \operatorname{codim}\Sigma = k-1}} \min_{\substack{x \in \Sigma \\ x \neq 0}} \frac{1}{R(x)} = \frac{1}{\mu_k},
+\]
+where $\Sigma$ and $\Sigma'$ are closed subspaces of $H$.
+ 
+In particular, for $k = 1$,
+\[
+\min_{\substack{x \in H \\ x \neq 0}} \frac{1}{R(x)} = \frac{1}{\mu_1};
+\]
+and, moreover, $\forall\, k \ge 2$,
+\[
+\min_{\substack{x \in E_{k-1}^\perp \\ x \neq 0}} \frac{1}{R(x)} = \frac{1}{\mu_k}.
+\]
+ 
+\item Let $V$ be a closed subspace of $H$ (finite- or infinite-dimensional). Let $P_V$ be
+the orthogonal projection from $H$ onto $V$ and consider the operator $S : V \to V$
+defined by $S = P_V \circ T|_V$. Check that $S$ is a self-adjoint compact operator
+from $V$ into itself such that $(Sx,x) \ge 0$ $\forall\, x \in V$.
+ 
+\item Denote by $(\nu_k)$, $k \ge 1$, the eigenvalues of $S$, repeated with their multiplicities
+and arranged in nonincreasing order. Prove that $\forall\, k$ with $1 \le k \le \dim V$,
+\[
+\max_{\substack{\Sigma \subset V \\ \dim\Sigma = k}} \min_{\substack{x \in \Sigma \\ x \neq 0}} R(x) = \nu_k.
+\]
+Deduce that $\nu_k \le \mu_k$ $\forall\, k$ with $1 \le k \le \dim V$.
+ 
+\item Consider now an increasing sequence $(V^{(n)})$ of closed subspaces of $H$ such that
+$\overline{\bigcup_n V^{(n)}} = H$.
+Set $S^{(n)} = P_{V^{(n)}} \circ T|_{V^{(n)}}$ and let $(\nu_k^{(n)})$ denote the eigenvalues of $S^{(n)}$
+arranged as in question 9. Prove that for each fixed $k$ the sequence $n \mapsto \nu_k^{(n)}$
+is nondecreasing and converges, as $n \to \infty$, to $\mu_k$.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 38} (2, 6, 11)\\[4pt]
+\textit{Fredholm--Noether operators}
+ 
+\medskip
+ 
+Let $E$ and $F$ be Banach spaces and let $T \in \mathcal{L}(E,F)$.
+ 
+\medskip
+ 
+\noindent\textbf{Part A.}\\
+The goal of part A is to prove that the following conditions are equivalent:
+\begin{align}
+&\text{(a) } R(T) \text{ is closed and has finite codimension in } F, \notag\\
+&\text{(b) } N(T) \text{ admits a complement in } E. \tag{1}\\[4pt]
+&\text{There exist } S \in \mathcal{L}(F,E) \text{ and } K \in \mathcal{K}(F,F) \text{ such that }
+T \circ S = I_F + K. \tag{2}\\[4pt]
+&\text{There exist } U \in \mathcal{L}(F,E) \text{ and a finite-rank} \notag\\
+&\text{projection } P \text{ in } F \text{ such that } T \circ U = I_F - P. \tag{3}
+\end{align}
+Moreover, one can choose $U$ and $P$ such that $\dim R(P) = \operatorname{codim} R(T)$.
+ 
+\begin{enumerate}
+\item Prove that $(1) \Rightarrow (3)$.
+ 
+\noindent[\textit{Hint:} Let $X$ be a complement of $N(T)$ in $E$. Then $T|_X$ is bijective from $X$ onto
+$R(T)$. Denote by $U_0$ its inverse. Let $Q$ be a projection from $F$ onto $R(T)$ and
+set $U = U_0 \circ Q$.]
+ 
+\item Prove that $(2) \Rightarrow (3)$.
+ 
+\noindent[\textit{Hint:} Use Exercise 6.25.]
+ 
+\item Prove that $(3) \Rightarrow (1)$.
+ 
+\noindent[\textit{Hint:} To establish part (a) of (1) note that $R(T) \supset R(I_F - P)$ and apply
+Proposition 11.5. Similarly, show that $R(U)$ is closed and thus $R(U^*)$ is also
+closed. Finally, prove that there exist finite-dimensional spaces $\Sigma_1$ and $\Sigma_2$ in
+$E$ such that $N(T) + R(U) + \Sigma_1 = E$ and $N(T) \cap R(U) \subset \Sigma_2$. Then apply
+Proposition 11.7.]
+ 
+\item Conclude.
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+Prove that the following conditions are equivalent:
+\begin{align}
+&\text{(a) } R(T) \text{ is closed and admits a complement,} \notag\\
+&\text{(b) } \dim N(T) < \infty. \tag{4}\\[4pt]
+&\text{There exists } S \in \mathcal{L}(F,E) \text{ and } K \in \mathcal{K}(E,E) \text{ such that }
+S \circ T = I_E + K. \tag{5}\\[4pt]
+&\text{There exist } U' \in \mathcal{L}(F,E) \text{ and a finite-rank} \notag\\
+&\text{projection } P' \text{ in } E \text{ such that } U' \circ T = I_E - P'. \tag{6}
+\end{align}
+ 
+\noindent\textbf{Part C.}\\
+One says that an operator $T \in \mathcal{L}(E,F)$ is \emph{Fredholm} (or \emph{Noether}) if it satisfies
+\[
+(FN)\quad
+\begin{cases}
+\text{(a) } R(T) \text{ is closed and has finite codimension,}\\
+\text{(b) } \dim N(T) < \infty.
+\end{cases}
+\]
+(The property that $R(T)$ is closed can be deduced from the other assumptions; see
+Exercise 2.27.)
+ 
+\medskip
+ 
+\noindent The class of operators satisfying $(FN)$ is denoted by $\Phi(E,F)$. The \emph{index} of $T$ is
+by definition
+\[
+\operatorname{ind} T = \dim N(T) - \operatorname{codim} R(T).
+\]
+ 
+\begin{enumerate}
+\item Assume that $T \in \Phi(E,F)$. Show that there exist $U \in \mathcal{L}(F,E)$ and finite-rank
+projections $P$ in $F$ (resp.\ $\tilde{P}$ in $E$) such that
+\begin{equation}\tag{7}
+\begin{cases}
+(a)\quad T \circ U = I_F - P, \\
+(b)\quad U \circ T = I_E - \tilde{P},
+\end{cases}
+\end{equation}
+with $\dim R(P) = \operatorname{codim} R(T)$, $\dim R(\tilde{P}) = \dim N(T)$.
+ 
+\noindent[\textit{Hint:} Use the operator $U$ constructed in question A1.]
+ 
+An operator $V \in \mathcal{L}(F,E)$ satisfying
+\begin{equation}\tag{8}
+\begin{cases}
+(a)\quad T \circ V = I_F + K,\\
+(b)\quad V \circ T = I_E + \tilde{K},
+\end{cases}
+\end{equation}
+with $K \in \mathcal{K}(F)$ and $\tilde{K} \in \mathcal{K}(E)$, is called a \emph{pseudoinverse} of $T$
+(or an inverse modulo compact operators).
+ 
+\item Show that any pseudoinverse $V$ belongs to $\Phi(F,E)$.
+ 
+\item Prove that an operator $T \in \mathcal{L}(E,F)$ belongs to $\Phi(E,F)$ iff $R(T)$ is closed,
+$\dim N(T) < \infty$, and $\dim N(T^*) < \infty$. Moreover,
+\[
+\operatorname{ind} T = \dim N(T) - \dim N(T^*).
+\]
+[\textit{Hint:} Apply Propositions 11.14 and 2.18.]
+ 
+\item Let $T \in \Phi(E,F)$. Prove that $T^* \in \Phi(F^*,E^*)$ and that
+\[
+\operatorname{ind} T^* = -\operatorname{ind} T.
+\]
+[\textit{Hint:} Apply Proposition 11.13 and Theorem 2.19.]
+ 
+\item Conversely, let $T \in \mathcal{L}(E,F)$ be such that $T^* \in \Phi(F^*,E^*)$. Prove that
+$T \in \Phi(E,F)$.
+ 
+\item Assume that $J \in \mathcal{L}(E,F)$ is bijective and $K \in \mathcal{K}(E,F)$. Show that $T = J + K$
+belongs to $\Phi(E,F)$ and $\operatorname{ind} T = 0$. Conversely, if $T \in \Phi(E,F)$ and
+$\operatorname{ind} T = 0$, prove that $T$ can be written as $T = J + K$ with $J$ and $K$ as above
+(one may even choose $K$ to be of finite rank).
+ 
+\noindent[\textit{Hint:} Applying Theorem 6.6, prove that $I_E + J^{-1} \circ K$ belongs to $\Phi(E,E)$ and
+has index zero. For the converse, consider an isomorphism from $N(T)$ onto a
+complement $Y$ of $R(T)$.]
+ 
+\item Let $T \in \Phi(E,F)$ and $K \in \mathcal{K}(E,F)$. Prove that $T + K \in \Phi(E,F)$.
+ 
+\item Under the assumptions of the previous question, show that
+\[
+\operatorname{ind}(T + K) = \operatorname{ind} T.
+\]
+[\textit{Hint:} Set $\tilde{E} = E \times Y$, $\tilde{F} = F \times N(T)$, and $\tilde{T} : \tilde{E} \to \tilde{F}$ defined
+by $\tilde{T}(x,y) = (Tx + Kx, 0)$. Show that $\tilde{T} = \tilde{J} + \tilde{K}$, where $\tilde{J}$ is
+bijective from $\tilde{E}$ onto $\tilde{F}$ and $\tilde{K} \in \mathcal{K}(\tilde{E},\tilde{F})$. Then apply question 6.]
+ 
+\item Let $T \in \Phi(E,F)$. Prove that there exists $\varepsilon > 0$ (depending on $T$) such that for
+every $M \in \mathcal{L}(E,F)$ with $\norm{M} < \varepsilon$, we have $T + M \in \Phi(E,F)$. Show that
+\[
+\operatorname{ind}(T + M) = \operatorname{ind} T.
+\]
+[\textit{Hint:} Let $V$ be a pseudoinverse of $T$. Then $W = I_E + (V \circ M)$ is bijective
+if $\norm{M} < \norm{V}^{-1}$. Check that $T + M = (T \circ W) + \text{compact}$; then apply the
+previous question.]
+ 
+\item Let $(H_t)$, $t \in [0,1]$, be a family of operators in $\mathcal{L}(E,F)$. Assume that
+$t \mapsto H_t$ is continuous from $[0,1]$ into $\mathcal{L}(E,F)$, and that $H_t \in \Phi(E,F)$
+$\forall\, t \in [0,1]$. Prove that $\operatorname{ind} H_t$ is constant on $[0,1]$.
+ 
+\item Let $E_1, E_2, E_3$ be Banach spaces and let $T_1 \in \Phi(E_1,E_2)$, $T_2 \in \Phi(E_2,E_3)$.
+Prove that $T_2 \circ T_1 \in \Phi(E_1,E_3)$.
+ 
+\item With the same notation as above, show that
+\[
+\operatorname{ind}(T_2 \circ T_1) = \operatorname{ind} T_1 + \operatorname{ind} T_2.
+\]
+[\textit{Hint:} Consider the family of operators $H_t : E_1 \times E_2 \to E_2 \times E_3$ defined
+in matrix notation, for $t \in [0,1]$, by
+\[
+H_t =
+\begin{pmatrix} I & 0 \\ 0 & T_2 \end{pmatrix}
+\begin{pmatrix} (1-t)I & tI \\ -tI & (1-t)I \end{pmatrix}
+\begin{pmatrix} T_1 & 0 \\ 0 & I \end{pmatrix},
+\]
+where $I$ is the identity operator in $E_2$. Check that $t \mapsto H_t$ is continuous
+from $[0,1]$ into $\mathcal{L}(E_1 \times E_2, E_2 \times E_3)$. Using the previous question, show
+that for each $t$, $H_t \in \Phi(E_1 \times E_2, E_2 \times E_3)$. Compute $\operatorname{ind} H_0$ and $\operatorname{ind} H_1$.]
+ 
+\item Let $T \in \Phi(E,F)$. Compute the index of any pseudoinverse $V$ of $T$.
+\end{enumerate}
+ 
+\noindent\textbf{Part D.}\\
+In this part we study two simple examples.
+ 
+\begin{enumerate}
+\item Assume $\dim E < \infty$ and $\dim F < \infty$. Show that any linear operator $T$ from
+$E$ into $F$ belongs to $\Phi(E,F)$ and compute its index.
+ 
+\item Let $E = F = \ell^2$. Consider the shift operators $S_r$ and $S_\ell$ defined in Exercise 6.18.
+Prove that for every $\lambda \in \R$, $\lambda \neq +1$, $\lambda \neq -1$, we have
+$S_r - \lambda I \in \Phi(\ell^2,\ell^2)$, and $S_\ell - \lambda I \in \Phi(\ell^2,\ell^2)$. Compute their indices.
+Show that $S_r \pm I$, $S_\ell \pm I$ do not belong to $\Phi(\ell^2,\ell^2)$.
+ 
+\noindent[\textit{Hint:} Use the results of Exercise 6.18.]
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 39} (5, 6)\\[4pt]
+\textit{Square root of a self-adjoint nonnegative operator}
+ 
+\medskip
+ 
+Let $H$ be a Hilbert space. Let $S \in \mathcal{L}(H)$; we say that $S$ is \emph{nonnegative}, and we
+write $S \ge 0$, if $(Sx,x) \ge 0$ $\forall\, x \in H$. When $S_1, S_2 \in \mathcal{L}(H)$, we write $S_1 \ge S_2$
+(or $S_2 \le S_1$) if $S_1 - S_2 \ge 0$.
+ 
+\medskip
+ 
+\noindent\textbf{Part A.}
+ 
+\begin{enumerate}
+\item Let $S \in \mathcal{L}(H)$ be such that $S^* = S$ and $0 \le S \le I$. Show that $\norm{S^2} = \norm{S}^2 \le 1$,
+and that $0 \le S^2 \le S \le I$.
+ 
+\noindent[\textit{Hint:} Use Exercise 6.24.]
+ 
+\item Let $S \in \mathcal{L}(H)$ be such that $S^* = S$ and $S \ge 0$. Let $P(t) = \sum a_k t^k$ be a
+polynomial such that $a_k \ge 0$ $\forall\, k$. Prove that $[P(S)]^* = P(S)$ and $P(S) \ge 0$.
+ 
+\item Let $(S_n)$ be a sequence in $\mathcal{L}(H)$ such that $S_n^* = S_n$ $\forall\, n$ and $S_{n+1} \le S_n$
+$\forall\, n$. Assume that $\norm{S_n} \le M$ $\forall\, n$, for some constant $M$. Prove that for
+every $x \in H$, $S_n x$ converges as $n \to \infty$ to a limit, denoted by $Sx$, and that
+$S \in \mathcal{L}(H)$ with $S^* = S$.
+ 
+\noindent[\textit{Hint:} Let $n \ge m$. Use Exercise 6.24 to prove that $\abs{S_n x - S_m x}^2 \le 2M(S_m x - S_n x, x)$.]
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+Assume that $T \in \mathcal{L}(H)$ satisfies $T^* = T$, $T \ge 0$, and $\norm{T} \le 1$. Consider the
+sequence $(S_n)$ defined by
+\[
+S_{n+1} = S_n + \tfrac{1}{2}(T - S_n^2), \quad n \ge 0,
+\]
+starting with $S_0 = I$.
+ 
+\begin{enumerate}
+\item Show that $S_n^* = S_n$ $\forall\, n \ge 0$.
+ 
+\item Show that
+\[
+I - S_{n+1} = \tfrac{1}{2}(I - S_n)^2 + \tfrac{1}{2}(I - T),
+\]
+and deduce that $I - S_n \ge 0$ $\forall\, n$.
+ 
+\item Prove that $S_n \ge 0$ $\forall\, n$.
+ 
+\noindent[\textit{Hint:} Show by induction that $I - S_n \le I$ using questions A1 and B2.]
+ 
+\item Deduce that $\norm{S_n} \le 1$ $\forall\, n$.
+ 
+\item Prove that
+\[
+S_n - S_{n+1} = \tfrac{1}{2}\bigl[(I - S_n) + (I - S_{n-1})\bigr] \circ (S_{n-1} - S_n) \quad \forall\, n
+\]
+and deduce that $S_{n-1} - S_n \ge 0$ $\forall\, n$.
+ 
+\noindent[\textit{Hint:} Show by induction that $(I - S_n) = P_n(I-T)$ and $(S_{n-1} - S_n) = Q_n(I-T)$,
+where $P_n$ and $Q_n$ are polynomials with nonnegative coefficients.]
+ 
+\item Show that $\lim_{n\to\infty} S_n x = Sx$ exists. Prove that $S \in \mathcal{L}(H)$ satisfies
+$S^* = S$, $S \ge 0$, $\norm{S} \le 1$, and $S^2 = T$.
+\end{enumerate}
+ 
+\noindent\textbf{Part C.}
+ 
+\begin{enumerate}
+\item Let $U \in \mathcal{L}(H)$ be such that $U^* = U$ and $U \ge 0$. Prove that there exists
+$V \in \mathcal{L}(H)$ such that $V^* = V$, $V \ge 0$, and $V^2 = U$.
+ 
+\noindent[\textit{Hint:} Apply the construction of part B to $T = U/\norm{U}$.]
+ 
+Next, we prove the uniqueness of $V$. More precisely, if $W$ is any operator
+$W \in \mathcal{L}(H)$ such that $W^* = W$, $W \ge 0$, and $W^2 = U$, then $W = V$. The operator
+$V$ is called the \emph{square root} of $U$ and is denoted by $U^{1/2}$.
+ 
+\item Prove that the operator $V$ constructed above commutes with every operator $X$
+that commutes with $U$ (i.e., $X \circ U = U \circ X$ implies $X \circ V = V \circ X$).
+ 
+\item Prove that $W$ commutes with $U$ and deduce that $V$ commutes with $W$.
+ 
+\item Check that $(V - W) \circ (V + W) = 0$ and deduce that $V = W$ on $R(V+W)$.
+Show that $N(V) = N(W) = N(U) = N(V+W)$. Conclude that $V = W$ on $H$.
+ 
+\noindent[\textit{Hint:} Note that $V = W$ on $R(V+W) = N(U)^\perp$, and that $V = W = 0$ on $N(U)$.]
+ 
+\item Show that $\norm{U^{1/2}} = \norm{U}^{1/2}$.
+ 
+\item Let $U_1, U_2 \in \mathcal{L}(H)$ be such that $U_1^* = U_1$, $U_2^* = U_2$, $U_1 \ge 0$, $U_2 \ge 0$,
+and $U_1 \circ U_2 = U_2 \circ U_1$. Prove that $U_1 \circ U_2 \ge 0$.
+ 
+\noindent[\textit{Hint:} Introduce $U_1^{1/2}$ and $U_2^{1/2}$.]
+\end{enumerate}
+ 
+\noindent\textbf{Part D.}\\
+Let $U \in \mathcal{K}(H)$ be such that $U^* = U$ and $U \ge 0$. Prove that its square root
+$V$ belongs to $\mathcal{K}(H)$. Assuming that $H$ is separable, compute $V$ on a Hilbert basis
+composed of eigenvectors of $U$. Find the eigenvalues of $V$.
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 40} (4, 5, 6)\\[4pt]
+\textit{Hilbert--Schmidt operators}
+ 
+\medskip
+ 
+\noindent\textbf{Part A.}\\
+Let $E$ and $F$ be separable Hilbert spaces, both identified with their dual spaces.
+The norms on $E$ and on $F$ are denoted by the same symbol $\abs{\,\cdot\,}$. Let
+$T \in \mathcal{L}(E,F)$, so that $T^* \in \mathcal{L}(F,E)$.
+ 
+\begin{enumerate}
+\item Let $(e_k)$ (resp.\ $(f_k)$) be any orthonormal basis of $E$ (resp.\ $F$). Show that
+$\sum_{k=1}^\infty \abs{T(e_k)}^2 < \infty$ iff $\sum_{k=1}^\infty \abs{T^*(f_k)}^2 < \infty$, and that
+\[
+\sum_{k=1}^\infty \abs{T(e_k)}^2 = \sum_{k=1}^\infty \abs{T^*(f_k)}^2.
+\]
+ 
+\item Let $(e_k)$ and $(\tilde{e}_k)$ be two orthonormal bases of $E$. Show that
+$\sum_{k=1}^\infty \abs{T(e_k)}^2 < \infty$ iff $\sum_{k=1}^\infty \abs{T(\tilde{e}_k)}^2 < \infty$ and that
+\[
+\sum_{k=1}^\infty \abs{T(e_k)}^2 = \sum_{k=1}^\infty \abs{T(\tilde{e}_k)}^2.
+\]
+ 
+One says that $T \in \mathcal{L}(E,F)$ is a \emph{Hilbert--Schmidt operator} and one writes
+$T \in \mathrm{HS}(E,F)$ if there exists some orthonormal basis $(e_k)$ of $E$ such that
+$\sum_{k=1}^\infty \abs{T(e_k)}^2 < \infty$.
+ 
+\item Prove that $\mathrm{HS}(E,F)$ is a linear subspace of $\mathcal{L}(E,F)$ and that
+\[
+\norm{T}_{\mathrm{HS}} = \left(\sum_{k=1}^\infty \abs{T(e_k)}^2\right)^{1/2}
+\]
+defines a norm on $\mathrm{HS}(E,F)$. Let $\norm{\,\cdot\,}$ denote the standard norm on $\mathcal{L}(E,F)$.
+Show that
+\[
+\norm{T} \le \norm{T}_{\mathrm{HS}} \quad \forall\, T \in \mathrm{HS}(E,F).
+\]
+ 
+\item Prove that $\mathrm{HS}(E,F)$ equipped with the norm $\norm{\,\cdot\,}_{\mathrm{HS}}$ is a Banach space.
+Show that in fact, it is a Hilbert space.
+ 
+\item Show that $\mathrm{HS}(E,F) \subset \mathcal{K}(E,F)$.
+ 
+\noindent[\textit{Hint:} Given $x \in E$, write $x = \sum_{k=1}^\infty x_k e_k$ and set $T_n(x) = \sum_{k=1}^n x_k T(e_k)$.
+Show that $\norm{T_n - T} \to 0$ as $n \to \infty$.]
+ 
+\item Show that any finite-rank operator from $E$ into $F$ belongs to $\mathrm{HS}(E,F)$.
+ 
+\item Let $T \in \mathcal{L}(E,F)$. Prove that $T \in \mathrm{HS}(E,F)$ iff $T^* \in \mathrm{HS}(F,E)$ and that
+\[
+\norm{T^*}_{\mathrm{HS}(F,E)} = \norm{T}_{\mathrm{HS}(E,F)}.
+\]
+ 
+\item Assume that $T \in \mathcal{K}(E,E)$ with $T^* = T$, and let $(\lambda_k)$ denote the sequence of
+eigenvalues of $T$. Show that $T \in \mathrm{HS}(E,E)$ iff $\sum_{k=1}^\infty \lambda_k^2 < \infty$ and that
+\[
+\norm{T}_{\mathrm{HS}}^2 = \sum_{k=1}^\infty \lambda_k^2.
+\]
+Construct an example of an operator $T \in \mathcal{K}(E,E)$ with $E = \ell^2$ such that
+$T \notin \mathrm{HS}(E,E)$.
+ 
+\item Let $G$ be another separable Hilbert space. Let $T_1 \in \mathcal{L}(E,F)$ and
+$T_2 \in \mathcal{L}(F,G)$. Show that $T_2 \circ T_1 \in \mathrm{HS}(E,G)$ if either $T_1$ or $T_2$ belongs to $\mathrm{HS}$.
+ 
+\item Let $T \in \mathrm{HS}(E,E)$ and assume $N(I+T) = \{0\}$. Show that $(I+T)$ is bijective
+and that $(I+T)^{-1} = I + S$ with $S \in \mathrm{HS}(E,E)$.
+ 
+\item Let $(e_k)$ (resp.\ $(f_k)$) be an orthonormal basis of $E$ (resp.\ $F$). Consider the
+operator $T_{k,\ell} : E \to F$ defined by
+\[
+T_{k,\ell}(x) = (x, e_k)\, f_\ell.
+\]
+Show that $(T_{k,\ell})$ is an orthonormal basis of $\mathrm{HS}(E,F)$.
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+Assume that $\Omega$ is an open subset of $\R^N$. In what follows we take $E = F = L^2(\Omega)$.
+Let $K \in L^2(\Omega \times \Omega)$, and consider the operator
+\begin{equation}\tag{1}
+(Tu)(x) = \int_\Omega K(x,y)\,u(y)\,dy.
+\end{equation}
+ 
+\begin{enumerate}
+\item Show that $T \in \mathcal{L}(E,E)$ and that
+\[
+\norm{T}_{\mathcal{L}(E,E)} \le \norm{K}_{L^2(\Omega\times\Omega)}.
+\]
+ 
+\item Show that $T \in \mathrm{HS}(E,E)$ and that
+\[
+\norm{T}_{\mathrm{HS}(E,E)} \le \norm{K}_{L^2(\Omega\times\Omega)}.
+\]
+[\textit{Hint:} Let $(e_j)$ be an orthonormal basis of $L^2(\Omega)$. Check that the family
+$e_{j,k} = e_j \otimes e_k$, where $(e_j \otimes e_k)(x,y) = e_j(x)e_k(y)$, is an orthonormal basis of
+$L^2(\Omega \times \Omega)$. Then write
+\[
+\norm{T(e_k)}^2_{L^2(\Omega)} = \sum_{j=1}^\infty \abs{(T(e_k),e_j)}^2
+= \sum_{j=1}^\infty \abs{(K,e_j \otimes e_k)}^2.]
+\]
+ 
+\item Conversely, let $T \in \mathrm{HS}(E,E)$. Prove that there exists a unique function
+$K \in L^2(\Omega \times \Omega)$ such that (1) holds. $K$ is called the \emph{kernel} of $T$.
+ 
+\noindent[\textit{Hint:} Let $t_{j,k} = (Te_k, e_j)$ and check that $\sum_{j,k=1}^\infty \abs{t_{j,k}}^2 < \infty$.
+Define $K = \sum_{j,k=1}^\infty t_{j,k}\, e_j \otimes e_k$ and prove that (1) holds.]
+ 
+\item Assume that $\Omega = (0,1)$, $E = L^2(\Omega)$, and consider the operator
+\[
+(Tu)(x) = \int_0^x u(t)\,dt.
+\]
+Show that $T \in \mathrm{HS}(E,E)$ and compute $\norm{T}_{\mathrm{HS}}$.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 41} (1, 6)\\[4pt]
+\textit{The Krein--Rutman theorem}
+ 
+\medskip
+ 
+Let $E$ be a Banach space and let $P \subset E$ be a closed convex set containing $0$.
+Assume that $P$ is a convex cone with vertex at $0$, i.e., $\lambda x + \mu y \in P$ $\forall\, \lambda > 0$,
+$\mu > 0$, $x \in P$, and $y \in P$.
+ 
+Assume that
+\begin{equation}\tag{1}
+\operatorname{Int} P \neq \emptyset
+\end{equation}
+and
+\begin{equation}\tag{2}
+P \neq E.
+\end{equation}
+Let $T \in \mathcal{K}(E)$ be such that
+\begin{equation}\tag{3}
+T(P \setminus \{0\}) \subset \operatorname{Int} P.
+\end{equation}
+ 
+\noindent\textbf{Part A.}
+ 
+\begin{enumerate}
+\item Show that $(\operatorname{Int} P) \cap (-P) = \emptyset$.
+ 
+\noindent[\textit{Hint:} Use Exercise 1.7.]
+ 
+In what follows we fix some $u \in \operatorname{Int} P$.
+ 
+\item Show that there exists $\alpha > 0$ such that
+\[
+\norm{x + u} \ge \alpha \quad \forall\, x \in P.
+\]
+[\textit{Hint:} Argue by contradiction and deduce that $-u \in P$.]
+ 
+\item Check that there exists $r > 0$ such that $Tu - ru \in P$.
+ 
+\item Assume that some $x \in P$ satisfies
+\[
+T(x + u) = \lambda x \quad \text{for some } \lambda \in \R.
+\]
+Prove that $\lambda \ge r$.
+ 
+\noindent[\textit{Hint:} It is convenient to introduce an order relation on $E$ defined by $y \ge z$ if
+$y - z \in P$. Show by induction that $\bigl(\tfrac{\lambda}{r}\bigr)^n x \ge u$, $n = 1, 2, \ldots$]
+ 
+\item Consider the nonlinear map
+\[
+F(x) = T\!\left(\frac{x + u}{\norm{x + u}}\right), \quad x \in P.
+\]
+Show that $F : P \to P$ is continuous and $F(P) \subset K$ for some compact set
+$K \subset E$. Deduce that there exists some $x_1 \in P$ such that
+\[
+T(x_1 + u) = \lambda_1 x_1 \quad \text{with } \lambda_1 = \norm{x_1 + u} \ge r.
+\]
+[\textit{Hint:} Apply the Schauder fixed-point theorem; see Exercise 6.26.]
+ 
+\item Deduce that for every $\varepsilon > 0$ there exists $x_\varepsilon \in P$ such that
+\[
+T(x_\varepsilon + \varepsilon u) = \lambda_\varepsilon x_\varepsilon \quad \text{with } \lambda_\varepsilon = \norm{x_\varepsilon + \varepsilon u} \ge r.
+\]
+ 
+\item Prove that there exist $x_0 \in \operatorname{Int} P$ and $\mu_0 > 0$ such that $Tx_0 = \mu_0 x_0$.
+ 
+\noindent[\textit{Hint:} Show that $(x_\varepsilon)$ is bounded. Deduce that there exists a sequence
+$\varepsilon_n \to 0$ such that $x_{\varepsilon_n} \to x_0$ and $\lambda_{\varepsilon_n} \to \mu_0$ with the required properties.]
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}
+ 
+\begin{enumerate}
+\item Given two points $a \in \operatorname{Int} P$ and $b \in E$, $b \notin P$, prove that there exists a unique
+$\sigma \in (0,1)$ such that
+\begin{align*}
+(1-t)a + tb &\in \operatorname{Int} P \quad \forall\, t \in [0,\sigma),\\
+(1-\sigma)a + \sigma b &\in \partial P,\\
+(1-t)a + tb &\notin P \quad \forall\, t \in (\sigma,1].
+\end{align*}
+Then we set $\tau(a,b) = \sigma/(1-\sigma)$, with $0 < \tau(a,b) < \infty$.
+ 
+\item Let $x \in P \setminus \{0\}$ be such that $Tx = \mu x$ for some $\mu \in \R$.
+Prove that $\mu = \mu_0$ and $x = m x_0$ for some $m > 0$, where $\mu_0$ and $x_0$ have
+been constructed in question A7.
+ 
+\noindent[\textit{Hint:} Suppose by contradiction that $x \neq mx_0$ $\forall\, m > 0$. Show that $\mu > 0$,
+$x \in \operatorname{Int} P$, and $-x \notin P$. Set $y = x_0 - \tau_0 x$, where $\tau_0 = \tau(x_0,-x)$.
+Compute $Ty$ and deduce that $\mu < \mu_0$. Then reverse the roles of $x_0$ and $x$.]
+ 
+\item Let $x \in E \setminus \{0\}$ be such that $Tx = \mu x$ for some $\mu \in \R$.
+Prove that either $\mu = \mu_0$ and $x = mx_0$ with $m \in \R$, $m \neq 0$, or
+$\abs{\mu} < \mu_0$.
+ 
+\noindent[\textit{Hint:} In view of question 2 one may assume that $x \notin P$ and $-x \notin P$.
+If $\mu > 0$ consider $\tau(x_0, x)$, and if $\mu < 0$ consider both $\tau(x_0, x)$ and
+$\tau(x_0, -x)$.]
+ 
+\item Deduce that $N(T - \mu_0 I) = \R x_0$. In other words, the geometric multiplicity of
+the eigenvalue $\mu_0$ is one.
+ 
+\item Prove that $N((T - \mu_0 I)^k) = \R x_0$ for all $k \ge 2$. In other words, the algebraic
+multiplicity of the eigenvalue $\mu_0$ is also one.
+ 
+\noindent[\textit{Hint:} In view of Problem 36, it suffices to show that $N((T-\mu_0 I)^2) = \R x_0$.]
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 42} (6)\\[4pt]
+\textit{Lomonosov's theorem on invariant subspaces}
+ 
+\medskip
+ 
+Let $E$ be an infinite-dimensional Banach space and let $T \in \mathcal{K}(E)$, $T \neq 0$.
+The goal of part A is to prove that there exists a nontrivial, closed, invariant subspace $Z$
+of $T$, i.e., $T(Z) \subset Z$, with $Z \neq \{0\}$, and $Z \neq E$.
+ 
+
+\end{document}
