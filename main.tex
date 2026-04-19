@@ -3778,5 +3778,1096 @@ Let $E$ be an infinite-dimensional Banach space and let $T \in \mathcal{K}(E)$, 
 The goal of part A is to prove that there exists a nontrivial, closed, invariant subspace $Z$
 of $T$, i.e., $T(Z) \subset Z$, with $Z \neq \{0\}$, and $Z \neq E$.
  
+\medskip
+ 
+\noindent\textbf{Part A.}\\
+Set
+\[
+\mathcal{A} = \operatorname{span}\{I, T, T^2, \ldots\}
+= \left\{\sum_{i \in I} \lambda_i T^i,\;\text{with } \lambda_i \in \R
+\text{ and } I \text{ is a finite subset of } \{0,1,2,\ldots\}\right\}.
+\]
+For every $y \in E$, set $\mathcal{A}y = \{Sy;\; S \in \mathcal{A}\}$. Clearly, $y \in \mathcal{A}y$ and thus
+$\mathcal{A}y \neq \{0\}$ for every $y \neq 0$. Moreover, $\mathcal{A}y$ is a subspace of $E$ and
+$T(\mathcal{A}y) \subset \mathcal{A}y$, so that $T(\overline{\mathcal{A}y}) \subset \overline{\mathcal{A}y}$. If $\overline{\mathcal{A}y} \neq E$ for some
+$y \neq 0$, then $\overline{\mathcal{A}y}$ is a nontrivial, closed, invariant subspace of $T$.
+Therefore we can assume that
+\begin{equation}\tag{1}
+\overline{\mathcal{A}y} = E \quad \forall\, y \in E,\; y \neq 0.
+\end{equation}
+Since $T \neq 0$, we may fix some $x_0 \in E$ such that $Tx_0 \neq 0$, and some $r$ such that
+\[
+0 < r \le \frac{\norm{Tx_0}}{2\norm{T}} \le \frac{\norm{x_0}}{2}.
+\]
+Set
+\[
+C = \{x \in E;\; \norm{x - x_0} \le r\}.
+\]
+ 
+\begin{enumerate}
+\item Check that $0 \notin C$ and that
+\[
+\norm{Tx - Tx_0} \le \tfrac{1}{2}\norm{Tx_0} \quad \forall\, x \in C,
+\]
+so that $\norm{Tx} \ge \tfrac{1}{2}\norm{Tx_0}$ $\forall\, x \in C$. Deduce that $0 \notin T(C)$.
+ 
+\item Prove that for every $y \in E$, $y \neq 0$, there exists some $S \in \mathcal{A}$, denoted by $S_y$,
+such that
+\[
+\norm{S_y y - x_0} \le \frac{r}{2}.
+\]
+[\textit{Hint:} Use assumption (1).]
+ 
+\item Deduce that for every $y \in E$, $y \neq 0$, there exists some $\varepsilon > 0$ (depending on $y$),
+denoted by $\varepsilon_y$, such that
+\[
+\norm{Sz - x_0} \le r \quad \forall\, z \in B(y, \varepsilon_y),
+\]
+where $S$ is as in question 2.
+ 
+\item Consider a finite covering of $T(C)$ by balls $B(y_j, \tfrac{1}{2}\varepsilon_{y_j})$ with $j \in J$, $J$ finite.
+Set, for $j \in J$ and $x \in E$,
+\[
+q_j(x) = \max\{0,\, \varepsilon_{y_j} - \norm{Tx - y_j}\}
+\quad \text{and} \quad q(x) = \sum_{j \in J} q_j(x).
+\]
+Check that the functions $q_j$, $j \in J$, and $q$ are continuous on $E$. Show that
+\[
+\forall\, x \in C,\quad q(x) \ge \min_{j \in J} \tfrac{1}{2}\varepsilon_{y_j} > 0.
+\]
+Set
+\[
+F(x) = \frac{1}{q(x)}\sum_{j \in J} q_j(x)\, S_{y_j}(Tx), \quad x \in C.
+\]
+ 
+\item Prove that $F$ is continuous from $C$ into $E$ and that
+\[
+\norm{F(x) - x_0} \le r \quad \forall\, x \in C.
+\]
+[\textit{Hint:} Use question 3.]
+ 
+\item Prove that $F(C) \subset K$, where $K$ is a compact subset of $C$. Deduce that there
+exists $\xi \in C$ such that $F(\xi) = \xi$.
+ 
+\noindent[\textit{Hint:} Apply the Schauder fixed-point theorem; see Exercise 6.26.]
+ 
+\item Set
+\[
+U = \frac{1}{q(\xi)}\sum_{j \in J} q_j(\xi)\,(S_{y_j} \circ T),
+\]
+with $\xi$ as in question 6. Show that $U \in \mathcal{K}(E)$. Deduce that $Z = N(I - U)$ is
+finite-dimensional; check that $\xi \in Z$.
+ 
+\item Prove that $T(Z) \subset Z$ and conclude.
+ 
+\noindent[\textit{Hint:} Show that $U \in \mathcal{A}$ and deduce that $T \circ U = U \circ T$.]
+ 
+\item Construct a linear operator $T : \R^2 \to \R^2$ that has no invariant subspaces except
+the trivial ones.
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+We now establish a stronger version of the above result. Assume that $T \in \mathcal{K}(E)$
+and $T \neq 0$. Let $R \in \mathcal{L}(E)$ be such that $R \circ T = T \circ R$. Prove that $R$ admits a
+nontrivial, closed, invariant subspace.
+ 
+\noindent[\textit{Hint:} Set $\mathcal{B} = \operatorname{span}\{I, R, R^2, \ldots\}$ and $\mathcal{B}y = \{Sy;\; S \in \mathcal{B}\}$.
+Check that all the steps in part A still hold with $\mathcal{A}$ replaced by $\mathcal{B}$ and $\mathcal{A}y$ by $\mathcal{B}y$.]
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 43} (2, 4, 5, 6)\\[4pt]
+\textit{Normal operators}
+ 
+\medskip
+ 
+Let $H$ be a Hilbert space identified with its dual space. An operator $T \in \mathcal{L}(H)$ is
+said to be \emph{normal} if it satisfies $T \circ T^* = T^* \circ T$.
+ 
+\begin{enumerate}
+\item Prove that $T$ is normal iff it satisfies
+\[
+\abs{Tu} = \abs{T^* u} \quad \forall\, u \in H.
+\]
+[\textit{Hint:} Compute $\abs{T(u+v)}^2$.]
+\end{enumerate}
+ 
+\noindent Throughout the rest of this problem we assume that $T$ is normal.
+ 
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Assume that $u \in N(T - \lambda I)$ and $v \in N(T - \mu I)$ with $\lambda \neq \mu$. Show
+that $(u,v) = 0$.
+ 
+\noindent[\textit{Hint:} Prove, using question 1, that $N(T^* - \bar\mu I) = N(T - \mu I)$, and compute
+$(Tu, v)$.]
+ 
+\item Prove that $R(T)^\perp = R(T^*)^\perp = N(T^*) = N(T)$.
+ 
+Wait — more carefully: prove that $R(T) = R(T^*)$ and $N(T)^\perp = N(T^*)^\perp$.
+ 
+\item Let $f \in R(T)$. Check that there exists $u \in R(T^*)$ satisfying $f = Tu$.
+ 
+\noindent[\textit{Hint:} Note that $H = R(T^*) \oplus N(T)$.]
+ 
+\item Consider a sequence $u_n \in R(T^*)$ such that $u_n \to u$ as $n \to \infty$. Write
+$u_n = T^* y_n$ for some $y_n \in H$. Show that $T^* y_n$ converges as $n \to \infty$ to a
+limit $z \in H$ that satisfies $Tz = f$.
+ 
+\noindent[\textit{Hint:} Use question 1 and a Cauchy sequence argument.]
+ 
+\item Deduce that $\overline{R(T)} = \overline{R(T^*)}$.
+ 
+\noindent[\textit{Hint:} Use the fact that $N(T) = N(T^*)$.]
+ 
+\item Show that $\norm{T^2} = \norm{T}^2$.
+ 
+\noindent[\textit{Hint:} Write $\abs{Tu}^2 \le \abs{T^*Tu}\,\abs{u} = \abs{T^2u}\,\abs{u}$.]
+ 
+\item Deduce that $\norm{T^p} = \norm{T}^p$ for every integer $p \ge 1$.
+ 
+\noindent[\textit{Hint:} Consider first the case $p = 2^k$. For a general integer $p$, choose any $k$
+such that $2^k \ge p$ and write $\norm{T}^{2^k} = \norm{T^{2^k}} = \norm{T^{2^k - p}T^p}$.]
+ 
+\item Prove that $N(T^2) = N(T)$ and deduce that $N(T^p) = N(T)$ for every integer
+$p \ge 1$.
+ 
+\noindent[\textit{Hint:} Note that if $T^2 u = 0$, then $Tu \in N(T) \cap R(T^*)$.]
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 44} (5, 6)\\[4pt]
+\textit{Isometries and unitary operators. Skew-adjoint operators.
+Polar decomposition and Cayley transform.}
+ 
+\medskip
+ 
+Let $H$ be a Hilbert space identified with its dual space and let $T \in \mathcal{L}(H)$.
+One says that
+\begin{itemize}
+\item[(i)] $T$ is an \emph{isometry} if $\abs{Tu} = \abs{u}$ $\forall\, u \in H$,
+\item[(ii)] $T$ is a \emph{unitary operator} if $T$ is an isometry that is also surjective,
+\item[(iii)] $T$ is \emph{skew-adjoint} (or \emph{antisymmetric}) if $T^* = -T$.
+\end{itemize}
+ 
+\noindent\textbf{Part A.}
+ 
+\begin{enumerate}
+\item Assume that $T$ is an isometry. Check that $\norm{T} = 1$.
+ 
+\item Prove that $T \in \mathcal{L}(H)$ is an isometry iff $T^* \circ T = I$.
+ 
+\item Assume that $T \in \mathcal{L}(H)$ is an isometry. Prove that the following conditions are
+equivalent:
+\begin{itemize}
+    \item[(a)] $T$ is a unitary operator,
+    \item[(b)] $T^*$ is injective,
+    \item[(c)] $T \circ T^* = I$,
+    \item[(d)] $T^*$ is an isometry,
+    \item[(e)] $T^*$ is a unitary operator.
+\end{itemize}
+ 
+\item Give an example of an isometry that is not a unitary operator.
+ 
+\noindent[\textit{Hint:} Use Exercise 6.18.]
+ 
+\item Assume that $T$ is an isometry. Prove that $R(T)$ is closed and that
+$T \circ T^* = P_{R(T)} =$ the orthogonal projection onto $R(T)$.
+ 
+\item Assume that $T$ is an isometry. Prove that
+\begin{itemize}
+    \item[] either $T$ is a unitary operator and then $\sigma(T) \subset \{-1,+1\}$,
+    \item[] or $T$ is not a unitary operator and then $\sigma(T) = [-1,+1]$.
+\end{itemize}
+ 
+\item Assume that $T \in \mathcal{K}(H)$ is an isometry. Show that $\dim H < \infty$.
+ 
+\item Prove that $T \in \mathcal{L}(H)$ is skew-adjoint iff $(Tu, u) = 0$ $\forall\, u \in H$.
+ 
+\item Assume that $T \in \mathcal{L}(H)$ is skew-adjoint. Show that $\sigma(T) \subset \{0\}$.
+ 
+\noindent[\textit{Hint:} Use Lax--Milgram.]
+ 
+\item Assume that $T \in \mathcal{L}(H)$ is skew-adjoint. Set
+\[
+U = (T + I) \circ (T - I)^{-1}.
+\]
+Check that $U$ is well defined, that $U = (T-I)^{-1} \circ (T+I)$, and that
+$U \circ T = T \circ U$. Prove that $U$ is a unitary operator ($U$ is called the
+\emph{Cayley transform} of $T$).
+ 
+\item Conversely, let $T \in \mathcal{L}(H)$ be such that $1 \notin \sigma(T)$. Assume that
+$U = (T+I) \circ (T-I)^{-1}$ is an isometry. Prove that $T$ is skew-adjoint.
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+We will say that an operator $T \in \mathcal{L}(H)$ satisfies property (1) if
+\begin{equation}\tag{1}
+\text{there exists an isometry } J \text{ from } N(T) \text{ into } N(T^*).
+\end{equation}
+The goal of part B is to prove that every operator $T \in \mathcal{L}(H)$ satisfying property (1)
+can be factored as
+\[
+T = U \circ P,
+\]
+where $U \in \mathcal{L}(H)$ is an isometry and $P \in \mathcal{L}(H)$ is a self-adjoint nonnegative
+operator (recall that nonnegative means $(Pu,u) \ge 0$ $\forall\, u \in H$). Such a factorization
+is called a \emph{polar decomposition} of $T$. In addition, $P$ is uniquely determined on $H$,
+and $U$ is uniquely determined on $N(T)^\perp$ (but not on $H$).
+ 
+\begin{enumerate}
+\item Check that assumption (1) is satisfied in the following cases:
+\begin{itemize}
+    \item[(i)] $T$ is injective,
+    \item[(ii)] $\dim H < \infty$,
+    \item[(iii)] $T$ is normal (see Problem 43),
+    \item[(iv)] $T = I - K$ with $K \in \mathcal{K}(H)$.
+\end{itemize}
+ 
+\item Give an example in which (1) is not satisfied.
+ 
+\noindent[\textit{Hint:} Use Exercise 6.18.]
+ 
+\item Assume that we have a polar decomposition $T = U \circ P$. Prove that $P^2 = T^* \circ T$.
+ 
+\item Deduce that $P$ is uniquely determined on $H$.
+ 
+\noindent[\textit{Hint:} Use Problem 39.]
+ 
+\item Let $T = U \circ P$ be a polar decomposition of $T$. Show that $U$ is uniquely
+determined on $N(T)^\perp$.
+ 
+\item Assume that $T$ admits a polar decomposition. Show that (1) holds.
+ 
+\noindent[\textit{Hint:} Set $J = U|_{N(T)}$.]
+ 
+\item Prove that every operator $T \in \mathcal{L}(H)$ satisfying (1) admits a polar decomposition.
+ 
+\item Assume that $T$ satisfies the stronger assumption
+\begin{equation}\tag{2}
+\text{there exists an isometry } J \text{ from } N(T) \text{ onto } N(T^*).
+\end{equation}
+Show that $T$ admits a polar decomposition $T = U \circ P$, where $U$ is a unitary
+operator.
+ 
+\item Deduce that every normal $T \in \mathcal{L}(H)$ admits a polar decomposition $T = U \circ P$
+where $U$ is a unitary operator and $U \circ P = P \circ U$.
+ 
+\item Show that every operator $T \in \mathcal{L}(H)$ satisfying (2) can be factored as
+$T = P' \circ U'$, where $U' \in \mathcal{L}(H)$ is a unitary operator and $P' \in \mathcal{L}(H)$
+is a self-adjoint nonnegative operator.
+ 
+\noindent[\textit{Hint:} Apply question 8 to $T^*$.]
+ 
+\item Show that every operator $T \in \mathcal{K}(H)$ satisfying (1) admits a polar decomposition
+$T = U \circ P$, where $P \in \mathcal{K}(H)$.
+ 
+\item Assume that $H$ is separable and $T \in \mathcal{K}(H)$ (but $T$ does not necessarily satisfy (1)).
+Prove that there exist two orthonormal bases $(e_n)$ and $(f_n)$ of $H$ such that
+\[
+Tu = \sum_{n=1}^\infty \alpha_n (u, e_n) f_n \quad \forall\, u \in H,
+\]
+where $(\alpha_n)$ is a sequence such that $\alpha_n \ge 0$ $\forall\, n$ and $\alpha_n \to 0$ as $n \to \infty$.
+Compute $T^*$. Conversely, show that any operator of this form must be compact.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 45} (8)\\[4pt]
+\textit{Strong maximum principle}
+ 
+\medskip
+ 
+Consider the bilinear form
+\[
+a(u,v) = \int_0^1 p u' v' + \int_0^1 q u v,
+\]
+where $p \in C^1([0,1])$, $p \ge \alpha > 0$ on $(0,1)$, and $q \in C([0,1])$. We assume
+that $a$ is coercive on $H^1_0(0,1)$ (but we make no sign assumption on $q$).
+ 
+Given $f \in L^2(0,1)$, let $u \in H^2(0,1)$ be the solution of
+\begin{equation}\tag{1}
+\begin{cases}
+-(pu')' + qu = f & \text{on } (0,1),\\
+u(0) = u(1) = 0.
+\end{cases}
+\end{equation}
+Assume that $f \ge 0$ a.e.\ on $(0,1)$ and $f \not\equiv 0$. Our goal is to prove that
+\begin{equation}\tag{2}
+u'(0) > 0,\quad u'(1) < 0
+\end{equation}
+and
+\begin{equation}\tag{3}
+u(x) > 0 \quad \forall\, x \in (0,1).
+\end{equation}
+ 
+\begin{enumerate}
+\item Assume that $\psi \in H^1(0,1)$ satisfies
+\begin{equation}\tag{4}
+\begin{cases}
+a(\psi, v) \le 0 & \forall\, v \in H^1_0(0,1),\; v \ge 0 \text{ on } (0,1),\\
+\psi(0) \le 0,\quad \psi(1) \le 0.
+\end{cases}
+\end{equation}
+Prove that $\psi \le 0$ on $(0,1)$.
+ 
+\noindent[\textit{Hint:} Take $v = \psi^+$ in (4) and use Exercise 8.11.]
+ 
+Consider the problem
+\begin{equation}\tag{5}
+\begin{cases}
+-(p\zeta')' + q\zeta = 0 & \text{on } (0,1),\\
+\zeta(0) = 0,\quad \zeta(1) = 1.
+\end{cases}
+\end{equation}
+ 
+\item Show that (5) has a unique solution $\zeta$ and that $\zeta \ge 0$ on $(0,1)$.
+ 
+\item Check that $u \ge 0$ on $(0,1)$ and deduce that $u'(0) \ge 0$ and $u'(1) \le 0$.
+ 
+\item Prove that
+\begin{equation}\tag{6}
+p(1)\abs{u'(1)} = \int_0^1 f\zeta.
+\end{equation}
+[\textit{Hint:} Multiply (1) by $\zeta$ and (5) by $u$.]
+ 
+Set $\varphi(x) = e^{Bx} - 1$, $B > 0$.
+ 
+\item Check that if $B$ is sufficiently large (depending only on $p$ and $q$), then
+\begin{equation}\tag{7}
+-(p\varphi')' + q\varphi \le 0 \quad \text{on } (0,1).
+\end{equation}
+In what follows we fix $B$ such that (7) holds.
+ 
+\item Let $A = (e^B - 1)^{-1}$. Prove that
+\[
+\zeta \ge A\varphi \quad \text{on } (0,1).
+\]
+[\textit{Hint:} Apply question 1 to $\psi = A\varphi - \zeta$.]
+ 
+\item Deduce that $u'(1) < 0$.
+ 
+\noindent[\textit{Hint:} Apply question 4.]
+ 
+\item Check that $u'(0) > 0$.
+ 
+\noindent[\textit{Hint:} Change $t$ into $(1-t)$.]
+ 
+\item Fix $\delta \in (0, \tfrac{1}{2})$ so small that
+\[
+\frac{u(x)}{x} \ge \tfrac{1}{2}u'(0) \quad \forall\, x \in (0,\delta)
+\quad \text{and} \quad
+\frac{u(x)}{1-x} \ge \tfrac{1}{2}\abs{u'(1)} \quad \forall\, x \in (1-\delta, 1).
+\]
+Why does such $\delta$ exist? Let $v$ be the solution of the problem
+\[
+\begin{cases}
+-(pv')' + qv = 0 & \text{on } (\delta, 1-\delta),\\
+v(\delta) = v(1-\delta) = \gamma,
+\end{cases}
+\]
+where
+\[
+\gamma = \frac{\delta}{2}\min\{u'(0),\, \abs{u'(1)}\}.
+\]
+Show that $u \ge v \ge 0$ on $(\delta, 1-\delta)$.
+ 
+\item Prove that $v > 0$ on $(\delta, 1-\delta)$.
+ 
+\noindent[\textit{Hint:} Assume by contradiction that $v(x_0) = 0$ for some $x_0 \in (\delta, 1-\delta)$,
+and apply Theorem 7.3 (Cauchy--Lipschitz--Picard) as in Exercise 8.33.]
+ 
+\item Deduce that $u(x) > 0$ $\forall\, x \in (0,1)$.
+ 
+Finally, we present a sharper form of the strong maximum principle.
+ 
+\item Prove that there is a constant $a > 0$ (depending only on $p$ and $q$) such that
+\[
+u(x) \ge a\,x(1-x)\int_0^1 f(t)\,t(1-t)\,dt.
+\]
+[\textit{Hint:} Start with the case where $p \equiv 1$ and $q \equiv k^2$ is a positive constant;
+use an explicit solution of (1). Next, consider the case where $p \equiv 1$ and no
+further assumption is made on $q$. Finally, reduce the general case to the previous
+situation, using a change of variable.]
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 46} (8)\\[4pt]
+\textit{The method of subsolutions and supersolutions}
+ 
+\medskip
+ 
+Let $h(t) : [0,+\infty) \to [0,+\infty)$ be a continuous nondecreasing function.
+Assume that there exist two functions $v, w \in C^2([0,1])$ satisfying
+\begin{equation}\tag{1}
+\begin{cases}
+0 \le v \le w \text{ on } I = (0,1),\\
+-v'' + v \le h(v) \text{ on } I,\quad v(0) = v(1) = 0,\\
+-w'' + w \ge h(w) \text{ on } I,\quad w(0) \ge 0,\; w(1) \ge 0
+\end{cases}
+\end{equation}
+($v$ is called a \emph{subsolution} and $w$ a \emph{supersolution}). The goal is to prove that there
+exists a solution $u \in C^2([0,1])$ of the problem
+\begin{equation}\tag{2}
+\begin{cases}
+-u'' + u = h(u) \text{ on } I,\\
+u(0) = u(1) = 0,\\
+v \le u \le w \text{ on } I.
+\end{cases}
+\end{equation}
+Consider the sequence $(u_n)_{n \ge 1}$ defined inductively by
+\begin{equation}\tag{3}
+\begin{cases}
+-u_n'' + u_n = h(u_{n-1}) \text{ on } I,\quad n \ge 1,\\
+u_n(0) = u_n(1) = 0,
+\end{cases}
+\end{equation}
+starting from $u_0 = w$.
+ 
+\begin{enumerate}
+\item Show that $v \le u_1 \le w$ on $I$.
+ 
+\noindent[\textit{Hint:} Apply the maximum principle to $(u_1 - w)$ and to $(u_1 - v)$.]
+ 
+\item Prove by induction that for every $n \ge 1$,
+\[
+v \le u_n \text{ on } I \quad \text{and} \quad u_{n+1} \le u_n \text{ on } I.
+\]
+ 
+\item Deduce that the sequence $(u_n)$ converges in $L^2(I)$ to a limit $u$ and that
+$h(u_n) \to h(u)$ in $L^2(I)$.
+ 
+\item Show that $u \in H^1_0(I)$, and that
+\[
+\int_0^1 u'\varphi' + \int_0^1 u\varphi = \int_0^1 h(u)\varphi \quad \forall\, \varphi \in H^1_0(I).
+\]
+ 
+\item Conclude that $u \in C^2([0,1])$ is a classical solution of (2).
+\end{enumerate}
+ 
+\noindent In what follows we choose $h(t) = t^\alpha$, where $0 < \alpha < 1$. The goal is to prove
+that there exists a unique function $u \in C^2([0,1])$ satisfying
+\begin{equation}\tag{4}
+\begin{cases}
+-u'' + u = u^\alpha \text{ on } I,\\
+u(0) = u(1) = 0,\\
+u(x) > 0 \quad \forall\, x \in I.
+\end{cases}
+\end{equation}
+ 
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item Let $v(x) = \varepsilon\sin(\pi x)$ and $w(x) \equiv 1$. Show that if $\varepsilon$ is sufficiently small,
+assumption (1) is satisfied. Deduce that there exists a solution of (4).
+ 
+We now turn to the question of uniqueness. Let $u$ be the solution of (4)
+obtained by the above method, starting with $u_0 \equiv 1$. Let $\tilde{u} \in C^2([0,1])$
+be another solution of (4).
+ 
+\item Show that $\tilde{u} \le 1$ on $I$.
+ 
+\noindent[\textit{Hint:} Consider a point $x_0 \in [0,1]$ where $\tilde{u}$ achieves its maximum.]
+ 
+\item Prove that the sequence $(u_n)_{n \ge 1}$ defined by (3), starting with $u_0 \equiv 1$,
+satisfies $\tilde{u} \le u_n$ on $I$, and deduce that $\tilde{u} \le u$ on $I$.
+ 
+\item Show that
+\[
+\int_0^1 (\tilde{u}^\alpha u - u^\alpha \tilde{u}) = 0.
+\]
+ 
+\item Conclude that $\tilde{u} = u$ on $I$.
+ 
+\noindent[\textit{Hint:} Write $\tilde{u}^\alpha u - u^\alpha \tilde{u} = u\tilde{u}(\tilde{u}^{\alpha-1} - u^{\alpha-1})$ and note that
+$u^{\alpha-1} \le \tilde{u}^{\alpha-1}$.]
+\end{enumerate}
+ 
+\noindent We now present an alternative proof of existence. Set, for every $u \in H^1_0(I)$,
+\[
+F(u) = \frac{1}{2}\int_0^1 (u'^2 + u^2) - \int_0^1 g(u),
+\]
+where $g(t) = \dfrac{1}{\alpha+1}(t^+)^{\alpha+1}$, $0 < \alpha < 1$, and $t^+ = \max(t,0)$.
+ 
+\begin{enumerate}
+\setcounter{enumi}{10}
+\item Prove that there exists a constant $C$ such that
+\[
+F(u) \ge \tfrac{1}{2}\norm{u}_{H^1}^2 - C\norm{u}_{H^1}^{\alpha+1} \quad \forall\, u \in H^1_0(I).
+\]
+ 
+\item Deduce that
+\[
+m = \inf_{v \in H^1_0(I)} F(v) > -\infty,
+\]
+and that the infimum is achieved.
+ 
+\noindent[\textit{Hint:} Let $(u_n)$ be a minimizing sequence. Check that a subsequence $(u_{n_k})$
+converges weakly in $H^1_0(I)$ to a limit $u$ and that $\int_0^1 g(u_{n_k}) \to \int_0^1 g(u)$.
+The reader is warned that the functional $F$ is not convex; why?]
+ 
+\item Show that $m < 0$.
+ 
+\noindent[\textit{Hint:} Prove that $F(\varepsilon v) < 0$ for all $v \in H^1_0(I)$ such that $v^+ \not\equiv 0$
+and for all $\varepsilon$ sufficiently small.]
+ 
+\item Check that
+\[
+g(b) - g(a) \ge (a^+)^\alpha (b-a) \quad \forall\, a, b \in \R.
+\]
+ 
+\item Let $u \in H^1_0(I)$ be a minimizer of $F$ on $H^1_0(I)$. Prove that
+\[
+\int_0^1 (u'v' + uv) = \int_0^1 (u^+)^\alpha v \quad \forall\, v \in H^1_0(I).
+\]
+[\textit{Hint:} Write that $F(u) \le F(u + tv)$, apply question 14, and let $t \to 0$.]
+ 
+\item Deduce that $u \in C^2([0,1])$ is a solution of
+\begin{equation}\tag{5}
+\begin{cases}
+-u'' + u = (u^+)^\alpha \text{ on } I,\\
+u(0) = u(1) = 0.
+\end{cases}
+\end{equation}
+Prove that $u \ge 0$ on $I$ and $u \not\equiv 0$.
+ 
+\item Conclude that $u > 0$ on $I$ using the strong maximum principle (see Problem 45).
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 47} (8)\\[4pt]
+\textit{Poincar\'e--Wirtinger's inequalities}
+ 
+\medskip
+ 
+Let $I = (0,1)$.
+ 
+\medskip
+ 
+\noindent\textbf{Part A.}
+ 
+\begin{enumerate}
+\item Prove that
+\begin{equation}\tag{1}
+\norm{u - \bar{u}}_{L^\infty(I)} \le \norm{u'}_{L^1(I)} \quad \forall\, u \in W^{1,1}(I),
+\quad \text{where } \bar{u} = \int_I u.
+\end{equation}
+[\textit{Hint:} Note that $\bar{u} = u(x_0)$ for some $x_0 \in [0,1]$.]
+ 
+\item Show that the constant $1$ in (1) is optimal, i.e.,
+\begin{equation}\tag{2}
+\sup\{\norm{u - \bar{u}}_{L^\infty(I)};\; u \in W^{1,1}(I),\text{ and } \norm{u'}_{L^1(I)} = 1\} = 1.
+\end{equation}
+[\textit{Hint:} Consider a sequence $(u_n)$ of smooth functions on $[0,1]$ such that
+$u_n' \ge 0$ on $(0,1)$ $\forall\, n$, $u_n(1) = 1$ $\forall\, n$, $u_n(x) = 0$ $\forall\, x \in [0,1-\tfrac{1}{n}]$, $\forall\, n$.]
+ 
+\item Prove that the sup in (2) is not achieved, i.e., there exists no function
+$u \in W^{1,1}(I)$ such that
+\[
+\norm{u - \bar{u}}_{L^\infty(I)} = 1 \quad \text{and} \quad \norm{u'}_{L^1(I)} = 1.
+\]
+ 
+\item Prove that
+\begin{equation}\tag{3}
+\norm{u}_{L^\infty(I)} \le \tfrac{1}{2}\norm{u'}_{L^1(I)} \quad \forall\, u \in W^{1,1}_0(I).
+\end{equation}
+[\textit{Hint:} Write that $\abs{u(x) - u(0)} \le \int_0^x \abs{u'(t)}\,dt$ and
+$\abs{u(x) - u(1)} \le \int_x^1 \abs{u'(t)}\,dt$.]
+ 
+\item Show that $\tfrac{1}{2}$ is the best constant in (3). Is it achieved?
+ 
+\noindent[\textit{Hint:} Fix $a \in (0,1)$ and consider a function $u \in W^{1,1}_0(I)$ increasing on
+$(0,a)$, decreasing on $(a,1)$, with $u(a) = 1$.]
+ 
+\item Deduce that the following inequalities hold:
+\begin{align}
+\norm{u - \bar{u}}_{L^q(I)} &\le C\norm{u'}_{L^p(I)} \quad \forall\, u \in W^{1,p}(I), \tag{4}\\
+\norm{u}_{L^q(I)} &\le C\norm{u'}_{L^p(I)} \quad \forall\, u \in W^{1,p}_0(I), \tag{5}
+\end{align}
+with $1 \le q \le \infty$ and $1 \le p \le \infty$.
+ 
+Prove that the best constants in (4) and (5) are achieved when $1 \le q \le \infty$
+and $1 < p \le \infty$.
+ 
+\noindent[\textit{Hint:} Minimize $\norm{u'}_{L^p(I)}$ in the class $u \in W^{1,p}(I)$ such that
+$\norm{u - \bar{u}}_{L^q(I)} = 1$, resp.\ $u \in W^{1,p}_0(I)$ and $\norm{u}_{L^q(I)} = 1$.]
+\end{enumerate}
+ 
+\noindent\textbf{Part B.}\\
+The next goal is to find the best constant in (4) when $p = q = 2$, i.e.,
+\begin{equation}\tag{6}
+\norm{u - \bar{u}}_{L^2(I)} \le C\norm{u'}_{L^2(I)} \quad \forall\, u \in H^1(I).
+\end{equation}
+Set $H = \{f \in L^2(I);\; \int_I f = 0\}$ and $V = \{v \in H^1(I);\; \int_I v = 0\}$.
+ 
+\begin{enumerate}
+\item Check that for every $f \in H$ there exists a unique $u \in V$ such that
+\[
+\int_I u'v' = \int_I fv \quad \forall\, v \in V.
+\]
+ 
+\item Prove that $u \in H^2(I)$ and satisfies
+\[
+\begin{cases}
+-u'' = f & \text{a.e. on } I,\\
+u'(0) = u'(1) = 0.
+\end{cases}
+\]
+ 
+\item Show that the operator $T : H \to H$ defined by $Tf = u$ is self-adjoint,
+compact, and that $\int_I f\,Tf \ge 0$ $\forall\, f \in H$.
+ 
+\item Let $\lambda_1$ be the largest eigenvalue of $T$. Prove that (6) holds with $C = \sqrt{\lambda_1}$
+and that $\sqrt{\lambda_1}$ is the best constant in (6).
+ 
+\noindent[\textit{Hint:} Use Exercise 6.24.]
+ 
+\item Compute explicitly the best constant in (6).
+\end{enumerate}
+ 
+\noindent\textbf{Part C.}
+ 
+\begin{enumerate}
+\item Prove that
+\begin{equation}\tag{7}
+\norm{u - \bar{u}}_{L^1(I)} \le 2\int_I \abs{u'(t)}\,t(1-t)\,dt \quad \forall\, u \in W^{1,1}(I).
+\end{equation}
+ 
+\item Deduce that
+\begin{equation}\tag{8}
+\norm{u - \bar{u}}_{L^1(I)} \le \tfrac{1}{2}\norm{u'}_{L^1(I)} \quad \forall\, u \in W^{1,1}(I).
+\end{equation}
+ 
+\item Show that the constant $1/2$ in (8) is optimal, i.e.,
+\begin{equation}\tag{9}
+\sup\{\norm{u - \bar{u}}_{L^1(I)};\; u \in W^{1,1}(I),\text{ and } \norm{u'}_{L^1(I)} = 1\} = \tfrac{1}{2}.
+\end{equation}
+ 
+\item Is the sup in (9) achieved?
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 48} (8)\\[4pt]
+\textit{A nonlinear problem}
+ 
+\medskip
+ 
+Let $j : [-1,+1] \to [0,+\infty)$ be a continuous convex function such that
+$j \in C^2((-1,+1))$, $j(0) = 0$, $j'(0) = 0$, and
+\[
+\lim_{t \uparrow +1} j'(t) = +\infty, \qquad \lim_{t \downarrow -1} j'(t) = -\infty.
+\]
+(A good example to keep in mind is $j(t) = 1 - \sqrt{1-t^2}$, $t \in [-1,+1]$.)
+Given $f \in L^2(0,1)$, define the function $\varphi : H^1_0(0,1) \to (-\infty,+\infty]$ by
+\[
+\varphi(v) =
+\begin{cases}
+\dfrac{1}{2}\displaystyle\int_0^1 v'^2 + \int_0^1 j(v) - \int_0^1 fv
+& \text{if } v \in H^1_0(0,1) \text{ and } \norm{v}_{L^\infty} \le 1,\\[8pt]
++\infty & \text{otherwise.}
+\end{cases}
+\]
+ 
+\begin{enumerate}
+\item Check that $\varphi$ is convex l.s.c.\ on $H^1_0(0,1)$ and that
+$\lim_{\norm{v}_{H^1_0} \to +\infty} \varphi(v) = +\infty$.
+ 
+\item Deduce that there exists a unique $u \in H^1_0(0,1)$ such that
+\[
+\varphi(u) = \min_{v \in H^1(0,1)} \varphi(v).
+\]
+\end{enumerate}
+ 
+\noindent The goal is to prove that if $f \in L^\infty(0,1)$ then $\norm{u}_{L^\infty(0,1)} < 1$,
+$u \in H^2(0,1)$, and $u$ satisfies
+\begin{equation}\tag{1}
+\begin{cases}
+-u'' + j'(u) = f & \text{on } (0,1),\\
+u(0) = u(1) = 0.
+\end{cases}
+\end{equation}
+ 
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Check that
+\[
+j(t) - j(a) \ge j'(a)(t-a) \quad \forall\, t \in [-1,+1],\; \forall\, a \in (-1,+1).
+\]
+[\textit{Hint:} Use the convexity of $j$.]
+ 
+Fix $a \in [0,1)$.
+ 
+\item Set $v = \min(u, a)$. Prove that $v \in H^1_0(0,1)$ and that
+\[
+v' =
+\begin{cases}
+u' & \text{a.e. on } [u \le a],\\
+0 & \text{a.e. on } [u > a].
+\end{cases}
+\]
+[\textit{Hint:} Write $v = a - (a-u)^+$ and use Exercise 8.11.]
+ 
+\item Prove that
+\[
+\frac{1}{2}\int_{[u>a]} u'^2 \le \int_{[u>a]} (f - j'(a))(u-a).
+\]
+[\textit{Hint:} Write that $\varphi(u) \le \varphi(v)$, where $v$ is defined in question 4. Then
+use question 3.]
+ 
+\item Choose $a \in [0,1)$ such that $f(x) \le j'(a)$ $\forall\, x \in [0,1]$ and prove that
+$u(x) \le a$ $\forall\, x \in [0,1]$.
+ 
+\noindent[\textit{Hint:} Show that $\int_0^1 w'^2 = 0$, where $w = (u-a)^+$ belongs to $H^1_0(0,1)$; why?]
+ 
+\item Conclude that $\norm{u}_{L^\infty(0,1)} < 1$.
+ 
+\noindent[\textit{Hint:} Apply the previous argument, replacing $u$ by $-u$, $j(t)$ by $j(-t)$, and
+$f$ by $-f$.]
+ 
+\item Deduce that $u$ belongs to $H^2(0,1)$ and satisfies (1).
+ 
+\noindent[\textit{Hint:} Write that $\varphi(u) \le \varphi(u + \varepsilon v)$ with $v \in H^1_0(0,1)$ and $\varepsilon$ small.]
+ 
+\item Check that $u \in C^2([0,1])$ if $f \in C([0,1])$.
+ 
+\item Conversely, show that any function $u \in C^2([0,1])$ such that $\norm{u}_{L^\infty(0,1)} < 1$,
+and satisfying (1), is a minimizer of $\varphi$ on $H^1_0(0,1)$.
+ 
+\noindent[\textit{Hint:} Use question 3 with $t = v(x)$ and $a = u(x)$.]
+\end{enumerate}
+ 
+\noindent Assume now that $f \in L^2(0,1)$. Set $f_n = T_n f$, where $T_n$ is the truncation
+operation (defined in Chapter 4 after Theorem 4.12). Let $u_n$ be the solution of (1)
+corresponding to $f_n$.
+ 
+\begin{enumerate}
+\setcounter{enumi}{10}
+\item Prove that $\norm{j'(u_n)}_{L^2(0,1)} \le C$ as $n \to \infty$.
+ 
+\noindent[\textit{Hint:} Multiply (1) by $j'(u_n)$.]
+ 
+\item Deduce that $\norm{u_n}_{H^2(0,1)} \le C$.
+ 
+\item Show that a subsequence $(u_{n_k})$ converges weakly in $H^2(0,1)$ to a limit
+$u \in H^2(0,1)$ with $u_{n_k} \to u$ in $C^1([0,1])$. Prove that $\abs{u(x)} < 1$
+a.e.\ on $(0,1)$, and $j'(u) \in L^2(0,1)$.
+ 
+\noindent[\textit{Hint:} Apply Fatou's lemma to the sequence $j'(u_{n_k})^2$.]
+ 
+\item Show that $j'(u_{n_k})$ converges weakly in $L^2(0,1)$ to $j'(u)$ and deduce
+that (1) holds.
+ 
+\noindent[\textit{Hint:} Apply Exercise 4.16.]
+ 
+\item Deduce that $\norm{u}_{L^\infty(0,1)} < 1$ if one assumes, in addition, that
+\[
+\liminf_{t \uparrow 1} j'(t)(1-t)^{1/3} > 0 \quad \text{and} \quad
+\limsup_{t \downarrow -1} j'(t)(1+t)^{1/3} < 0.
+\]
+[\textit{Hint:} Assume, by contradiction, that $u(x_0) = 1$ for some $x_0 \in (0,1)$.
+Check that $\abs{u'(x)} \le \abs{x - x_0}^{1/2}\norm{u''}_{L^2}$ $\forall\, x \in (0,1)$
+and $\abs{u(x) - 1| \le \tfrac{2}{3}\abs{x - x_0}^{3/2}\norm{u''}_{L^2}}$ $\forall\, x \in (0,1)$.
+Deduce that $j'(u) \notin L^2(0,1)$.]
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 49} (8)\\[4pt]
+\textit{Min--max principles for the eigenvalues of Sturm--Liouville operators}
+ 
+\medskip
+ 
+Consider the Sturm--Liouville operator $Au = -(pu')' + qu$ on $(0,1)$ with Dirichlet
+boundary condition $u(0) = u(1) = 0$. Assume that $p \in C^1([0,1])$, $p(x) \ge \alpha > 0$
+$\forall\, x \in [0,1]$, and $q \in C([0,1])$. Set
+\[
+a(u,v) = \int_0^1 (pu'v' + quv) \quad \forall\, u, v \in H^1_0(0,1).
+\]
+Note that we make no further assumption on $q$, so that the bilinear form $a$ need not
+be coercive. Fix $M$ sufficiently large that $\tilde{a}(u,v) = a(u,v) + M\int_0^1 uv$ is
+coercive (e.g., $M > -\min_{x \in [0,1]} q(x)$). Let $(\lambda_k)$ be the sequence of eigenvalues of $A$.
+The space $H = H^1_0(0,1)$ is equipped with the scalar product $\tilde{a}(u,v)$, now denoted by
+$(u,v)_H$, and the corresponding norm $\abs{u}_H = \tilde{a}(u,u)^{1/2}$. Given any $f \in L^2(0,1)$,
+let $u \in H^1_0(0,1)$ be the unique solution of the problem
+\[
+\tilde{a}(u,v) = \int_0^1 fv \quad \forall\, v \in H^1_0(0,1).
+\]
+Set $u = Tf$ and consider $T$ as an operator from $H$ into itself.
+ 
+\begin{enumerate}
+\item Show that $T$ is self-adjoint and compact.
+ 
+\noindent[\textit{Hint:} Recall that the identity map from $H$ into $L^2(0,1)$ is compact.]
+ 
+\item Let $(\lambda_k)$ be the sequence of eigenvalues of $A$ (in the sense of Theorem 8.22)
+with corresponding eigenfunctions $(e_k)$, and let $(\mu_k)$ be the sequence of
+eigenvalues of $T$. Check that $\mu_k > 0$ $\forall\, k$ and show that
+\[
+\lambda_k = \frac{1}{\mu_k} - M \quad \forall\, k \quad \text{and} \quad T(e_k) = \mu_k e_k \quad \forall\, k.
+\]
+ 
+\item Prove that
+\[
+(Tw, w)_H = \int_0^1 w^2 \quad \forall\, w \in H,
+\]
+and deduce that
+\[
+\frac{1}{R(w)} = \frac{a(w,w)}{\displaystyle\int_0^1 w^2} + M \quad \forall\, w \in H,\; w \neq 0,
+\]
+where $R$ is the Rayleigh quotient associated with $T$, i.e.,
+$R(w) = \dfrac{(Tw,w)_H}{\abs{w}_H^2}$ (see Problem 37).
+ 
+\item Prove that
+\begin{equation}\tag{1}
+\lambda_1 = \min_{\substack{w \in H^1_0 \\ w \neq 0}} \frac{a(w,w)}{\displaystyle\int_0^1 w^2},
+\end{equation}
+and $\forall\, k \ge 2$,
+\[
+\lambda_k = \min\left\{\frac{a(w,w)}{\displaystyle\int_0^1 w^2};\; w \in H^1_0(0,1),\; w \neq 0
+\text{ and } \int_0^1 we_j = 0\;\; \forall\, j = 1,2,\ldots,k-1\right\}.
+\]
+[\textit{Hint:} Apply question 2 in Problem 37 and show that $(w,e_j)_H = 0$ iff
+$\int_0^1 we_j = 0$.]
+ 
+\item Prove that $\forall\, k \ge 1$,
+\[
+\lambda_k = \min_{\substack{\Sigma \subset H^1_0(0,1) \\ \dim\Sigma = k}}
+\max_{\substack{u \in \Sigma \\ u \neq 0}} \frac{a(u,u)}{\displaystyle\int_0^1 u^2},
+\]
+and
+\[
+\lambda_k = \max_{\substack{\Sigma' \subset H^1_0(0,1) \\ \operatorname{codim}\Sigma' = k-1}}
+\min_{\substack{u \in \Sigma' \\ u \neq 0}} \frac{a(u,u)}{\displaystyle\int_0^1 u^2},
+\]
+where $\Sigma$ and $\Sigma'$ are closed subspaces of $H^1_0(0,1)$.
+ 
+\noindent[\textit{Hint:} Apply question 7 in Problem 37.]
+ 
+\item Prove similar results for the Sturm--Liouville operator with Neumann boundary
+conditions.
+ 
+We now return to formula (1) and discuss further properties of the eigenfunctions
+corresponding to the first eigenvalue $\lambda_1$. In particular, we will see that there is
+a positive eigenfunction generating the eigenspace associated to $\lambda_1$.
+ 
+\item Let $w_0 \in H^1_0(0,1)$ be a minimizer of (1) such that $\int_0^1 w_0^2 = 1$. Show that
+\[
+Aw_0 = \lambda_1 w_0 \quad \text{on } (0,1).
+\]
+ 
+\item Set $w_1 = \abs{w_0}$. Check that $w_1$ is also a minimizer of (1) and deduce that
+\begin{equation}\tag{2}
+Aw_1 = \lambda_1 w_1 \quad \text{on } (0,1).
+\end{equation}
+[\textit{Hint:} Use Exercise 8.11.]
+ 
+\item Prove that $w_1 > 0$ on $(0,1)$, $w_1'(0) > 0$, and $w_1'(1) < 0$.
+ 
+\noindent[\textit{Hint:} Apply the strong maximum principle to the operator $A + M$; see Problem 45.]
+ 
+\item Assume that $w \in H^1_0(0,1)$ satisfies $Aw = \lambda_1 w$ on $(0,1)$.
+Prove that $w$ is a multiple of $w_1$.
+ 
+\noindent[\textit{Hint:} Recall that eigenvalues are simple; see Exercise 8.33. Find another proof
+that does not rely on the simplicity of eigenvalues; use $w^2/w_1$ as test function in (2).]
+ 
+\item Show that any function $\psi \in H^1_0(0,1)$ satisfying
+\[
+A\psi = \mu\psi \text{ on } (0,1),\quad \psi \ge 0 \text{ on } (0,1), \quad \text{and} \quad \int_0^1 \psi^2 = 1,
+\]
+for some $\mu \in \R$, must coincide with $w_1$.
+ 
+\noindent[\textit{Hint:} If $\mu \neq \lambda_1$, check that $\int_0^1 \psi w_1 = 0$. Deduce that $\mu = \lambda_1$.]
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 50} (8)\\[4pt]
+\textit{Another nonlinear problem}
+ 
+\medskip
+ 
+Let $q \in C([0,1])$ and consider the bilinear form
+\[
+a(u,v) = \int_0^1 (u'v' + quv), \quad u, v \in H^1_0(0,1).
+\]
+Assume that there exists $v_1 \in H^1_0(0,1)$ such that
+\begin{equation}\tag{1}
+a(v_1, v_1) < 0.
+\end{equation}
+ 
+\begin{enumerate}
+\item Check that assumption (1) is equivalent to
+\begin{equation}\tag{2}
+\lambda_1(A) < 0,
+\end{equation}
+where $\lambda_1(A)$ is the first eigenvalue of the operator $Au = -u'' + qu$ with zero
+Dirichlet condition.
+ 
+\item Verify that
+\begin{equation}\tag{3}
+-\infty < m = \inf_{u \in H^1_0(0,1)} \left\{\frac{1}{2}a(u,u) + \frac{1}{4}\int_0^1 \abs{u}^4\right\} < 0.
+\end{equation}
+[\textit{Hint:} Use $u = \varepsilon v_1$ with $\varepsilon > 0$ sufficiently small.]
+ 
+\item Prove that the inf in (3) is achieved by some $u_0$.
+ 
+\noindent[\textit{Warning:} The functional in (3) is not convex; why?]
+ 
+Our goal is to prove that (3) admits precisely two minimizers.
+ 
+\item Prove that $u_0$ belongs to $C^2([0,1])$ and satisfies
+\begin{equation}\tag{4}
+\begin{cases}
+-u'' + qu + u^3 = 0 & \text{on } (0,1),\\
+u(0) = u(1) = 0.
+\end{cases}
+\end{equation}
+ 
+\item Set $u_1 = \abs{u_0}$. Show that $u_1$ is also a minimizer for (3). Deduce that $u_1$
+satisfies (4).
+ 
+\noindent[\textit{Hint:} Apply Exercise 8.11.]
+ 
+\item Prove that $u_1(x) > 0$ $\forall\, x \in (0,1)$, $u_1'(0) > 0$, and $u_1'(1) < 0$.
+ 
+\noindent[\textit{Hint:} Choose a constant $a$ so large that $-u_1'' + a^2 u_1 = f \ge 0$, $f \not\equiv 0$.
+Then use the strong maximum principle.]
+ 
+\item Let $u_0 \in H^1_0(0,1)$ be again any minimizer in (3). Prove that either
+$u_0(x) > 0$ $\forall\, x \in (0,1)$, or $u_0(x) < 0$ $\forall\, x \in (0,1)$.
+ 
+\noindent[\textit{Hint:} Check that $\abs{u_0(x)} > 0$ $\forall\, x \in (0,1)$.]
+ 
+\item Let $U_1$ be any solution of (4) satisfying $U_1 \ge 0$ on $[0,1]$, and $U_1 \not\equiv 0$.
+Set $\rho_1 = U_1^2$. Consider the functional
+\[
+\mathcal{E}(\rho) = \int_0^1 \left[\abs{(\sqrt{\rho})'}^2 + q\rho + \frac{1}{2}\rho^2\right]
+\]
+defined on the set
+\[
+K = \left\{\rho \in H^1_0(0,1);\; \rho \ge 0 \text{ on } (0,1) \text{ and } \sqrt{\rho} \in H^1_0(0,1)\right\}.
+\]
+Prove that
+\begin{equation}\tag{5}
+\mathcal{E}(\rho) - \mathcal{E}(\rho_1) \ge \frac{1}{2}\int_0^1 (\rho - \rho_1)^2 \quad \forall\, \rho \in K.
+\end{equation}
+[\textit{Hint:} Let $u \in C^1_c((0,1))$. Note that
+\[
+\frac{2U_1' u u'}{U_1} \le u'^2 + \frac{U_1'^2 u^2}{U_1^2} \quad \text{on } (0,1),
+\]
+and deduce (using integration by parts) that
+\[
+\int_0^1 (u'^2 - U_1'^2) \ge -\int_0^1 \frac{U_1''}{U_1}(u^2 - U_1^2) \quad \forall\, u \in H^1_0(0,1).
+\]
+Then apply equation (4) to establish (5).]
+ 
+\item Deduce that there exists exactly one nontrivial solution $u$ of (4) such that
+$u \ge 0$ on $[0,1]$. Denote it by $U_0$.
+ 
+\noindent[\textit{Comment:} There exist in general many sign-changing solutions of (4).]
+ 
+\item Prove that there exist exactly two minimizers for (3): $U_0$ and $-U_0$.
+\end{enumerate}
+ 
+\bigskip
+ 
+%------------------------------------------------------------
+\noindent\textbf{PROBLEM 51} (8)\\[4pt]
+\textit{Harmonic oscillator. Hermite polynomials.}
+ 
+\medskip
+ 
+Let $p \in C(\R)$ be such that $p \ge 0$ on $\R$. Consider the space
+\[
+V = \left\{v \in H^1(\R);\; \int_{-\infty}^{+\infty} pv^2 < \infty\right\}
+\]
+equipped with the scalar product
+\[
+(u,v)_V = \int_{-\infty}^{+\infty} (u'v' + uv + puv),
+\]
+and the corresponding norm $\abs{u}_V = (u,u)_V^{1/2}$.
+ 
+\begin{enumerate}
+\item Check that $V$ is a separable Hilbert space.
+ 
+\item Show that $C^\infty_c(\R)$ is dense in $V$.
+ 
+\noindent[\textit{Hint:} Let $\zeta_n$ be a sequence of cut-off functions as in the proof of Theorem 8.7.
+Given $u \in V$, consider $\zeta_n u$ and then use convolution.]
+\end{enumerate}
+ 
+\noindent Consider the bilinear form
+\[
+a(u,v) = \int_{-\infty}^{+\infty} u'v' + puv, \quad u, v \in V.
+\]
+In what follows we assume that there exist constants $\delta > 0$ and $A > 0$ such that
+\begin{equation}\tag{1}
+p(x) \ge \delta \quad \forall\, x \in \R \text{ with } \abs{x} \ge A.
+\end{equation}
+ 
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Prove that $a$ is coercive on $V$. Deduce that for every $f \in L^2(\R)$ there exists
+a unique solution $u \in V$ of the problem
+\begin{equation}\tag{2}
+a(u,v) = \int_{-\infty}^{+\infty} fv \quad \forall\, v \in V.
+\end{equation}
+ 
+\item Assuming that $f \in L^2(\R) \cap C(\R)$, show that $u$ satisfies
+\begin{equation}\tag{3}
+\begin{cases}
+u \in C^2(\R),\\
+-u'' + pu = f \quad \text{on } \R,\\
+u(x) \to 0 \quad \text{as } \abs{x} \to \infty.
+\end{cases}
+\end{equation}
+ 
+\item Conversely, prove that any solution $u$ of (3) belongs to $V$ and satisfies (2).
+ 
+\noindent[\textit{Hint:} Multiply the equation $-u'' + pu = f$ by $\zeta_n^2 u$ and use the fact that
+$a$ is coercive.]
+\end{enumerate}
+ 
+\noindent In what follows we assume that
+\begin{equation}\tag{4}
+\lim_{\abs{x}\to\infty} p(x) = +\infty.
+\end{equation}
+ 
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item Given $f \in L^2(\R)$, set $u = Tf$, where $u$ is the solution of (2). Prove that
+$T : L^2(\R) \to L^2(\R)$ is self-adjoint and compact.
+ 
+\noindent[\textit{Hint:} Using Corollary 4.27 check that $V \subset L^2(\R)$ with compact injection.]
+ 
+\item Deduce that there exist a sequence $(\lambda_n)$ of positive numbers with $\lambda_n \to \infty$
+as $n \to \infty$, and a Hilbert basis $(e_n)$ of $L^2(\R)$ satisfying
+\begin{equation}\tag{5}
+\begin{cases}
+e_n \in V \cap C^2(\R),\\
+-e_n'' + pe_n = \lambda_n e_n \quad \text{on } \R.
+\end{cases}
+\end{equation}
+\end{enumerate}
+ 
+\noindent In what follows we take $p(x) = x^2$.
+ 
+\begin{enumerate}
+\setcounter{enumi}{7}
+\item Check that (5) admits a solution of the form $e_n(x) = e^{-x^2/2}P_n(x)$, where
+$\lambda_n = (2n+1)$ and $P_n(x)$ is a polynomial of degree $n$.
+\end{enumerate}
 
 \end{document}
