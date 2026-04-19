@@ -1,0 +1,405 @@
+\documentclass{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{natbib}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\ip}[2]{\langle #1, #2 \rangle}
+\newcommand{\ext}{\operatorname{ext}}
+\newcommand{\co}{\operatorname{co}}
+
+\title{Extreme Points and the Krein--Milman Theorem\\
+Notes on Brezis Problem 1}
+
+\author{Nam Le}
+\address{Department of Computer Science,
+    Faculty of Information Technology, University of Science, Vietnam National University,
+    227 Nguyen Van Cu Street, Cho Quan Ward, Ho Chi Minh City}
+\email{lnnam@hcmus.edu.vn}
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+We organize a complete solution to Problem~1 from Brezis' \emph{Functional Analysis,
+Sobolev Spaces and Partial Differential Equations}. The argument is arranged as a short
+expository note: we begin with elementary characterizations of extreme points, prove that
+every nonempty extreme subset of a compact convex set contains an extreme point, derive the
+Krein--Milman theorem, and conclude with explicit descriptions of the extreme points of the
+closed unit ball in several classical Banach spaces.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+The Krein--Milman theorem is one of the structural results at the heart of convexity in
+functional analysis: a compact convex set in a locally convex setting is generated, after
+taking closed convex hulls, by its extreme points. Problem~1 in Brezis' text isolates the
+main ideas behind this theorem and turns them into a sequence of manageable lemmas
+\citep{brezis2011}.
+
+This note follows the order of the exercise, but we reorganize it into a proof-driven
+narrative. We first collect the basic equivalences for extreme points and extreme sets. We
+then prove that every nonempty extreme subset of a compact convex set contains an extreme
+point; this is the key step that allows one to deduce the Krein--Milman theorem by a
+separation argument. Finally, we compute the extreme points of the closed unit ball in a
+number of standard Banach spaces, thereby illustrating how geometry depends strongly on the
+ambient norm.
+
+\section{Preliminaries}
+Let $E$ be a normed vector space and let $K \subset E$ be convex.
+
+\begin{definition}
+A point $a \in K$ is an \emph{extreme point} of $K$ if whenever
+\[
+a = tx + (1-t)y, \qquad t \in (0,1), \quad x,y \in K,
+\]
+one necessarily has $x = y = a$.
+\end{definition}
+
+When $K$ is assumed compact and convex, a nonempty closed subset $M \subset K$ is called an
+\emph{extreme set} if for every $t \in (0,1)$,
+\[
+tx + (1-t)y \in M, \quad x,y \in K \implies x,y \in M.
+\]
+Thus extreme sets are the closed faces of $K$.
+
+We shall also use the Hahn--Banach theorem in its elementary separation form: if $x \neq y$
+in a normed vector space, then there exists $f \in E^*$ such that $\ip{f}{x} \neq \ip{f}{y}$.
+This follows by defining a continuous linear functional on $\operatorname{span}\{x-y\}$ and
+extending it to all of $E$.
+
+\section{Extreme Points and Extreme Sets}
+
+\begin{proposition}\label{prop:characterization}
+Let $a \in K$. Then $a$ is an extreme point of $K$ if and only if $K \setminus \{a\}$ is
+convex.
+\end{proposition}
+
+\begin{proof}
+Assume first that $a$ is an extreme point, and let $x,y \in K \setminus \{a\}$ with
+$t \in (0,1)$. Since $K$ is convex, $tx + (1-t)y \in K$. If this convex combination were equal
+to $a$, then the extremality of $a$ would force $x = y = a$, which is impossible. Hence
+$tx + (1-t)y \in K \setminus \{a\}$, so $K \setminus \{a\}$ is convex.
+
+Conversely, assume that $K \setminus \{a\}$ is convex, and suppose
+$a = tx + (1-t)y$ with $t \in (0,1)$ and $x,y \in K$. If $x \neq a$ and $y \neq a$, then
+$x,y \in K \setminus \{a\}$, hence the convexity of $K \setminus \{a\}$ implies
+$a = tx + (1-t)y \in K \setminus \{a\}$, a contradiction. Therefore at least one of $x,y$ is
+equal to $a$, and then the identity $a = tx + (1-t)y$ with $t \in (0,1)$ forces the other one to
+be equal to $a$ as well. Thus $a$ is extreme.
+\end{proof}
+
+\begin{proposition}\label{prop:finite-combination}
+Let $a$ be an extreme point of $K$. Let $x_1,\dots,x_n \in K$ and let
+$\alpha_1,\dots,\alpha_n > 0$ satisfy $\sum_{i=1}^n \alpha_i = 1$ and
+$\sum_{i=1}^n \alpha_i x_i = a$. Then $x_i = a$ for every $i$.
+\end{proposition}
+
+\begin{proof}
+We argue by induction on $n$. The case $n=2$ is exactly the definition of an extreme point.
+Assume the statement true for $n-1$ terms and write
+\[
+a = \alpha_1 x_1 + (1-\alpha_1)z, \qquad
+z = \sum_{i=2}^n \frac{\alpha_i}{1-\alpha_1} x_i \in K.
+\]
+Since $a$ is extreme and $\alpha_1 \in (0,1)$, we obtain $x_1 = a$ and $z = a$. The induction
+hypothesis applied to the representation of $z$ then yields $x_i = a$ for $i=2,\dots,n$.
+\end{proof}
+
+\begin{proposition}\label{prop:singleton-face}
+Let $a \in K$, and assume now that $K$ is compact and convex. Then $a$ is an extreme point of
+$K$ if and only if $\{a\}$ is an extreme set of $K$.
+\end{proposition}
+
+\begin{proof}
+If $a$ is an extreme point, then $\{a\}$ is nonempty and closed. If
+$tx + (1-t)y \in \{a\}$ for some $t \in (0,1)$ and $x,y \in K$, then
+$a = tx + (1-t)y$, hence $x = y = a$. Therefore $\{a\}$ is an extreme set.
+
+Conversely, if $\{a\}$ is an extreme set and $a = tx + (1-t)y$ with $t \in (0,1)$ and
+$x,y \in K$, then $tx + (1-t)y \in \{a\}$, so the definition of an extreme set gives
+$x,y \in \{a\}$. Hence $x = y = a$, and $a$ is extreme.
+\end{proof}
+
+\section{Every Extreme Set Contains an Extreme Point}
+From now on, $K \subset E$ is assumed to be nonempty, compact, and convex.
+
+\begin{proposition}\label{prop:support-face}
+Let $A \subset K$ be an extreme set and let $f \in E^*$. Define
+\[
+B = \left\{x \in A : \ip{f}{x} = \max_{y \in A} \ip{f}{y} \right\}.
+\]
+Then $B$ is an extreme set of $K$.
+\end{proposition}
+
+\begin{proof}
+Because $A$ is compact and $f$ is continuous, the maximum is attained, so $B$ is nonempty.
+Since $B = A \cap f^{-1}(\{\max_A f\})$, it is closed.
+
+Let $t \in (0,1)$ and suppose $tx + (1-t)y \in B$ for some $x,y \in K$. Since $B \subset A$ and
+$A$ is an extreme set, we first obtain $x,y \in A$. Let $m = \max_{z \in A} \ip{f}{z}$. Then
+\[
+m = \ip{f}{tx + (1-t)y} = t\ip{f}{x} + (1-t)\ip{f}{y} \le tm + (1-t)m = m.
+\]
+Hence equality must hold in both inequalities, so $\ip{f}{x} = \ip{f}{y} = m$, which means
+$x,y \in B$. Thus $B$ is an extreme set.
+\end{proof}
+
+\begin{proposition}\label{prop:zorn}
+Let $M \subset K$ be an extreme set. Consider the family $\mathcal{F}$ of all extreme sets of $K$
+contained in $M$, ordered by
+\[
+A \leq B \quad \Longleftrightarrow \quad B \subset A.
+\]
+Then $\mathcal{F}$ has a maximal element.
+\end{proposition}
+
+\begin{proof}
+The set $\mathcal{F}$ is nonempty because $M \in \mathcal{F}$. Let $\mathcal{C} \subset \mathcal{F}$ be a
+chain. Because the order is reverse inclusion, the members of $\mathcal{C}$ are nested by
+inclusion. Set
+\[
+A_\mathcal{C} = \bigcap_{A \in \mathcal{C}} A.
+\]
+Each $A \in \mathcal{C}$ is a nonempty closed subset of the compact set $M$, and the chain
+condition implies the finite intersection property. Therefore $A_\mathcal{C}$ is nonempty and
+closed. We claim that it is an extreme set. Indeed, if $tx + (1-t)y \in A_\mathcal{C}$ with
+$t \in (0,1)$ and $x,y \in K$, then $tx + (1-t)y \in A$ for every $A \in \mathcal{C}$, so the
+extremality of each $A$ yields $x,y \in A$ for every $A \in \mathcal{C}$. Thus
+$x,y \in A_\mathcal{C}$.
+
+Since $A_\mathcal{C} \subset A$ for all $A \in \mathcal{C}$, we have $A \leq A_\mathcal{C}$ for all
+$A \in \mathcal{C}$. Thus every chain has an upper bound, and Zorn's lemma gives a maximal
+element $M_0 \in \mathcal{F}$.
+\end{proof}
+
+\begin{proposition}\label{prop:singleton}
+The maximal element $M_0$ furnished by Proposition~\ref{prop:zorn} is reduced to a single point.
+\end{proposition}
+
+\begin{proof}
+Assume, by contradiction, that $M_0$ contains two distinct points $x$ and $y$. By the
+Hahn--Banach theorem there exists $f \in E^*$ such that $\ip{f}{x} \neq \ip{f}{y}$, so $f$ is not
+constant on $M_0$. Let
+\[
+B = \left\{z \in M_0 : \ip{f}{z} = \max_{w \in M_0} \ip{f}{w} \right\}.
+\]
+By Proposition~\ref{prop:support-face}, $B$ is an extreme set of $K$ contained in $M_0$.
+Moreover $B$ is a proper subset of $M_0$, because $f$ is not constant on $M_0$. Therefore
+$M_0 < B$ in the reverse-inclusion order, contradicting the maximality of $M_0$. Hence $M_0$
+must be a singleton.
+\end{proof}
+
+\begin{corollary}\label{cor:extreme-set-contains-extreme-point}
+Every nonempty extreme set of $K$ contains at least one extreme point of $K$.
+\end{corollary}
+
+\begin{proof}
+Let $M \subset K$ be a nonempty extreme set. By Proposition~\ref{prop:zorn}, the family of
+extreme subsets of $K$ contained in $M$ has a maximal element $M_0$, and by
+Proposition~\ref{prop:singleton} we may write $M_0 = \{a\}$. Proposition~\ref{prop:singleton-face}
+then shows that $a$ is an extreme point of $K$.
+\end{proof}
+
+\section{The Krein--Milman Theorem}
+
+\begin{theorem}[Krein--Milman for compact convex subsets of normed spaces]
+Let $K$ be a nonempty compact convex subset of $E$. Then
+\[
+K = \overline{\co}(\ext K).
+\]
+\end{theorem}
+
+\begin{proof}
+Set $C = \overline{\co}(\ext K)$. By definition, $C$ is a closed convex subset of $K$. Suppose that
+$C \neq K$, and choose $x_0 \in K \setminus C$. Since $C$ is closed and convex, the Hahn--Banach
+separation theorem provides $f \in E^*$ such that
+\[
+\sup_{x \in C} \ip{f}{x} < \ip{f}{x_0}.
+\]
+
+Let
+\[
+A = \left\{x \in K : \ip{f}{x} = \max_{y \in K} \ip{f}{y} \right\}.
+\]
+By Proposition~\ref{prop:support-face}, $A$ is an extreme set of $K$. Therefore,
+Corollary~\ref{cor:extreme-set-contains-extreme-point} yields an extreme point $a \in A$. Since
+$a \in \ext K \subset C$, we have
+\[
+\ip{f}{a} \le \sup_{x \in C} \ip{f}{x} < \ip{f}{x_0}.
+\]
+On the other hand, $a \in A$ means that $\ip{f}{a} = \max_{y \in K} \ip{f}{y} \ge \ip{f}{x_0}$,
+a contradiction. Hence $C = K$.
+\end{proof}
+
+\begin{remark}
+The theorem is usually stated in the larger framework of locally convex spaces. In the present
+exercise, the normed-space setting already contains the essential idea: compactness gives
+supporting faces, and Hahn--Banach supplies the separating functionals.
+\end{remark}
+
+\section{Extreme Points of Unit Balls in Classical Spaces}
+We now determine the set of extreme points of the closed unit ball $B_E$ in the six spaces
+listed in Brezis' problem.
+
+\begin{proposition}\label{prop:linfty}
+The extreme points of the closed unit ball of $\ell^\infty$ are exactly the sequences
+$x = (x_n)$ such that $\abs{x_n} = 1$ for every $n$.
+\end{proposition}
+
+\begin{proof}
+Assume first that $x \in B_{\ell^\infty}$ and that $\abs{x_k} < 1$ for some index $k$. Choose
+$\varepsilon > 0$ such that $\abs{x_k} + \varepsilon \le 1$, and define
+\[
+y = x + \varepsilon e_k, \qquad z = x - \varepsilon e_k.
+\]
+Then $y \neq z$, $x = \tfrac12(y+z)$, and $\norm{y}_\infty, \norm{z}_\infty \le 1$, so $x$ is not
+extreme.
+
+Conversely, assume that $\abs{x_n} = 1$ for every $n$ and write $x = \tfrac12(y+z)$ with
+$\norm{y}_\infty, \norm{z}_\infty \le 1$. For each $n$ we have
+\[
+2x_n = y_n + z_n.
+\]
+If $x_n = 1$, then $y_n + z_n = 2$ with $y_n,z_n \le 1$, hence $y_n = z_n = 1$. Similarly, if
+$x_n = -1$, then $y_n = z_n = -1$. Thus $y = z = x$, and $x$ is extreme.
+\end{proof}
+
+\begin{proposition}\label{prop:c}
+The extreme points of the closed unit ball of $c$ are exactly the convergent sign sequences,
+that is,
+\[
+\ext(B_c) = \{x = (x_n) \in c : x_n \in \{-1,1\} \text{ for all } n\}.
+\]
+Equivalently, these are the $\{-1,1\}$-valued sequences that are eventually constant.
+\end{proposition}
+
+\begin{proof}
+As a closed subspace of $\ell^\infty$, the space $c$ inherits the same perturbation argument as in
+Proposition~\ref{prop:linfty}. Thus any extreme point must satisfy $\abs{x_n} = 1$ for all $n$.
+Conversely, if $x \in c$ is such a sequence and $x = \tfrac12(y+z)$ with $y,z \in B_c$, the
+coordinate-wise argument from Proposition~\ref{prop:linfty} again gives $y = z = x$. Hence $x$
+is extreme. Since a convergent sequence taking only the values $\pm 1$ must eventually be
+constant, the final description follows.
+\end{proof}
+
+\begin{proposition}\label{prop:c0}
+The closed unit ball of $c_0$ has no extreme points.
+\end{proposition}
+
+\begin{proof}
+Let $x \in B_{c_0}$. Because $x_n \to 0$, there exists some index $k$ such that $\abs{x_k} < 1$.
+The perturbation argument used in Proposition~\ref{prop:linfty} then shows that $x$ is the
+midpoint of two distinct points of $B_{c_0}$. Therefore $x$ is not extreme. Since $x$ was
+arbitrary, $\ext(B_{c_0}) = \varnothing$.
+\end{proof}
+
+\begin{proposition}\label{prop:l1}
+The extreme points of the closed unit ball of $\ell^1$ are exactly the vectors $\pm e_n$,
+$n \ge 1$.
+\end{proposition}
+
+\begin{proof}
+We first prove that each $\pm e_n$ is extreme. Suppose
+$e_n = \tfrac12(y+z)$ with $\norm{y}_1, \norm{z}_1 \le 1$. Then
+\[
+1 = \norm{e_n}_1 \le \tfrac12(\norm{y}_1 + \norm{z}_1) \le 1,
+\]
+so equality holds throughout. In particular, $\norm{y}_1 = \norm{z}_1 = 1$. Since the $n$th
+coordinate of $e_n$ is $1$, we have $y_n + z_n = 2$ with $\abs{y_n}, \abs{z_n} \le 1$, hence
+$y_n = z_n = 1$. The equality $\norm{y}_1 = 1$ then forces all other coordinates of $y$ to be
+zero, and similarly for $z$. Thus $y = z = e_n$. The argument for $-e_n$ is identical.
+
+Now let $x \in B_{\ell^1}$ and assume that $x \neq \pm e_n$ for all $n$. If $\norm{x}_1 < 1$, choose
+$n$ and $\varepsilon > 0$ with $\norm{x}_1 + \varepsilon \le 1$; then $x$ is the midpoint of
+$x \pm \varepsilon e_n$, both belonging to $B_{\ell^1}$. Hence $x$ is not extreme.
+
+It remains to consider the case $\norm{x}_1 = 1$. Since $x$ is not one of the vectors $\pm e_n$,
+there exist distinct indices $i,j$ such that $x_i \neq 0$ and $x_j \neq 0$. Choose
+$0 < \varepsilon < \min\{\abs{x_i}, \abs{x_j}\}$ and define $h \in \ell^1$ by
+\[
+h_i = \operatorname{sgn}(x_i), \qquad h_j = -\operatorname{sgn}(x_j), \qquad h_k = 0 \text{ for }
+k \notin \{i,j\}.
+\]
+Then the signs of the $i$th and $j$th coordinates do not change in $x \pm \varepsilon h$, and a
+direct computation gives
+\[
+\norm{x \pm \varepsilon h}_1 = \norm{x}_1 = 1.
+\]
+Since $x = \tfrac12((x+\varepsilon h) + (x-\varepsilon h))$ with $x+\varepsilon h \neq x-\varepsilon h$,
+$x$ is not extreme. We conclude that $\ext(B_{\ell^1}) = \{\pm e_n : n \ge 1\}$.
+\end{proof}
+
+\begin{proposition}\label{prop:lp}
+Let $1 < p < \infty$. The extreme points of the closed unit ball of $\ell^p$ are exactly the unit
+sphere:
+\[
+\ext(B_{\ell^p}) = \{x \in \ell^p : \norm{x}_p = 1\}.
+\]
+\end{proposition}
+
+\begin{proof}
+If $\norm{x}_p < 1$, then $x$ is an interior point of $B_{\ell^p}$, hence certainly not extreme.
+
+Conversely, assume $\norm{x}_p = 1$ and write $x = \tfrac12(y+z)$ with
+$\norm{y}_p, \norm{z}_p \le 1$. Since the function $t \mapsto \abs{t}^p$ is strictly convex for
+$1 < p < \infty$, the norm on $\ell^p$ is strictly convex. Therefore equality in
+\[
+1 = \norm{x}_p \le \tfrac12\norm{y}_p + \tfrac12\norm{z}_p \le 1
+\]
+forces $y = z = x$. Thus every point of the unit sphere is extreme.
+\end{proof}
+
+\begin{proposition}\label{prop:l1R}
+The closed unit ball of $L^1(\mathbb{R})$ has no extreme points.
+\end{proposition}
+
+\begin{proof}
+Let $f \in B_{L^1(\mathbb{R})}$. If $\norm{f}_1 < 1$, then $f$ is an interior point of the unit ball,
+so it is not extreme.
+
+Assume now that $\norm{f}_1 = 1$. Consider the finite measure
+\[
+\nu(A) = \int_A \abs{f(x)}\,dx.
+\]
+Because Lebesgue measure is nonatomic, so is $\nu$. Hence there exists a measurable set $A$
+such that $\nu(A) = \tfrac12$. Define
+\[
+g = 2f\mathbf{1}_A, \qquad h = 2f\mathbf{1}_{\mathbb{R} \setminus A}.
+\]
+Then
+\[
+\norm{g}_1 = 2\nu(A) = 1, \qquad \norm{h}_1 = 2\nu(\mathbb{R} \setminus A) = 1,
+\]
+and
+\[
+f = \tfrac12(g+h).
+\]
+Since $\nu(A) = \nu(\mathbb{R} \setminus A) = \tfrac12$, both $g$ and $h$ are nonzero, hence
+$g \neq h$. Therefore $f$ is not extreme. We conclude that $\ext(B_{L^1(\mathbb{R})}) = \varnothing$.
+\end{proof}
+
+\section{Conclusion}
+Problem~1 packages the proof of the Krein--Milman theorem into a sequence of elementary but
+revealing reductions. The central mechanism is the passage from a compact convex set to a
+smaller support face on which a separating functional is maximized. Once one knows that every
+nonempty extreme subset contains an extreme point, the final separation argument becomes
+natural and transparent. The examples of unit balls show that this abstract theorem is not
+merely existential: the geometry of extreme points can vary from a rich family of sign
+sequences in $\ell^\infty$ to complete absence of extreme points in $c_0$ and $L^1(\mathbb{R})$.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
